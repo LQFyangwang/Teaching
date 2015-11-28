@@ -1,0 +1,21 @@
+﻿<!doctype html>
+
+<html>
+	<head></head>	
+	<body>
+		<form method="get">
+			<select name="os" size="4" multiple><!-- multiple用于指定可以多选，控住 ctrl键  ?os=iOS&os=WP -->
+				<option value="iOS">iOS</option>	
+				<option value="Android">Android</option>
+				<option value="WP">Windows Phone</option>
+			</select>	
+			<input type="text" value="这是单行文本输入框" />
+			<!-- rows指定显示出多少行，cols指定每行可以有多少个字符（英文字符，一个中文字符可能占据2个英文字符的宽度，也有可能3个，跟字符编码有关，utf-8:3个， gb2312:2个） -->
+			<!-- html编辑器 CKEditor FCKEditor 百度html编辑器-->
+			<textarea name="long_text" rows="5" cols="10">
+				abc
+			</textarea>
+			<input type="submit" />
+		</form>
+	</body>
+</html>

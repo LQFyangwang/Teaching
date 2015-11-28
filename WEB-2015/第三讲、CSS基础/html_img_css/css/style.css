@@ -1,0 +1,11 @@
+﻿.my_text {
+	/** my_text是一个类名称（class name） */
+	font-size: 20px;
+	text-align:right;	
+}
+
+#my_div {
+	/** #my_div叫做id选择器 */
+	background-color:green;	
+	color:white;
+}

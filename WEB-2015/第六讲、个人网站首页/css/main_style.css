@@ -1,0 +1,107 @@
+﻿body, p, div, img, form {
+				margin:0;/** 外边距 */
+				padding:0;/** 内边距 */
+			}
+			.clear {
+				clear:both;
+			}
+			a:link, a:hover, a:visited {/** hover: 鼠标经过 visited:被访问 active：激活状态  */
+				text-decoration:none;/** decoration：装饰 none:没有 */
+				font-size:16px;
+				font-weight:bold;/** weight:重量(用于计算机字体的话表示字粗)  bold：加粗*/
+			}
+			a:hover {
+				color:red;
+			}
+			
+			a:active {
+				color:green;
+			}
+			
+			#container {/** 容器 **/
+				width:960px;/** 800 960 1000 1024 1200 width:auto */
+				height:auto;
+				margin:auto;
+			}
+			#img_div div {
+				float:left;
+			}
+			.img_1 {
+				width:288px;
+			}
+			.img_2 {
+				width: 672px;
+			}
+			.img_1 img {
+				width:285px;
+				height:80px;
+			}
+			.img_2 img {
+				width:670px;
+				height:80px;
+			}
+			
+			#nav {/** navigation:导航 */
+				background:url(../img/menu.gif) repeat-x;
+				height:33px;
+				margin-top:-10px;
+			}
+			
+			#nav ul {
+				padding-top:7px;
+			}
+			
+			ul {
+				list-style-type:none;
+			}
+			ul li {
+				float:left;
+				margin-right:50px;
+			}
+			
+			#content {/** content: 内容 */
+				margin-top: 20px;
+			}
+			
+			#content img {
+				width:960px;
+			}
+			
+			#footer {
+				background:url(../img/base.gif) repeat-x;/** repeat重复 */
+				height:36px;
+				margin-top:10px;
+				text-align:center;
+			}
+			#content-top div {
+				width:24%;
+				height:120px;
+				float:left;
+				margin-right:5px;
+				border:1px solid red;
+			}
+			#content-bottom {
+				position:relative;/** position:位置 relative：相对的*/
+			}
+			
+			#content-bottom div {
+				float:left;
+				height:120px;
+				margin:5px 4px 0 0;
+				border:1px solid red;
+			}
+			
+			#content-bottom .left {
+				width:48%;
+			}
+			
+			#content-bottom .right {
+				width:375px;
+				padding-left:100px;
+			}
+			.content-img {
+				position:absolute;/** absolute绝对的 表示绝对定位 */
+				left:420px;
+				top:10px;
+				z-index:100;/** index表示索引 */
+			}

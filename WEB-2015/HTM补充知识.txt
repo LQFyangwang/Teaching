@@ -1,0 +1,59 @@
+﻿HTML版本：
+HTML 4.0.1
+
+HTML 5, 有一些新的标签canvas，section, video等， HTML4部分老标签被弃用
+
+baidu.com html5 html4
+
+html5: <!doctype html>
+html4: <!doctype html xmlns="http://" transitional
+
+css3.0，使用css属性设定html标签的样式
+
+http://www.w3school.com查阅相关的资料 html css javascript php mysql xml
+CHM文档：
+
+颜色值：
+Red Green Blue
+RGB颜色值
+
+0~255
+黑~白
+
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 
+0 1 2 3 4 5 6 7 8 9  A    B    C   D    E   F
+0-F
+红色：FF0000
+绿色：00FF00
+蓝色：0000FF
+黑色：000000
+白色：FFFFFFF
+
+R 234 127
+G 128 56
+B 38 247
+总颜色数：256*256*256
+
+color="#ff0000"
+body {
+	background-color:#FF0000;
+}
+
+浏览器的使用：
+查看网页源代码
+开发者模式：firefox 查看元素 chrome ie
+
+路径：
+绝对路径：从路径的源头开始  
+C:\Users\轮回多桀\Desktop\aa.txt
+D:\New Folder\aa.txt
+相对路径
+相对于另外一个路径来说从哪儿开始
+
+a href="http://www.baidu.com/"
+
+
+复习：
+内部考试 笔试 + 机试
+
+面试

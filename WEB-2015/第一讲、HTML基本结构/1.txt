@@ -1,0 +1,37 @@
+﻿HTML:超文本标记语言
+  hyper text markup language
+
+UltraEdit(文本编辑器)， EditPlus
+
+DereamWeaver(网页设计的专业工具)， Photoshop, Fireworks
+
+HTML文档结构需要注意规范性
+名称的可读性，见名知义
+
+
+HTML Base标记：基标记
+http://www.baidu.com
+http://www.baidu.com/a/a.html
+
+<Base href=”http://www.baidu.com”/>
+
+http://www.abc.com
+
+<base href="http://www.abc.com" />
+
+
+HTTP：超文本传输协议 hypertext transfer protocal
+
+
+网址：域名-www.abc.com, www.qq.com, www.sina.com.cn
+
+ip地址：用来表示一台计算机的唯一的网络地址
+
+DNS服务器：dynamic naming server，动态域名解析
+
+www.baidu.com-->10.18.18.18 http://www.baidu.com     http://10.18.18.18
+
+本地主机：http://localhost    http://127.0.0.1
+
+URL: universal resources location，统一资源定位符 http://www.baidu.com/index.html
+

@@ -1,0 +1,29 @@
+﻿<!doctype html>
+<html>
+	<head>
+		<meta charset="gbk" />
+		<!--  
+		参数：数据的名称和数据的值
+		http请求方式：
+		1、get请求方式：会把输入的表单数据放到url后面, http://www.xxx.com/index.html?name=value
+		http://www.xxx.com/index.html?name1=value1&name2=value2&name3=value3
+		
+		?name1=value1&name2=value2&name3=value3 ====>查询字符串
+		
+		查询字符串不能够保存过多的数据，4096KB，不同浏览器可传输的数据量不同，但是都是有限的
+		-->
+	</head>
+	<body>
+		<center>
+			<h3>用户登录</h3>	
+			<form method="post" action="form.html">
+				<label for="user_name">用户名：</label><!-- for属性指此label与哪个input关联，它的值为某个input的id -->
+				<input id="user_name" type="text" name="user_name" value="" /><!-- id与name都应该唯一，但是id跟name可以相同 -->
+				<label for="user_pwd">密码：</label>
+				<input id="user_pwd" type="password" name="user_pwd" value="" />
+				<input type="submit" /><!-- submit为提交，把当前表单的数据提交到web服务器 -->
+				<input type="reset" /><!-- reset为重置，把当前表单的输入及选择的内容都清空 -->
+			</form>
+		</center>	
+	</body>
+</html>

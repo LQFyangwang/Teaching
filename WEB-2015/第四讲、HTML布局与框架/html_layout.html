@@ -1,0 +1,75 @@
+﻿<!doctype html>
+<!-- html layout布局 -->
+<html>
+	<head>
+		<style>
+			/**
+			盒子模型
+			div标签作整体的布局，div与div间都可以设定一定的间距，div内的内容与边框也可以设定一定的间距
+			外边距：标签与标签边框间的问题 margin:上 右 下 左 
+			margin-top margin-right margin-bottom margin-left
+			内边距：标签里的内容与标签的边框的间距 padding:上 右 下 左
+			padding-top padding-right padding-bottom padding-left
+			*/
+			.center_p {
+				text-align:center;	
+			}	
+			.img_div {
+				border: 1px solid silver;	
+				margin-top:20px;
+			}
+			/**css上下文选择器*/
+			.img_div div {
+				border:1px solid red;
+				width:100px;
+				height:auto;
+				float:left;
+				margin-right:20px;
+				padding:10px 20px 15px 30px;
+			}
+			
+			#div_1 img {
+				width:100px;
+				height:140px;	
+			}
+			p a:link {
+				text-decoration:none;/** 取消a标签的下划线 */	
+				color:green;
+			}
+			
+			p a:hover {
+				text-decoration:none;/** 取消a标签的下划线 */	
+				color:green;
+				font-size:20px;
+			}
+
+			p a:visited {
+				text-decoration:none;/** 取消a标签的下划线 */	
+				color:green;	
+			}
+			
+		</style>	
+	</head>	
+	<body>
+		<center>居中的文字</center><!-- center居中，但是用得比较少，可以使用style替换 -->
+		<p class="center_p">这也是居中的文字</p>
+		<pre><!-- 预排版标签，用得比较少 -->
+			aaa
+		</pre>
+		<p>
+			<a href="#"	>a1</a>
+			<a href="#">a2</a>
+		</p>
+		<div style="border:1px solid red;"><!--  div + css -->
+				aaa
+		</div>
+		<div class="img_div">
+			<div id="div_1"><img src="images/110.jpg" /></div>	
+			<div><img src="images/110.jpg" /></div>
+			<div><img src="images/110.jpg" /></div>
+			<div><img src="images/110.jpg" /></div>
+			<p style="clear:both;"></p><!-- 取消浮动 -->
+		</div>
+		
+	</body>
+</html>

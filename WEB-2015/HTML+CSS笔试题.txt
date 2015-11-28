@@ -1,0 +1,152 @@
+﻿HTML+CSS笔试题
+
+1、请写出HTML的中文及英文全称
+
+hypertext markup language
+超文本标记语言
+
+需要浏览器对其解析
+
+2、请写出HTML文档的基本结构，要求在页面可显示出"百度网"链接
+
+<!doctype html>
+<html>
+	<head><title></title></head>
+	<body><a href="http://www.baidu.com">百度网</a></body>
+</html>
+
+3、字体有哪几种风格？每种风格请举例至少4个并说明其意义
+
+物理风格：<u></u>下划线 <i></i>斜体 <b></b>粗体 <tt></tt>打字机体
+逻辑风格：<small></small>小字体 <big></big>大字体 <sup></sup>上标 <sub></sub>下标 <strong></strong>特别强调 <em></em>强调
+
+4、请写出a标签的用法，主要属性以及属性可选的值
+
+<a href="http://www.xxx.com" target="_blank">某某网</a>
+href目标地址 http 内部的html页面
+target：_self在自身窗口打开 _blank在新窗口（新的tab页面）中打开, frame的名称
+
+5、我们现在所看到的网页是基于什么协议传输的？协议的英文简写，英文全称和中文全称
+
+http协议，hypertext transfer protocal 超文本传输协议
+http协议是基于TCP/
+
+https s:secure
+
+6、请写出表格的基本结构，表格主要包含哪些重要标签
+
+<table>
+	<caption>标题</caption>
+	<tr><th>表头</th></tr>
+	<tr><td>单元格</td></tr>
+</table>
+
+table caption tr th td
+
+7、当我们想合并行和合并列时，应该怎么做？
+
+合并行：<tr><td rowspan="#"></td></tr>
+合并列：<tr><td colspan="#"></td></tr>
+
+8、请简述域名的作用
+
+域名，英文是DNS，dynamic name server，动态域名服务器
+dns服务器存储了域名跟ip地址间的映射，由dns将域名解析成服务器的目标ip地址
+
+9、请简述p标签及pre标签
+
+p标签是段落标签，是块元素，占据一行，每一个 p标签都从下一行开始，并且会过滤掉内容中的空格，换行等符号（没有格式的）
+pre标签是预排版标签，会保持源代码中的空格，换行等符号，是有格式的
+
+10、请简述RGB颜色值
+
+RGB是由red红色，blue蓝色和green绿色三原色组成，每一种颜色由0~255的十六进制数表示，0表示的是黑色值，255表示的是白色值 
+白色：#FFFFFF
+黑色：#000000
+红色：#FF0000
+蓝色：#0000FF
+绿色：#00FF00
+
+11、请完整地写出一个无序列表
+unordered list ul
+ordered list ol
+definition list dl
+
+<ul>
+	<li></li>
+	<li></li>
+</ul>
+
+12、请写出CSS的引用方式，可以实例说明
+
+内联样式：<div style="background-color:red">aa</div>
+内部样式：
+<head>
+	<style>
+		.div_1 {
+			background-color:red;
+		}
+	</style>
+</head>
+<div class="div_1">aa</div>
+外部样式：
+在css目录中有style.css样式文件
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+
+13、请简述标签属性及CSS属性，并说明其区别
+
+
+标签属性用在标签上，css属性用在css样式表中，标签属性跟css属性是不一样的，比如想要设置背景颜色，标签属性为bgcolor,
+css属性为background-color，同样的效果在两种属性中可能是不一样的名字
+
+14、有如下目录结构和文件：c:\test
+	c:\test\index.html
+	c:\test\images\a.jpg
+	c:\test\html\main.html
+	现在需要在index.html页面使用img标签显示出a.jpg文件，请写出img标签的完整写法
+	在main.html页面中也需要使用img标签显示出a.jpg文件，请写出img标签的完整写法
+	
+	index.html
+	<img src="c:test/images/a.jpg" />
+	<img src="images/a.jpg" />
+	main.html
+	<img src="c:test/images/a.jpg" />
+	<img src="../images/a.jpg" alt="alt" title="title" />
+	
+15、请简述盒子模型，并用实例说明（提示div+css）
+
+盒子模型由div + css来表示，div用于布局，css用来指定div的样式。
+盒子模型表示div可嵌套使用组成盒子，不同的div间有外边距及内边距，外边距用margin属性说明，内边距用padding属性说明
+
+
+16、请写出一个form表单的实例，并说出两种http请求方法及方法的不同
+
+<form method="get" action="#"> 
+	<label for="user">用户</label>
+	<input id="user" name="user" type="text" value="" />
+	<input type="checkbox" name="subject" value="computer" />计算机
+	<input type="checkbox" name="subject" value="math" />数学
+</form>
+
+http get:会把表单数据组成查询字符串放到地址栏的url后面，http://www.xxx.com/index.html?param_name1=param_value1&param_name2=param_value2
+浏览器对放到url后面数据量有限制，大部分浏览器为4096k，所以大数据时是不用Get提交方式
+
+http post:把表单数据放到http协议的主体部分，不会在地址栏的url后面生成查询字符串，相对来说更加安全，并且对数据量没有限制
+
+17、请写出你使用过的一些标签和css属性
+
+
+
+18、请写出你认为重要的一些编码规范
+
+a、html标签都小写
+b、html属性的值用""
+c、属性跟属性间用一个空格隔开
+d、注意缩进，增加可读性
+e、添加相应的注释
+f、JavaScript区分大小写，并且方法（函数）的名称如果只有一个单词，那么整个单词小写function show() {}。
+如果有多个单词组成，第一个单词都小写，从第二个单词开始，每个单词的首字母大写function showButton() {}
+想要使用写好的function，必须通过区分大小写的名称来引用
+g、文件名称，函数（方法）等的名称应该有意义，见名知义
+
+h、开始标签跟结束标签成对出现

@@ -1,0 +1,37 @@
+﻿<!doctype html>
+
+<html>
+	<head>
+	<!-- CSS Cascading Style Sheets 层叠样式表 -->
+	<style>
+		@import url("css/style1.css");
+		body {
+			background-color:red;
+			text-align:center;
+			font-size:20px;
+		}	
+		div {<!-- 标签选择器 -->
+			border:3px dotted green;	
+			background-color:white;
+		}
+		img {
+			width:50px;
+			height:80px;
+			border: 2px solid black;	
+		}
+	</style>
+	
+	<link rel="stylesheet" type="text/css" href="css/style.css" /><!-- 引用外部样式文件 -->
+	
+	</head>	
+	<body>
+		<div style="text-align:left;"><!-- 内联样式 优先级最高 -->
+			<img src="images/110.jpg" alt="这里有一张图片" title="图片名称"/><!-- 可以使用网络上的图片，http://xxx.xx.com/xx/a.jpg -->
+		</div>
+		已经修改大小的文字
+		<img src="images/flash.jpg" alt="alt" title="title" />
+		<p class="my_text">这里使用外部css样式文件style.css</p><!-- 类选择器 -->
+		<div id="my_div" class="my_text">使用class类选择器：my_text</div><!-- id应该唯一 -->
+		<span>这里使用外部css样式文件style1.css</span>
+	</body>
+</html>

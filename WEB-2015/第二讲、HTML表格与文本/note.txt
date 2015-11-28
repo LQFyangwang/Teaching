@@ -1,0 +1,18 @@
+﻿paddig表示内边距
+margin表示外边距
+
+内标记设置的属性的优先级高于外层标记
+
+b-bold
+i-italy
+u-underline
+
+h1-h6占据整行-块元素
+ul li, div, img, body, form
+
+行内元素
+a, p
+
+标签可以嵌套使用，p, pre, body, div, section, span
+
+颜色值：红 red 绿 green 蓝 blue 黄 yellow 黑色 black 白色 white 灰色 grey 银色 sliver 

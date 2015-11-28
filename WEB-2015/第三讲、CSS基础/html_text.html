@@ -1,0 +1,34 @@
+﻿<!doctype html>
+<html>
+	<head></head>	
+	<body>
+		<marquee>欢迎来到我的网站</marquee><!-- marquee默认从右到左循环滚动 -->	
+		<marquee direction="right" loop="2" behavior="alternate" scrollamount="300px" scrolldelay="500">从左到右滚动</marquee><!-- loop为1时表示无限循环，loop为n(n >=2)表示循环n次 -->
+		<!-- 每次的滚动是以scrollamount为区间，第二次滚动到第600px，两次滚动间相差2000ms -->
+		
+		<!-- 清单（或者列表） -->
+		<ul type="none" style="border:1px solid red"><!-- 每个项目前默认为小圆点 -->
+			<li>宝马</li>	
+			<li>奔驰</li>
+			<li>玛莎拉蒂</li>
+		</ul>
+		<ol type="a"><!-- 每个项目前默认为阿拉伯数字 A a I i-->
+			<li>宝马</li>	
+			<li>奔驰</li>
+			<li>玛莎拉蒂</li>
+		</ol>
+		<dl>
+			<dt>definition:</dt><!-- 标题 -->
+			<dd>定义</dd><!-- 描述 -->
+			<dt>list:</dt>
+			<dd>列表</dd>
+		</dl>
+		
+		<ul type="none">
+			<li><div style="background-color:red;"><a href="http://www.qq.com">QQ</a></div></li>
+			<li><a href="http://www.baidu.com">BAIDU</a></li>
+			<li><a href="http://www.alibaba.com">Alibaba</a></li>
+			<li><span>li span</span></li>
+		</ul>
+	</body>
+</html>

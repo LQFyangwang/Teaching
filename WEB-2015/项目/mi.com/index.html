@@ -1,0 +1,679 @@
+﻿<!doctype html>
+<html>
+	<head>
+		<title>小米首页</title>	
+		<meta charset="gbk" />
+		<link rel="stylesheet" href="css/font-awesome.min.css" />
+		<style>
+			/**通用样式开始*/
+			body, img, form, p, div, ul, li {
+				margin:0px;
+				padding:0px;	
+			}	
+			
+			.clear {
+				clear:both;
+			}
+			
+			ul {
+				list-style-type:none;
+			}
+			
+			i {
+				color:silver;
+				font-size:20px;
+			}
+			
+			a {
+				text-decoration:none;
+			}
+			
+			.product_title a:link, .product_title a:active, .product_title a:visited {
+				color:black;
+			}
+			
+			.product_des {
+				font-size:12px;
+				color:grey;
+				margin-top:10px;
+			}
+			
+			.product_price {
+				color:orange;
+				font-weight:bold;
+				margin-top:10px;
+			}
+			/** 通用样式结束 */
+			
+			/** 顶部工具栏样式开始 */
+			#topbar {
+				background-color:black;
+				height:40px;	
+				line-height:40px;
+			}
+			
+			.topbar_menu {
+				width:1226px;
+				height:auto;
+				margin:auto;
+			}
+			
+			.topbar_menu a:link, .topbar_menu a:active, .topbar_menu a:visited {
+				color:silver;
+			}
+			
+			.topbar_menu a:hover, .topbar_menu a:hover i {
+				color:white;
+			}
+			
+			.topbar_menu .left {
+				float:left;
+			}
+			
+			.topbar_menu li {
+				float:left;
+				margin-right:20px;
+			}
+			
+			.topbar_menu .right {
+				float:right;
+			}
+			
+			.topbar_menu span {
+				color:silver;
+			}
+			
+			/** 顶部工具栏样式结束 */
+			
+			/** 导航栏样式开始 */
+			.nav_bar {
+				width:1226px;
+				height:60px;
+				line-height:60px;
+				margin:20px auto auto auto;
+			}
+			.nav_bar img {
+				float:left;
+			}
+			.nav_menu {
+				float:left;
+				margin-left:200px;
+			}
+			.nav_menu li {
+				float:left;
+				margin-right:50px;
+			}
+			.nav_search {
+				float:right;
+			}
+			.nav_search div {
+				height:50px;
+				line-height:50px;
+				border: 1px solid silver;
+				float:left;
+			}
+			.nav_search input {
+				border:none;
+				width:225px;
+				height:43px;
+				line-height:43px;
+				padding-left:10px;
+				outline:0;
+			}
+			.nav_search .icon_div {
+				width:50px;
+				height:50px;
+				border-left:none;
+				text-align:center;
+			}
+			.nav_search .icon_div:hover {
+				background-color:orange;
+				cursor:pointer;
+			}
+			.nav_search .icon_div:hover i {
+				color:white;
+			}
+			.nav_bar a:hover {
+				color:orange;
+			}
+			
+			/** 导航栏样式结束 */
+			/** 选择及广告区域样式开始 */
+			.nav_main {
+				width:1226px;
+				margin:15px auto auto auto;
+				position:relative;
+			}
+			.nav_main .ad {
+				width:100%;
+				height:460px;
+			}
+			.nav_main .left {
+				width:234px;
+				height:460px;
+				position:absolute;
+				left:0px;
+				top:0px;
+				background-color:rgba(0, 0, 0, 0.4);
+			}
+			.nav_main ul {
+				width:100%;
+				padding-top:15px;
+			}
+			.nav_main li {
+				height:42px;
+				line-height:42px;
+			}
+			.nav_main li:hover {
+				background-color:orange;
+			}
+			.nav_main a {
+				width:209px;
+				display:inline-block;
+				line-height:100%;
+				padding-left:25px;
+			}
+			.nav_main i {
+				float:right;
+				display:inline-block;
+				font-size:12px;
+				margin-right:25px;
+			}
+			/** 选择及广告区域样式结束 */
+			/** 快速购物通道开始 */
+			.quick_shopping {
+				width:1226px;
+				height:170px;
+				margin:20px auto auto auto;
+			}	
+			.quick_shopping div {
+				float:left;
+			}
+			.quick_shopping .choice {
+				width:234px;
+				height:100%;
+				background-color:#5f5750;
+			}	
+			.quick_shopping .choice li {
+				float:left;
+				width:76px;
+				height:62px;
+				padding-top:20px;
+				text-align:center;
+			}
+			.quick_shopping a:link, .quick_shopping a:active, .quick_shopping a:visited {
+				color:silver;
+			}
+			.quick_shopping li:hover a, .quick_shopping li:hover i {
+				color:white;
+			}
+			.quick_shopping i {
+				display:inline-block;
+				margin-bottom:10px;
+			}
+			.shopping_img {
+				margin-left:14px;
+			}	
+			.shopping_img_last {
+				margin-left:16px;
+			}
+			/** 快速购物通道结束 */
+			/**明星单品开始 */
+			.star_rec {
+				width:1226px;
+				height:438px;
+				margin:50px auto auto auto;
+			}
+			
+			.star_rec_title {
+				position:relative;
+			}
+			
+			.star_rec .control {
+				position:absolute;
+				top:15px;
+				right:0px;
+			}
+			
+			.star_rec .control span {
+				display:inline-block;
+				width:40px;
+				text-align:center;
+				border:1px solid silver;
+			}
+			.star_rec_product  div {
+				width:234px;
+				height:295px;
+				padding-top:45px;
+				float:left;
+				margin-right:11px;
+				background-color:#fafafa;
+				text-align:center;
+			}
+			.rec_product div{
+				background-color:white;
+			}
+			/** 明星单品结束 */
+			/** 主页部分*/
+			#page_main {
+				background-color:#fafafa;
+				padding-top:80px;
+			}
+			/** 主页部分*/
+			/** 主体部分的产品  */
+			.main_product {
+				width:1226px;
+				height:auto;
+				margin:50px auto auto auto;
+			}
+			.main_product .title {
+				position:relative;
+			}
+			.main_product h3 {
+				margin:0;
+				padding:0 30px 0 0;
+				position:absolute;
+				top:0px;
+				right:0px;
+			}
+			.main_product .left {
+				float:left;
+				height:614px;
+				width:234px;
+			}
+			.main_product .right {
+				width:978px;
+				float:left;
+				height:614px;
+				text-align:center;
+			}
+			.main_product .right_item {
+				position:relative;
+				width:234px;
+				height:300px;
+				text-align:center;
+				background-color:white;
+				float:left;
+				margin-left:10px;
+				margin-bottom:14px;
+			}
+			.main_product .new_product {
+				width:60px;
+				height:20px;
+				color:white;
+				background-color:green;
+				text-align:center;
+				position:absolute;
+				top:0px;
+				left:84px;
+			}
+			.right_side {
+				width:234px;
+				height:300px;
+				background-color:#fafafa;
+				float:left;
+				margin-left:10px;
+			}
+			
+			.right_side img {
+				width:100px;
+				height:100px;
+			}
+			.right_side .item {
+				background-color:white;
+				margin-top:5px;
+			}
+			.right_side .item div {
+				float:left;
+				text-align:center;
+				padding-left:30px;
+			}
+			
+			.right_side .title {
+				padding-top:30px;
+				height:115px;
+			}
+			
+			/** 主体部分的产品 */
+		</style>
+	</head>	
+	<body>
+		<!-- 顶部工具栏开始 -->
+		<div id="topbar">
+			<div class="topbar_menu">
+				<!-- 工具栏左侧开始 -->
+				<div class="left">
+					<ul>
+						<li><a href="index.html">小米网</a><span>&nbsp;|</span></li>
+						<li><a href="#">MIUI</a><span>&nbsp;|</span></li>
+						<p class="clear"></p>	
+					</ul>
+				</div>
+				<!-- 工具栏左侧结束 -->
+				<!-- 工具栏右侧开始 -->
+				<div class="right">
+					<ul>
+						<li><a href="#">登录</a></li>	
+						<li><a href="#"><i class="icon-shopping-cart"></i>&nbsp;购物车</a></li>
+						<p class="clear"></p>
+					</ul>	
+				</div>
+				<!-- 工具栏右侧结束 -->
+				<p class="clear"></p>
+			</div>	
+		</div>
+		<!-- 顶部工具栏结束 -->
+		<!-- 导航栏开始 -->
+		<div class="nav_bar">
+			<img src="images/mi.jpg" />	
+			<div class="nav_menu">
+				<ul>
+					<li><a href="#">小米手机</a></li>	
+					<li><a href="#">红米</a></li>	
+					<p class="clear"></p>
+				</ul>	
+			</div>
+			<div class="nav_search">
+				<div><input type="text" name="keywords" /></div>	
+				<div class="icon_div"><a href="#"><i class="icon-search"></i></a></div>
+				<p class="clear"></p>
+			</div>
+			<p class="clear"></p>
+		</div>
+		<!-- 导航栏结束 -->
+		<!-- 选择及广告栏开始 -->
+		<div class="nav_main">
+			<div class="ad"><img src="images/ad.jpg" /></div>
+			<div class="left">
+				<ul>
+					<li><a href="#">手机&nbsp;平板&nbsp;电话卡<i class="icon-chevron-right"></i></a></li>
+					<li><a href="#">电视&nbsp;盒子<i class="icon-chevron-right"></i></a></li>
+					<li><a href="#">路由器&nbsp;智能硬件<i class="icon-chevron-right"></i></a></li>
+				</ul>	
+			</div>
+		</div>
+		<!-- 选择及广告栏结束  -->
+		<!-- 快速购物通道开始 -->
+		<div class="quick_shopping">
+			<div class="choice">
+				<ul>
+					<li><a href="#"><i class="icon-time"></i><br />开放购买</a></li>	
+					<li><a href="#"><i class="icon-gift"></i><br />企业团购</a></li>	
+					<li><a href="#"><i class="icon-retweet"></i><br />官翻产品</a></li>	
+					<li><a href="#"><i class="icon-save"></i><br />小米移动</a></li>	
+					<li><a href="#"><i class="icon-credit-card"></i><br />话费充值</a></li>	
+					<li><a href="#"><i class="icon-search"></i><br />防伪查询</a></li>	
+					<p class="clear"></p>
+				</ul>	
+			</div>	
+			<div class="shopping_img"><a href="#"><img src="images/xmsh.jpg" /></a></div>
+			<div class="shopping_img"><img src="images/xmnote.jpg" /></div>
+			<div class="shopping_img_last"><img src="images/xm4.jpg" /></div>
+			<p class="clear"></p>
+		</div>
+		<!-- 快速购物通道结束 -->
+		<!-- 明星单品开始 -->
+		<div class="star_rec">
+			<div class="star_rec_title">
+				<h2>小米明星单品</h2>	
+				<div class="control">
+					<a href="#"><span><i class="icon-angle-left"></i></span></a>
+					<span><i class="icon-angle-right"></i></span>
+				</div>
+			</div>	
+			<div class="star_rec_product">
+				<div>
+					<a href="#"><img src="images/xmpad.jpg" /></a>
+					<p class="product_title"><a href="#">小米平板</a></p>
+					<p class="product_des">搭载 NVIDIA Tegra K1 平板</p>
+					<p class="product_price">999元起</p>
+				</div>
+				<div>
+					<a href="#"><img src="images/xmtv.png" /></a>
+					<p class="product_title"><a href="#">小米平板</a></p>
+					<p class="product_des">搭载 NVIDIA Tegra K1 平板</p>
+					<p class="product_price">999元起</p>
+				</div>
+				<div>
+					<a href="#"><img src="images/xmrouter.jpg" /></a>
+					<p class="product_title"><a href="#">小米平板</a></p>
+					<p class="product_des">搭载 NVIDIA Tegra K1 平板</p>
+					<p class="product_price">999元起</p>
+				</div>
+				<div>
+					<a href="#"><img src="images/xmns.jpg" /></a>
+					<p class="product_title"><a href="#">小米平板</a></p>
+					<p class="product_des">搭载 NVIDIA Tegra K1 平板</p>
+					<p class="product_price">999元起</p>
+				</div>
+				<div style="margin-left:1px;">
+					<a href="#"><img src="images/xmrouter1.jpg" /></a>
+					<p class="product_title"><a href="#">小米平板</a></p>
+					<p class="product_des">搭载 NVIDIA Tegra K1 平板</p>
+					<p class="product_price">999元起</p>
+				</div>
+				<p class="clear"></p>
+			</div>
+		</div>
+		<!-- 明星单品结束 -->
+		<div id="page_main">
+			<!-- 智能硬件开始 -->
+			<div class="main_product">
+				<div class="title">
+					<h2>智能硬件</h2>	
+					<h3>查看全部<i class="icon-circle-arrow-right"></i></h3>
+				</div>
+				<div>
+					<div class="left">
+						<img src="images/jhc.jpg" />	
+					</div>	
+					<div class="right">
+						<div class="right_item">
+							<a href="#">
+								<img src="images/xmcgq.jpg" />
+								<p class="product_title">小米门窗传感器</p>
+								<p class="product_des">实时感知门窗开关状态</p>
+								<p class="product_price">39元</p>
+							</a>
+							<p class="new_product">新品</p>
+						</div>	
+						<div  class="right_item">
+							<a href="#">
+								<img src="images/xmcgq.jpg" />
+								<p class="product_title">小米门窗传感器</p>
+								<p class="product_des">实时感知门窗开关状态</p>
+								<p class="product_price">39元</p>
+							</a>
+						</div>
+						<div  class="right_item">
+							<a href="#">
+								<img src="images/xmcgq.jpg" />
+								<p class="product_title">小米门窗传感器</p>
+								<p class="product_des">实时感知门窗开关状态</p>
+								<p class="product_price">39元</p>
+							</a>
+						</div>
+						<div  class="right_item">
+							<a href="#">
+								<img src="images/xmcgq.jpg" />
+								<p class="product_title">小米门窗传感器</p>
+								<p class="product_des">实时感知门窗开关状态</p>
+								<p class="product_price">39元</p>
+							</a>
+						</div>
+						<div  class="right_item">
+							<a href="#">
+								<img src="images/xmcgq.jpg" />
+								<p class="product_title">小米门窗传感器</p>
+								<p class="product_des">实时感知门窗开关状态</p>
+								<p class="product_price">39元</p>
+							</a>
+						</div>
+						<div  class="right_item">
+							<a href="#">
+								<img src="images/xmcgq.jpg" />
+								<p class="product_title">小米门窗传感器</p>
+								<p class="product_des">实时感知门窗开关状态</p>
+								<p class="product_price">39元</p>
+							</a>
+						</div>
+						<div  class="right_item">
+							<a href="#">
+								<img src="images/xmcgq.jpg" />
+								<p class="product_title">小米门窗传感器</p>
+								<p class="product_des">实时感知门窗开关状态</p>
+								<p class="product_price">39元</p>
+							</a>
+						</div>
+						<div  class="right_item">
+							<a href="#">
+								<img src="images/xmcgq.jpg" />
+								<p class="product_title">小米门窗传感器</p>
+								<p class="product_des">实时感知门窗开关状态</p>
+								<p class="product_price">39元</p>
+							</a>
+						</div>
+					</div>
+					<p class="clear"></p>
+				</div>
+			</div>
+			<!-- 智能硬件结束 -->
+			<!-- 搭配开始 -->
+			<div class="main_product">
+				<div class="title">
+					<h2>搭配</h2>	
+					<h3><a href="#">热门</a>&nbsp;&nbsp;<a href="#">耳机音箱</a>&nbsp;&nbsp;<a href="#">电源</a></h3>
+				</div>
+				<div>
+					<div class="left">
+						<div><a href="#"><img src="images/ejth.jpg" /></a></div>
+						<div style="margin-top:10px;"><img src="images/tzzq.jpg" /></div>
+					</div>	
+					<div class="right">
+						<div class="right_item">
+							<a href="#">
+								<img src="images/xmcgq.jpg" />
+								<p class="product_title">小米门窗传感器</p>
+								<p class="product_des">实时感知门窗开关状态</p>
+								<p class="product_price">39元</p>
+							</a>
+							<p class="new_product">新品</p>
+						</div>	
+						<div  class="right_item">
+							<a href="#">
+								<img src="images/xmcgq.jpg" />
+								<p class="product_title">小米门窗传感器</p>
+								<p class="product_des">实时感知门窗开关状态</p>
+								<p class="product_price">39元</p>
+							</a>
+						</div>
+						<div  class="right_item">
+							<a href="#">
+								<img src="images/xmcgq.jpg" />
+								<p class="product_title">小米门窗传感器</p>
+								<p class="product_des">实时感知门窗开关状态</p>
+								<p class="product_price">39元</p>
+							</a>
+						</div>
+						<div  class="right_item">
+							<a href="#">
+								<img src="images/xmcgq.jpg" />
+								<p class="product_title">小米门窗传感器</p>
+								<p class="product_des">实时感知门窗开关状态</p>
+								<p class="product_price">39元</p>
+							</a>
+						</div>
+						<div  class="right_item">
+							<a href="#">
+								<img src="images/xmcgq.jpg" />
+								<p class="product_title">小米门窗传感器</p>
+								<p class="product_des">实时感知门窗开关状态</p>
+								<p class="product_price">39元</p>
+							</a>
+						</div>
+						<div  class="right_item">
+							<a href="#">
+								<img src="images/xmcgq.jpg" />
+								<p class="product_title">小米门窗传感器</p>
+								<p class="product_des">实时感知门窗开关状态</p>
+								<p class="product_price">39元</p>
+							</a>
+						</div>
+						<div  class="right_item">
+							<a href="#">
+								<img src="images/xmcgq.jpg" />
+								<p class="product_title">小米门窗传感器</p>
+								<p class="product_des">实时感知门窗开关状态</p>
+								<p class="product_price">39元</p>
+							</a>
+						</div>
+						<div  class="right_side">
+							<div class="item">
+								<div class="title">
+									<p class="product_title">SD卡</p>	
+									<p class="product_price">19.9元</p>
+								</div>	
+								<div><img src="images/misd.jpg" /></div>
+								<p class="clear"></p>
+							</div>
+							<div class="item">
+								<div class="title">
+									<p class="product_title">SD卡</p>	
+									<p class="product_price">19.9元</p>
+								</div>	
+								<div><img src="images/misd.jpg" /></div>
+								<p class="clear"></p>
+							</div>
+						</div>
+					</div>
+					<p class="clear"></p>
+				</div>
+			</div>
+			<!-- 搭配结束 -->
+			<!-- 为你推荐开始 -->
+			<div class="star_rec">
+				<div class="star_rec_title">
+					<h2>为你推荐</h2>	
+					<div class="control">
+						<a href="#"><span><i class="icon-angle-left"></i></span></a>
+						<span><i class="icon-angle-right"></i></span>
+					</div>
+				</div>	
+				<div class="star_rec_product rec_product">
+					<div>
+						<a href="#"><img src="images/earphone.jpg" /></a>
+						<p class="product_title"><a href="#">小米活塞耳机 炫彩版（超值装</a></p>
+						<p class="product_price">29元</p>
+						<p class="product_des">2万人好评</p>
+					</div>
+					<div>
+						<a href="#"><img src="images/xmdy.jpg" /></a>
+						<p class="product_title"><a href="#">小米移动电源10000mAh</a></p>
+						<p class="product_price">79元</p>
+						<p class="product_des">8.4万人好评</p>
+					</div>
+					<div>
+						<a href="#"><img src="images/xmshtz.jpg" /></a>
+						<p class="product_title"><a href="#">小米手环炫彩腕带</a></p>
+						<p class="product_price">19.9元</p>
+						<p class="product_des">7.8万人好评</p>
+					</div>
+					<div>
+						<a href="#"><img src="images/xmns.jpg" /></a>
+						<p class="product_title"><a href="#">小米平板</a></p>
+						<p class="product_price">999元起</p>
+						<p class="product_des">搭载 NVIDIA Tegra K1 平板</p>
+					</div>
+					<div style="margin-left:1px;">
+						<a href="#"><img src="images/xmrouter1.jpg" /></a>
+						<p class="product_title"><a href="#">小米平板</a></p>
+						<p class="product_price">999元起</p>
+						<p class="product_des">搭载 NVIDIA Tegra K1 平板</p>
+					</div>
+					<p class="clear"></p>
+				</div>
+			</div>
+			<!-- 为你推荐结束 -->
+		</div>
+	</body>
+</html>

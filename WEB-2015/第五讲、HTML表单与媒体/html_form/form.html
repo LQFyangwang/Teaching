@@ -1,0 +1,65 @@
+﻿ <!doctype html>
+<html>
+	<head>
+		<meta charset="gbk" />
+		<!--  
+		参数：数据的名称和数据的值
+		http请求方式：
+		1、get请求方式：会把输入的表单数据放到url后面, http://www.xxx.com/index.html?name=value
+		http://www.xxx.com/index.html?name1=value1&name2=value2&name3=value3
+		
+		?name1=value1&name2=value2&name3=value3 ====>查询字符串
+		
+		查询字符串不能够保存过多的数据，4096KB，不同浏览器可传输的数据量不同，但是都是有限的
+		
+		2、post请求方式：
+		不会在地址栏显示表单参数，也就是说没有查询字符串
+		放在整个http协议的主体（body）部分，传输到web服务器后由web服务器从body部分获取数据
+		对数据量没有限制，可以传输较大的数据量，并且比Get请求更安全
+		-->
+		<script type="text/javascript"><!-- javascript是一门脚本语言，多用于操作html dom结构 dom: document-->
+			function showButton() {
+				while(true){
+					
+				alert("Hello, I'm a button!");	// 显示一个提示框
+			}
+			}
+			function textChanged() {
+				alert("text changed");	
+			}
+		</script>
+	</head>
+	<body>
+		<center>
+			<h3>用户登录</h3>	
+			<form method="get"><!-- action指的是由哪个url去处理http请求，由url指定的页面处理表单数据 -->
+				<label for="user_name">用户名：</label><!-- for属性指此label与哪个input关联，它的值为某个input的id -->
+				<input id="user_name" type="text" name="user_name" value="dsf" onChange="textChanged();" /><!-- id与name都应该唯一，但是id跟name可以相同 -->
+				<label for="user_pwd">密码：</label>
+				<input id="user_pwd" type="password" name="user_pwd" value="" />
+				<input type="submit" value="确认" /><!-- submit为提交，把当前表单的数据提交到web服务器 -->
+				<input type="reset" value="重新输入" /><!-- reset为重置，把当前表单的输入及选择的内容都清空 -->
+				<input type="button"  value="我是按钮" onClick="showButton();"/>
+				<br />
+				<input type="checkbox" name="os" value="iOS" checked />iOS苹果操作系统<br /><!-- checked用于设置是否选中 -->
+				<input type="checkbox" name="os" value="Android" checked />Android安卓操作系统<br /><!-- 同一组的checkbox使用同一个name -->
+				<br />
+				<input type="radio" name="system" value="iOS" checked />iOS<br /><!-- 放到同一个组别，使用相同的name -->
+				<input type="radio" name="system" value="Android" checked />Android<br />
+				<input type="hidden" value="hidden input" id="10001" />
+				<!-- 
+				input type:
+				text 文本输入框 onChange文本改变事件 onSelect控件选择事件 onFocus获取焦点事件 onBlur失去焦点事件
+				password 密码输入框
+				submit 提交按钮
+				reset 重置按钮
+				button 普通按钮 onClick点击事件 onFucus获取焦点事件
+				hidden 隐藏区域
+				radio 单选按钮
+				checkbox 复选框
+				image 图像按钮 用于submit
+				-->
+			</form>
+		</center>	
+	</body>
+</html>
