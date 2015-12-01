@@ -57,6 +57,7 @@ void openAccount() {
 	scanf("%s", &pwd);
 	if(strcmp(pwd, password) == 0) { // 两次密码一致
 		account = randAccount();
+		money = 0.f;
 		printAccountInfo();
 		printf("账户密码：%s，请牢记该密码\n", password);
 	} else {
