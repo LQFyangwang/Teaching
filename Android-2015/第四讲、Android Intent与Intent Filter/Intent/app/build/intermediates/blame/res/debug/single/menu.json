@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第四讲、Android Intent与Intent Filter/Intent/app/build/intermediates/res/merged/debug/menu/login_activity4.xml",
+        "source": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第四讲、Android Intent与Intent Filter/Intent/app/src/main/res/menu/login_activity4.xml"
+    },
+    {
+        "merged": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第四讲、Android Intent与Intent Filter/Intent/app/build/intermediates/res/merged/debug/menu/main.xml",
+        "source": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第四讲、Android Intent与Intent Filter/Intent/app/src/main/res/menu/main.xml"
+    },
+    {
+        "merged": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第四讲、Android Intent与Intent Filter/Intent/app/build/intermediates/res/merged/debug/menu/login_activity1.xml",
+        "source": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第四讲、Android Intent与Intent Filter/Intent/app/src/main/res/menu/login_activity1.xml"
+    },
+    {
+        "merged": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第四讲、Android Intent与Intent Filter/Intent/app/build/intermediates/res/merged/debug/menu/login_activity2.xml",
+        "source": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第四讲、Android Intent与Intent Filter/Intent/app/src/main/res/menu/login_activity2.xml"
+    },
+    {
+        "merged": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第四讲、Android Intent与Intent Filter/Intent/app/build/intermediates/res/merged/debug/menu/login.xml",
+        "source": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第四讲、Android Intent与Intent Filter/Intent/app/src/main/res/menu/login.xml"
+    }
+]

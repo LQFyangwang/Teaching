@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Widget1</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    
+    <string name="normal_string">默认文本</string>
+    <string name="chg_string">设置颜色，改变大小和字体的文本</string>
+    <string name="phone">13800000000</string>
+    <string name="website">http://gzyouxue.com</string>
+    <string name="html_string">&lt;a href="http://gzyouxue.com"&gt;优学网&lt;/a&gt;</string>
+    <string name="link_string">链接式文本</string>
+    <string name="image_style">可显示图像的文本</string>
+
+</resources>

@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ht.layout.RelativeActivity" 
+    android:gravity="center">
+    
+    <Button 
+        android:id="@+id/button1"
+        android:text="Button 1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button 
+        android:id="@+id/button2"
+        android:text="Button 2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button1"
+        android:layout_toRightOf="@+id/button1"
+        android:layout_toEndOf="@+id/button1"/>
+    <Button 
+        android:id="@+id/button3"
+        android:text="Button 3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/button2"
+        android:layout_toEndOf="@+id/button2"
+        android:layout_alignBottom="@+id/button1"/>
+    <Button 
+        android:id="@+id/button4"
+        android:text="Button 4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button1"
+        android:layout_alignStart="@+id/button1"
+        android:layout_below="@+id/button2" />
+    <Button
+        android:id="@+id/button5"
+        android:text="Button 5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button2"
+        android:layout_toRightOf="@+id/button2"
+        android:layout_toEndOf="@+id/button2"/>
+    <Button
+        android:id="@+id/button6"
+        android:text="Button 6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/button4"
+        android:layout_toEndOf="@+id/button4"
+        android:layout_below="@+id/button4" />
+</RelativeLayout>

@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第十讲、Android数据存储/Data/app/build/intermediates/res/merged/debug/menu/main.xml",
+        "source": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第十讲、Android数据存储/Data/app/src/main/res/menu/main.xml"
+    },
+    {
+        "merged": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第十讲、Android数据存储/Data/app/build/intermediates/res/merged/debug/menu/user_list.xml",
+        "source": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第十讲、Android数据存储/Data/app/src/main/res/menu/user_list.xml"
+    }
+]

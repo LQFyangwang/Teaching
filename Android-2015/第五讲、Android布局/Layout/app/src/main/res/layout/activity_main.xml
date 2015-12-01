@@ -1,0 +1,50 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	android:orientation="vertical"
+    tools:context="com.ht.layout.MainActivity" >
+
+    <Button
+        android:id="@+id/linearBtn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/linear_layout" />
+
+    <Button
+        android:id="@+id/relativeBtn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/relative_layout" />
+
+    <Button
+        android:id="@+id/frameBtn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/frame_layout" />
+    
+    <Button
+        android:id="@+id/tableBtn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/table_layout" />
+    
+    <Button
+        android:id="@+id/absoluteBtn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/absolute_layout" />
+    
+    <Button
+        android:id="@+id/gridBtn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/grid_layout" />
+    
+    <Button
+        android:id="@+id/dynamicBtn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dynamic_layout" />
+
+</LinearLayout>

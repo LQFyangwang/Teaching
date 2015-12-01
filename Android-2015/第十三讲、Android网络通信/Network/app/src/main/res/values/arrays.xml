@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="company_en">
+        <item>shunfeng</item>
+        <item>zhongtong</item>
+        <item>shentong</item>
+        <item>ems</item>
+        <item>yuantong</item>
+    </string-array>
+    <string-array name="company_zh">
+        <item>顺丰</item>
+        <item>中通</item>
+        <item>申通</item>
+        <item>EMS</item>
+        <item>圆通</item>
+    </string-array>
+</resources>

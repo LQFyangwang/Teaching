@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第三讲、Android Activity与Intent/Activity/app/build/intermediates/res/merged/debug/menu/main.xml",
+        "source": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第三讲、Android Activity与Intent/Activity/app/src/main/res/menu/main.xml"
+    },
+    {
+        "merged": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第三讲、Android Activity与Intent/Activity/app/build/intermediates/res/merged/debug/menu/register.xml",
+        "source": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第三讲、Android Activity与Intent/Activity/app/src/main/res/menu/register.xml"
+    },
+    {
+        "merged": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第三讲、Android Activity与Intent/Activity/app/build/intermediates/res/merged/debug/menu/help.xml",
+        "source": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第三讲、Android Activity与Intent/Activity/app/src/main/res/menu/help.xml"
+    }
+]

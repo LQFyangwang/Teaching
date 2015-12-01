@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第九讲、Android拖放技术与并发机制/OtherBasic/app/build/intermediates/res/merged/debug/menu/main.xml",
+        "source": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第九讲、Android拖放技术与并发机制/OtherBasic/app/src/main/res/menu/main.xml"
+    },
+    {
+        "merged": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第九讲、Android拖放技术与并发机制/OtherBasic/app/build/intermediates/res/merged/debug/menu/loader.xml",
+        "source": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第九讲、Android拖放技术与并发机制/OtherBasic/app/src/main/res/menu/loader.xml"
+    },
+    {
+        "merged": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第九讲、Android拖放技术与并发机制/OtherBasic/app/build/intermediates/res/merged/debug/menu/alarm.xml",
+        "source": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第九讲、Android拖放技术与并发机制/OtherBasic/app/src/main/res/menu/alarm.xml"
+    }
+]

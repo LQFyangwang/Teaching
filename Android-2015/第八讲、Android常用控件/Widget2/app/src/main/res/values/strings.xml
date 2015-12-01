@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Widget2</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_list">ListActivity</string>
+    <string name="title_activity_news">NewsActivity</string>
+    <string name="title_activity_select_list">SelectListActivity</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="title_activity_car_brands">CarBrandsActivity</string>
+    <string name="title_activity_view_stub">ViewStubActivity</string>
+    <string name="title_activity_weixin">WeixinActivity</string>
+
+</resources>

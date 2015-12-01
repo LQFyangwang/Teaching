@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第八讲、Android常用控件/Widget2/app/build/intermediates/res/merged/debug/menu/main.xml",
+        "source": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第八讲、Android常用控件/Widget2/app/src/main/res/menu/main.xml"
+    },
+    {
+        "merged": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第八讲、Android常用控件/Widget2/app/build/intermediates/res/merged/debug/menu/select_list.xml",
+        "source": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第八讲、Android常用控件/Widget2/app/src/main/res/menu/select_list.xml"
+    },
+    {
+        "merged": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第八讲、Android常用控件/Widget2/app/build/intermediates/res/merged/debug/menu/weixin.xml",
+        "source": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第八讲、Android常用控件/Widget2/app/src/main/res/menu/weixin.xml"
+    },
+    {
+        "merged": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第八讲、Android常用控件/Widget2/app/build/intermediates/res/merged/debug/menu/news.xml",
+        "source": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第八讲、Android常用控件/Widget2/app/src/main/res/menu/news.xml"
+    },
+    {
+        "merged": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第八讲、Android常用控件/Widget2/app/build/intermediates/res/merged/debug/menu/view_stub.xml",
+        "source": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第八讲、Android常用控件/Widget2/app/src/main/res/menu/view_stub.xml"
+    },
+    {
+        "merged": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第八讲、Android常用控件/Widget2/app/build/intermediates/res/merged/debug/menu/list.xml",
+        "source": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第八讲、Android常用控件/Widget2/app/src/main/res/menu/list.xml"
+    },
+    {
+        "merged": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第八讲、Android常用控件/Widget2/app/build/intermediates/res/merged/debug/menu/car_brands.xml",
+        "source": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第八讲、Android常用控件/Widget2/app/src/main/res/menu/car_brands.xml"
+    },
+    {
+        "merged": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第八讲、Android常用控件/Widget2/app/build/intermediates/res/merged/debug/menu/settings.xml",
+        "source": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第八讲、Android常用控件/Widget2/app/src/main/res/menu/settings.xml"
+    }
+]

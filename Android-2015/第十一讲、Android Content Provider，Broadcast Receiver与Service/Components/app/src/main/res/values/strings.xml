@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Components</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_contacts">ContactsActivity</string>
+    <string name="title_activity_sms">SmsActivity</string>
+    <string name="title_activity_music">MusicActivity</string>
+
+</resources>

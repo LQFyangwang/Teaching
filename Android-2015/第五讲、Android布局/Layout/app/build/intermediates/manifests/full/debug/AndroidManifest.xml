@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ht.layout"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="21" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.ht.layout.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ht.layout.LinearActivity"
+            android:label="@string/title_activity_linear" >
+        </activity>
+        <activity
+            android:name="com.ht.layout.FrameActivity"
+            android:label="@string/title_activity_frame" >
+        </activity>
+        <activity
+            android:name="com.ht.layout.TableActivity"
+            android:label="@string/title_activity_table" >
+        </activity>
+        <activity
+            android:name="com.ht.layout.RelativeActivity"
+            android:label="@string/title_activity_relative" >
+        </activity>
+        <activity
+            android:name="com.ht.layout.AbsoluteActivity"
+            android:label="@string/title_activity_absolute" >
+        </activity>
+        <activity
+            android:name="com.ht.layout.JoinActivity"
+            android:label="@string/title_activity_join" >
+        </activity>
+        <activity
+            android:name="com.ht.layout.GridActivity"
+            android:label="@string/title_activity_grid" >
+        </activity>
+        <activity
+            android:name="com.ht.layout.DynamicActivity"
+            android:label="@string/title_activity_dynamic" >
+        </activity>
+    </application>
+
+</manifest>

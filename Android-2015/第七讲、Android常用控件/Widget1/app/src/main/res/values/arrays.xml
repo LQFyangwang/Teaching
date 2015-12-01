@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="hints">
+        <item>123</item>
+        <item>123456</item>
+        <item>abc</item>
+        <item>你好</item>
+    </string-array>
+    
+</resources>

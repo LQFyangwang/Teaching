@@ -1,0 +1,153 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+     tools:context="com.ht.components.MusicActivity"><RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin" >
+
+    <Button
+        android:id="@+id/playBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="播放" />
+
+    <Button
+        android:id="@+id/pauseBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/playBtn"
+        android:layout_toRightOf="@+id/playBtn"
+        android:text="暂停" />
+
+    <Button
+        android:id="@+id/stopBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/pauseBtn"
+        android:layout_toRightOf="@+id/pauseBtn"
+        android:text="停止" />
+
+    <SeekBar
+        android:id="@+id/musicProgress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/playBtn" />
+
+    <TextView
+        android:id="@+id/musicProgressTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/musicProgress"
+        android:layout_below="@+id/musicProgress"
+        android:text="00:00" />
+
+    <Button
+        android:id="@+id/startRecordBtn"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/musicProgressTxt"
+        android:layout_below="@+id/musicProgressTxt"
+        android:text="录音" />
+
+    <Button
+        android:id="@+id/stopRecordBtn"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/startRecordBtn"
+        android:layout_toRightOf="@+id/startRecordBtn"
+        android:text="停止" />
+
+    <Button
+        android:id="@+id/playRecordBtn"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/stopRecordBtn"
+        android:layout_toRightOf="@+id/stopRecordBtn"
+        android:text="播放" />
+
+    <Button
+        android:id="@+id/delRecordBtn"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/playRecordBtn"
+        android:layout_toRightOf="@+id/playRecordBtn"
+        android:text="删除" />
+
+    <VideoView
+        android:id="@+id/videoView"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_alignLeft="@+id/startRecordBtn"
+        android:layout_below="@+id/startRecordBtn" />
+
+    <Button
+        android:id="@+id/recordVideo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/videoView"
+        android:layout_below="@+id/videoView"
+        android:text="录制视频" />
+
+    <Button
+        android:id="@+id/sysCaptureBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/recordVideo"
+        android:layout_below="@+id/recordVideo"
+        android:text="系统拍照" />
+
+    <ImageView
+        android:id="@+id/sysCaptureImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/sysCaptureBtn"
+        android:layout_below="@+id/sysCaptureBtn"
+        android:src="@drawable/abc_ab_share_pack_mtrl_alpha" />
+
+    <Button
+        android:id="@+id/toCaptureBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/sysCaptureImg"
+        android:layout_below="@+id/sysCaptureImg"
+        android:text="去拍照" />
+
+    <Button
+        android:id="@+id/ringtoneBtn"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/toCaptureBtn"
+        android:layout_below="@+id/toCaptureBtn"
+        android:text="铃声" />
+
+    <Button
+        android:id="@+id/alarmBtn"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/ringtoneBtn"
+        android:layout_toRightOf="@+id/ringtoneBtn"
+        android:text="闹铃" />
+
+    <Button
+        android:id="@+id/notificationBtn"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/alarmBtn"
+        android:layout_toRightOf="@+id/alarmBtn"
+        android:text="通知" />
+
+</RelativeLayout>
+</ScrollView>

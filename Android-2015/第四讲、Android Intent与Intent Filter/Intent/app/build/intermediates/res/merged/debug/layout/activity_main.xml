@@ -1,0 +1,77 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.ht.intent.MainActivity" >
+
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login" />
+    
+    <Button
+        android:id="@+id/loginBtn1" 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/loginBtn"
+        android:layout_toRightOf="@id/loginBtn"
+        android:text="@string/login" />
+    
+    <Button
+        android:id="@+id/loginBtn2" 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/loginBtn1"
+        android:layout_toRightOf="@id/loginBtn1"
+        android:text="@string/login" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/loginBtn"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/useActionBtn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/use_action" />
+        
+         <Button
+            android:id="@+id/useSetClassNameBtn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/use_setClassName" />
+         
+          <Button
+            android:id="@+id/useSetClassNameContextBtn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/use_setClassName_context" />
+          
+           <Button
+            android:id="@+id/useSetClassBtn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/use_setClass" />
+           
+            <Button
+            android:id="@+id/useSetComponentBtn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/use_setComponent" />
+            
+            <Button
+            android:id="@+id/useCalculatorBtn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/use_calculator" />
+
+    </LinearLayout>
+
+</RelativeLayout>

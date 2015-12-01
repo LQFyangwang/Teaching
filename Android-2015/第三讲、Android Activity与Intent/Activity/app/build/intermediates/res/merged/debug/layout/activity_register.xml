@@ -1,0 +1,54 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.ht.activity.MainActivity" >
+
+    <TextView
+        android:id="@+id/regUserNameTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/user_name" />
+
+    <EditText
+        android:id="@+id/regUserNameEdit"
+        android:inputType="text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/regUserNameTxt"
+        android:layout_alignLeft="@+id/regUserNameTxt"
+        android:layout_below="@+id/regUserNameTxt"
+        android:ems="20" />
+
+    <TextView
+        android:id="@+id/regUserPwdTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/regUserNameEdit"
+        android:layout_alignLeft="@+id/regUserNameEdit"
+        android:layout_below="@+id/regUserNameEdit"
+        android:text="@string/user_pwd" />
+
+    <EditText
+        android:id="@+id/regUserPwdEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/regUserPwdTxt"
+        android:layout_alignLeft="@+id/regUserPwdTxt"
+        android:layout_below="@+id/regUserPwdTxt"
+        android:ems="20"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/regBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/regUserPwdEdit"
+        android:layout_centerHorizontal="true"
+        android:text="@string/register" />
+    
+</RelativeLayout>

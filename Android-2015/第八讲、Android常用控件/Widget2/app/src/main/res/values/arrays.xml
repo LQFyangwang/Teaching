@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string-array name="newsImage">
+        <item>meifa</item>
+        <item>meituan</item>
+        <item>chitu</item>
+        <item>facebook</item>
+    </string-array>
+    
+    <string-array name="newsTitle">
+        <item>南瓜车：美发O2O，“到店”才是最天然的场景</item>
+        <item>既然阿里不能跟美团“在一起”，至少还有“口碑”一条街</item>
+        <item>“赤兔”，我的最后一次All In</item>
+        <item>Facebook开发人物识别算法，不看脸也能认出你</item>
+    </string-array>
+    
+    <string-array name="newsAbstract">
+        <item>你是不是和我一样，已经对各类上门O2O服务开始“视觉疲劳”了？那么，“南瓜车”或许能给你带来点新鲜感：这家专注美发O2O领域的初创公司，并没选择跟风大喊“上门”的口号，而是走了最传统的到店模式。</item>
+        <item>阿里巴巴与蚂蚁金服今日联合宣布，双方将各自注资30亿元，共60亿元合资成立一家本地生活服务平台公司——口碑，定位是做本地生活服务的转型与升级。</item>
+        <item>在京郊山里一间宾馆的大会议室里，我写下了这篇文章。在这里封闭开发一个多月之后，今天，我们领英中国本土研发团队独立开发的职场社交App终于上线了！经过内部无数次的讨论，我们给新产品取名叫“赤兔”。赤兔马可以日行千里，夜走八百。我们希望中国职场年轻人借助这款产品，能成为“千里马”，驰骋职场。</item>
+        <item>Facebook一直在改进其面部识别功能，现在终于取得了突破，即使在不看脸的情况下也能智能识别照片中的人物了。</item>
+    </string-array>
+    
+    <string-array name="newsDate">
+        <item>2015年6月23日 5:20</item>
+        <item>2015年6月23日 3:19</item>
+        <item>2015年6月23日 2:38</item>
+        <item>2015年6月23日 1:49</item>
+    </string-array>
+    
+</resources>

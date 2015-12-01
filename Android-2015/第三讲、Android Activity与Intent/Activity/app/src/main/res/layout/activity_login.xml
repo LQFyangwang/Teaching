@@ -1,0 +1,65 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.ht.activity.MainActivity" >
+
+    <TextView
+        android:id="@+id/loginUserNameTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/user_name" />
+
+    <EditText
+        android:id="@+id/loginUserNameEdit"
+        android:inputType="text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/loginUserNameTxt"
+        android:layout_alignLeft="@+id/loginUserNameTxt"
+        android:layout_below="@+id/loginUserNameTxt"
+        android:ems="20" />
+
+    <TextView
+        android:id="@+id/loginUserPwdTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/loginUserNameEdit"
+        android:layout_alignLeft="@+id/loginUserNameEdit"
+        android:layout_below="@+id/loginUserNameEdit"
+        android:text="@string/user_pwd" />
+
+    <EditText
+        android:id="@+id/loginUserPwdEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/loginUserPwdTxt"
+        android:layout_alignLeft="@+id/loginUserPwdTxt"
+        android:layout_below="@+id/loginUserPwdTxt"
+        android:ems="20"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/loginUserPwdEdit"
+        android:layout_centerHorizontal="true"
+        android:text="@string/login" />
+
+    <TextView
+        android:id="@+id/loginRegBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/loginBtn"
+        android:layout_alignBottom="@+id/loginBtn"
+        android:layout_alignEnd="@+id/loginUserPwdEdit"
+        android:layout_alignRight="@+id/loginUserPwdEdit"
+        android:text="@string/to_register" 
+        android:textColor="@color/blue"/>
+    
+</RelativeLayout>

@@ -1,0 +1,262 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+<RelativeLayout 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.ht.widget2.MainActivity" >
+
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        style="?android:attr/progressBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/progressBar1"
+        android:layout_alignStart="@+id/progressBar1"
+        android:layout_below="@+id/progressBar1" />
+
+    <ProgressBar
+        android:id="@+id/progressBar3"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/progressBar2"
+        android:layout_alignStart="@+id/progressBar2"
+        android:layout_below="@+id/progressBar2" />
+
+    <ProgressBar
+        android:id="@+id/progressBar4"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/progressBar3"
+        android:layout_alignStart="@+id/progressBar3"
+        android:layout_below="@+id/progressBar3"
+  		android:max="100"
+        android:progress="30" />
+    
+    <TextView 
+        android:id="@+id/currentProgressTxt"
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/progressBar4"
+        android:layout_alignStart="@+id/progressBar4"
+        android:layout_below="@+id/progressBar4"
+        android:text="当前进度" />
+
+    <Button
+        android:id="@+id/addProgressBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/currentProgressTxt"
+        android:layout_alignStart="@+id/currentProgressTxt"
+        android:layout_below="@+id/currentProgressTxt"
+        android:text="增大进度" />
+    
+    <Button
+        android:id="@+id/minusProgressBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/addProgressBtn"
+        android:layout_toEndOf="@+id/addProgressBtn"
+        android:layout_below="@+id/currentProgressTxt"
+        android:text="减小进度" />
+
+    <Button
+        android:id="@+id/downloadBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/addProgressBtn"
+        android:layout_alignStart="@+id/addProgressBtn"
+        android:layout_below="@+id/addProgressBtn"
+        android:text="开始下载" />
+
+    <SeekBar
+        android:id="@+id/seekBar1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/downloadBtn"
+        android:layout_alignStart="@+id/downloadBtn"
+        android:layout_below="@+id/downloadBtn" 
+        android:max="100" 
+        android:progress="30" />
+
+    <TextView
+        android:id="@+id/seekBarTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/seekBar1"
+        android:layout_alignStart="@+id/seekBar1"
+        android:layout_below="@+id/seekBar1"
+        android:text="SeekBar当前值" />
+
+    <RatingBar
+        android:id="@+id/ratingBar1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/seekBarTxt"
+        android:layout_alignStart="@+id/seekBarTxt"
+        android:layout_below="@+id/seekBarTxt"
+        style="?android:attr/ratingBarStyleSmall" />
+
+    <RatingBar
+        android:id="@+id/ratingBar2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ratingBar1"
+        android:layout_alignStart="@+id/ratingBar1"
+        android:layout_below="@+id/ratingBar1"
+        style="?android:attr/ratingBarStyleIndicator"
+        android:numStars="6"
+        android:stepSize="0.2"
+        android:rating="5" />
+
+    <RatingBar
+        android:id="@+id/ratingBar3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ratingBar2"
+        android:layout_alignStart="@+id/ratingBar2"
+       	android:layout_below="@+id/ratingBar2"
+       	android:numStars="6"
+       	android:rating="3"
+       	android:stepSize="0.2" />
+
+    <Spinner
+        android:id="@+id/subjects"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ratingBar3"
+        android:layout_alignStart="@+id/ratingBar3"
+        android:layout_below="@+id/ratingBar3" />
+
+    <Spinner
+        android:id="@+id/os"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/subjects"
+        android:layout_alignStart="@+id/subjects"
+        android:layout_below="@+id/subjects" />
+
+    <Button
+        android:id="@+id/showCompanyBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/os"
+        android:layout_alignStart="@+id/os"
+        android:layout_below="@+id/os"
+        android:text="显示所有公司" />
+
+    <Button
+        android:id="@+id/showNewsBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/showCompanyBtn"
+        android:layout_alignStart="@+id/showCompanyBtn"
+        android:layout_below="@+id/showCompanyBtn"
+        android:text="看新闻！" />
+
+    <Button
+        android:id="@+id/showSelectListBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/showNewsBtn"
+        android:layout_alignStart="@+id/showNewsBtn"
+        android:layout_below="@+id/showNewsBtn"
+        android:text="可选择的列表" />
+
+    <Button
+        android:id="@+id/showSettingBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/showSelectListBtn"
+        android:layout_alignStart="@+id/showSelectListBtn"
+        android:layout_below="@+id/showSelectListBtn"
+        android:text="应用程序设置" />
+
+    <Button
+        android:id="@+id/showCarBrandsBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/showSettingBtn"
+        android:layout_below="@+id/showSettingBtn"
+        android:text="网格显示汽车品牌" />
+
+    <Button
+        android:id="@+id/viewStubBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/showCarBrandsBtn"
+        android:layout_below="@+id/showCarBrandsBtn"
+        android:text="include与ViewStub" />
+
+    <Button
+        android:id="@+id/showWeixinBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/viewStubBtn"
+        android:layout_below="@+id/viewStubBtn"
+        android:text="微信界面" />
+
+    <Button
+        android:id="@+id/toast1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/showWeixinBtn"
+        android:layout_below="@+id/showWeixinBtn"
+        android:text="文本Toast" />
+
+    <Button
+        android:id="@+id/toast2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/toast1"
+        android:layout_below="@+id/toast1"
+        android:text="图文Toast" />
+
+    <Button
+        android:id="@+id/buyCarBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/toast2"
+        android:layout_below="@+id/toast2"
+        android:text="买宝马吗？" />
+
+    <Button
+        android:id="@+id/listBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/buyCarBtn"
+        android:layout_below="@+id/buyCarBtn"
+        android:text="列表对话框" />
+
+    <Button
+        android:id="@+id/showNotifications"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/listBtn"
+        android:layout_below="@+id/listBtn"
+        android:text="显示所有通知" />
+
+    <Button
+        android:id="@+id/clearNotifications"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/showNotifications"
+        android:layout_below="@+id/showNotifications"
+        android:text="清除所有通知" />
+    
+</RelativeLayout>
+</ScrollView>
+

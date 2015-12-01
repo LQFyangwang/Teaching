@@ -1,0 +1,181 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ht.otherbasic.MainActivity"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="拖动下面图像到红色区域内！" />
+
+    <ImageView
+        android:id="@+id/bmw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/bmw" />
+    
+    <FrameLayout
+        android:id="@+id/dragDropRegion"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/red" >
+        
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/noHandlerBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="不使用Handler更新" />
+
+    <Button
+        android:id="@+id/handlerBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="使用Handler更新" />
+
+    <Button
+        android:id="@+id/handlerPostBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="直接使用Handler.post()" />
+
+    <TextView
+        android:id="@+id/timeTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0" />
+
+    <Button
+        android:id="@+id/startTimeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="计时开始" />
+
+    <Button
+        android:id="@+id/endTimeBtn1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="计时结束1" />
+    
+    <Button
+        android:id="@+id/endTimeBtn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="计时结束2" />
+
+    <Button
+        android:id="@+id/showToastBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10秒后显示一个Toast" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/currentTimeTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="当前时间：" />
+
+        <Chronometer
+            android:id="@+id/chronometer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chronometer"
+            android:layout_marginLeft="30dp"
+            android:layout_marginStart="30dp" />
+
+    </LinearLayout>
+    
+    <LinearLayout
+     	android:layout_width="match_parent"
+    	android:layout_height="wrap_content" >
+        
+       	<Button
+        	android:id="@+id/startTimeBtn1"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:text="开始计时" />
+
+       	<Button
+        	android:id="@+id/endTimeBtn3"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:text="结束计时" />
+       	
+       	<Button
+        	android:id="@+id/restartTimeBtn"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:text="重新开始" />
+    </LinearLayout>
+    
+    <ProgressBar
+       	    android:id="@+id/downProgress"
+       	    style="?android:attr/progressBarStyleHorizontal"
+       	    android:layout_width="match_parent"
+       	    android:layout_height="wrap_content"
+       	    android:max="100"
+       	    android:progress="0" />
+
+    <Button
+        android:id="@+id/downBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="开始下载" />
+
+    <Button
+        android:id="@+id/alarmBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="开启提醒" />
+
+    <Button
+        android:id="@+id/cancelAlarmBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="取消提醒 " />
+
+    <ProgressBar
+        android:id="@+id/downProgress1"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/downProgressTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+    <Button
+        android:id="@+id/downBtn1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="开始下载" />
+
+    <Button
+        android:id="@+id/cancelDownBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="取消下载" />
+    
+    <Button
+        android:id="@+id/loaderBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="使用异步加载的Activity" />
+
+</LinearLayout>
+</ScrollView>

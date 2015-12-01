@@ -1,0 +1,106 @@
+<ScrollView    
+    xmlns:android="http://schemas.android.com/apk/res/android"    
+    android:layout_width="match_parent"    
+    android:layout_height="match_parent"    
+    android:scrollbars="vertical"    
+    android:fadingEdge="vertical"> 
+<LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/changeTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_world" 
+        android:textColor="@color/blue"/>
+    
+    <Button
+        android:id="@+id/changeBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/changeBtn"/>
+    
+    <TextView
+        android:id="@+id/coursesTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/coursesTxt" />
+    <TextView
+        android:id="@+id/scoreTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/scoreTxt" />
+    
+    <Button
+        android:id="@+id/showCoursesBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/showCourses" />
+    
+    <TextView
+        android:id="@+id/songsTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/songsTxt" />
+
+    <EditText
+        android:id="@+id/songsEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number" >
+    </EditText>
+
+    <Button
+        android:id="@+id/songsBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/songsBtn" />
+
+    <TextView
+        android:id="@id/welcomeTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome_msg" />
+
+    <Button
+        android:id="@+id/showImage1Btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/showImage1" />
+
+    <Button
+        android:id="@+id/showImage2Btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/showImage2" />
+
+    <TextView
+        style="@style/my_text"
+        android:id="@+id/styleTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/styleTxt" />
+    
+    <Button
+        android:id="@+id/addMenusBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/addMenus" />
+    
+    <Button
+        android:id="@+id/showContextMenuBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/showContextMenu" />
+    
+    <Button
+        android:id="@+id/other"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="其他" />
+
+</LinearLayout>
+</ScrollView>

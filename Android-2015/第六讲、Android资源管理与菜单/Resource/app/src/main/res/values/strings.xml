@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Resource</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="change_txt">修改后的文本</string>
+    <string name="changeBtn">修改文本和颜色</string>
+    <string name="coursesTxt">所有课程</string>
+    <string name="scoreTxt">分数分别为</string>
+    <string name="showCourses">显示所有课程及成绩</string>
+    <string name="songsTxt">songs</string>
+    <string name="songsBtn">确定歌曲数</string>
+    <string name="welcome_msg">Hello, %1$s! You have %2$d messages. Total %3$d messages.</string>
+
+    <plurals name="songs">
+        <item quantity="one">One song.</item>
+        <item quantity="other">%d songs.</item>
+    </plurals>
+
+    <string name="showImage1">图像1</string>
+    <string name="showImage2">图像2</string>
+    <string name="title_activity_image">ImageActivity</string>
+    
+    <string name="styleTxt">使用style风格文件设置的文本</string>
+
+    <string name="fileMenu">文件</string>
+    <string name="newFileMenu">新建</string>
+    <string name="openFileMenu">打开</string>
+    <string name="optFileMenu">选项</string>
+    <string name="exitMenu">退出</string>
+    
+    <string name="addMenus">添加菜单</string>
+    <string name="showContextMenu">显示上下文菜单</string>
+    
+</resources>

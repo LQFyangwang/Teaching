@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">OtherBasic</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_alarm">AlarmActivity</string>
+    <string name="title_activity_loader">LoaderActivity</string>
+
+</resources>

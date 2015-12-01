@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ht.widget2"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="21" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.ht.widget2.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ht.widget2.ListActivity"
+            android:label="@string/title_activity_list" >
+        </activity>
+        <activity
+            android:name="com.ht.widget2.NewsActivity"
+            android:label="@string/title_activity_news" >
+        </activity>
+        <activity
+            android:name="com.ht.widget2.SelectListActivity"
+            android:label="@string/title_activity_select_list" >
+        </activity>
+        <activity
+            android:name="com.ht.widget2.SettingsActivity"
+            android:label="@string/title_activity_settings" >
+        </activity>
+        <activity
+            android:name="com.ht.widget2.CarBrandsActivity"
+            android:label="@string/title_activity_car_brands" >
+        </activity>
+        <activity
+            android:name="com.ht.widget2.ViewStubActivity"
+            android:label="@string/title_activity_view_stub" >
+        </activity>
+        <activity
+            android:name="com.ht.widget2.WeixinActivity"
+            android:label="@string/title_activity_weixin" >
+        </activity>
+    </application>
+
+</manifest>

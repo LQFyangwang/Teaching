@@ -1,0 +1,57 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.ht.activity.HelpActivity" >
+
+    <TextView
+        android:id="@+id/helpTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/help" />
+
+    <TextView
+        android:id="@+id/helpPhoneTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/helpTxt"
+        android:layout_alignLeft="@+id/helpTxt"
+        android:layout_below="@+id/helpTxt"
+        android:autoLink="all"
+        android:text="@string/phoneNo" />
+
+    <TextView
+        android:id="@+id/helpCallTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/helpPhoneTxt"
+        android:layout_alignLeft="@+id/helpPhoneTxt"
+        android:layout_below="@+id/helpPhoneTxt"
+        android:text="@string/call" 
+        android:textColor="@color/blue" />
+
+    <TextView
+        android:id="@+id/helpViewWebTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/helpCallTxt"
+        android:layout_alignLeft="@+id/helpCallTxt"
+        android:layout_below="@+id/helpCallTxt"
+        android:text="@string/view_website"
+        android:textColor="@color/blue" />
+
+    <TextView
+        android:id="@+id/helpBackHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/helpViewWebTxt"
+        android:layout_alignLeft="@+id/helpViewWebTxt"
+        android:layout_below="@+id/helpViewWebTxt"
+        android:text="@string/back_home"
+        android:textColor="@color/blue" />
+    
+</RelativeLayout>

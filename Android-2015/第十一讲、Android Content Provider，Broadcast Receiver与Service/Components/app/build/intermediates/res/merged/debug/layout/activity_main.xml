@@ -1,0 +1,102 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.ht.components.MainActivity">
+<LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/contactBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="显示联系人" />
+
+    <Button
+        android:id="@+id/smsBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="显示短信" />
+
+    <Button
+        android:id="@+id/allBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="获取所有用户" />
+
+    <Button
+        android:id="@+id/idBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="获取ID为1的用户" />
+
+    <Button
+        android:id="@+id/nameBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="获取Name为Wgssmart的用户" />
+
+    <Button
+        android:id="@+id/bindBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="绑定Receiver" />
+
+    <Button
+        android:id="@+id/unbindBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="解除Receiver" />
+
+    <Button
+        android:id="@+id/sendBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="发送广播" />
+
+    <Button
+        android:id="@+id/startService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="启动服务" />
+
+    <Button
+        android:id="@+id/stopService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="停止服务" />
+
+    <Button
+        android:id="@+id/bindService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="绑定服务" />
+
+    <Button
+        android:id="@+id/unbindService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="解除服务" />
+
+    <Button
+        android:id="@+id/getValueFromService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="从Service获取值" />
+
+    <TextView
+        android:id="@+id/valueFromService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Value from service" />
+
+    <Button
+        android:id="@+id/musicBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="音乐播放" />
+
+</LinearLayout>
+</ScrollView>

@@ -1,0 +1,73 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.ht.network.MainActivity" >
+
+    <Spinner
+        android:id="@+id/companys"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    
+    <EditText
+        android:id="@+id/orderIdEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/companys"
+		android:layout_below="@+id/companys"
+        android:ems="15" >
+    </EditText>
+    
+    <Button
+        android:id="@+id/httpGetBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HTTP Get"
+        android:layout_alignLeft="@+id/orderIdEdit"
+        android:layout_below="@+id/orderIdEdit" />
+
+    <Button
+        android:id="@+id/httpPostBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/httpGetBtn"
+        android:layout_toRightOf="@+id/httpGetBtn"
+        android:text="HTTP Post" />
+
+    <Button
+        android:id="@+id/httpUrlConnection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/httpGetBtn"
+        android:layout_below="@+id/httpGetBtn"
+        android:text="HTTP URL Connection" />
+
+    <Button
+        android:id="@+id/downBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/httpUrlConnection"
+        android:layout_below="@+id/httpUrlConnection"
+        android:text="下载图像" />
+
+    <Button
+        android:id="@+id/cancelDownBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/downBtn"
+        android:layout_below="@+id/downBtn"
+        android:text="取消下载图像" />
+
+    <Button
+        android:id="@+id/downHistoryBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/cancelDownBtn"
+        android:layout_below="@+id/cancelDownBtn"
+        android:text="下载历史" />
+
+</RelativeLayout>

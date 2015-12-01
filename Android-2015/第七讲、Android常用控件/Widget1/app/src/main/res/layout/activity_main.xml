@@ -1,0 +1,226 @@
+<ScrollView    
+    xmlns:android="http://schemas.android.com/apk/res/android"    
+    android:layout_width="match_parent"    
+    android:layout_height="match_parent"    
+    android:scrollbars="vertical"    
+    android:fadingEdge="vertical"> 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/normal_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/normal_string" />
+
+    <TextView
+        android:id="@+id/chg_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/chg_string"
+        android:textColor="@color/red"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-condensed"/>
+    
+     <TextView
+        android:id="@+id/phone_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/phone" 
+        android:autoLink="phone"/>
+     
+     <TextView
+        android:id="@+id/website_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/website"
+        android:autoLink="all" />
+     
+     <TextView
+        android:id="@+id/html_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/html_string" />
+     
+     
+     <TextView
+        android:id="@+id/link_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/link_string" />
+     
+     <TextView
+        android:id="@+id/imageTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/image_style" />
+
+     <EditText
+         android:id="@+id/editText1"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:ems="20" 
+         android:inputType="textCapWords"/>
+
+     <EditText
+         android:id="@+id/iconEdit"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:ems="10" 
+         android:inputType="none"
+         android:lines="3"
+         android:gravity="start|top">
+     </EditText>
+
+     <Button
+         android:id="@+id/insertIcon"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:text="插入图片" 
+         android:onClick="onClickInsertBtn"/>
+
+     <AutoCompleteTextView
+         android:id="@+id/autoEdit"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:ems="30"
+         android:text="" />
+
+     <Button
+         android:id="@+id/imgBtn"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:text="Icon Top"
+         android:drawableTop="@drawable/button" 
+         android:drawablePadding="5dp"/>
+     
+     <ImageButton
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:src="@drawable/button"
+         android:contentDescription="image button" />
+     
+      <Button
+         android:id="@+id/imgBtn1"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"/>
+
+      <RadioGroup
+          android:id="@+id/gender"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content" 
+          android:orientation="horizontal">
+
+          <RadioButton
+          android:id="@+id/male"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="男"
+          android:checked="true" />
+
+          <RadioButton
+          android:id="@+id/femal"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="女" 
+          android:layout_marginStart="10dp"
+          android:layout_marginLeft="10dp"/>
+          
+      </RadioGroup>
+      
+      <CheckBox
+              android:id="@+id/subject1"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="语文" />
+      
+      <CheckBox
+              android:id="@+id/subject2"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="数学" />
+      
+      <CheckBox
+              android:id="@+id/subject3"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="英语" />
+
+      <Button
+          android:id="@+id/allCheckedSubjects"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="显示所有选中的课程" />
+
+      <ImageView
+          android:id="@+id/imageView1"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:scaleType="fitCenter"
+          android:src="@drawable/xiaowanzi1" 
+          android:contentDescription="xiaowanzi"/>
+      
+      <ImageView
+          android:id="@+id/imageView2"
+          android:layout_width="100dp"
+          android:layout_height="100dp"
+          android:scaleType="fitCenter"
+          android:layout_marginTop="5dp"
+          android:src="@drawable/xiaowanzi1" 
+          android:contentDescription="xiaowanzi"/>
+
+      <Button
+          android:id="@+id/imageSizeBtn"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="获取图像大小" />
+      
+      <Button
+          android:id="@+id/largerBtn"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="放大图像" />
+      
+      <Button
+          android:id="@+id/smallerBtn"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="缩小图像" />
+      
+      <Button
+          android:id="@+id/rotateBtn"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="旋转图像" />
+
+      <AnalogClock
+          android:id="@+id/analogClock1"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content" />
+
+      <DigitalClock
+          android:id="@+id/digitalClock1"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="DigitalClock" />
+
+      <DatePicker
+          android:id="@+id/datePicker1"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content" />
+
+      <TimePicker
+          android:id="@+id/timePicker1"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content" />
+
+      <TextView
+          android:id="@+id/dateTimeTxt"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="设置的日期和时间：" />
+      
+</LinearLayout>
+</ScrollView>

@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第十一讲、Android Content Provider，Broadcast Receiver与Service/Components/app/build/intermediates/res/merged/debug/menu/main.xml",
+        "source": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第十一讲、Android Content Provider，Broadcast Receiver与Service/Components/app/src/main/res/menu/main.xml"
+    },
+    {
+        "merged": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第十一讲、Android Content Provider，Broadcast Receiver与Service/Components/app/build/intermediates/res/merged/debug/menu/music.xml",
+        "source": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第十一讲、Android Content Provider，Broadcast Receiver与Service/Components/app/src/main/res/menu/music.xml"
+    },
+    {
+        "merged": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第十一讲、Android Content Provider，Broadcast Receiver与Service/Components/app/build/intermediates/res/merged/debug/menu/contacts.xml",
+        "source": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第十一讲、Android Content Provider，Broadcast Receiver与Service/Components/app/src/main/res/menu/contacts.xml"
+    },
+    {
+        "merged": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第十一讲、Android Content Provider，Broadcast Receiver与Service/Components/app/build/intermediates/res/merged/debug/menu/sms.xml",
+        "source": "/Users/WangGenshen/Documents/GitHub/Teaching/Android-2015/第十一讲、Android Content Provider，Broadcast Receiver与Service/Components/app/src/main/res/menu/sms.xml"
+    }
+]
