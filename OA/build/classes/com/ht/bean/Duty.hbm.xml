@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+    
+   <hibernate-mapping package="com.ht.bean">
+	<class name="Duty" table="t_duty"> 
+		<id name="dutyId" column="dutyid"> 
+            <generator class="uuid.hex"/> 
+        </id>
+        <property name="weekDay" column="weekday"></property>
+        <property name="empId1" column="empid1"></property>
+        <property name="add1" column="add1"></property>
+        <property name="empId2" column="empid2"></property>
+        <property name="add2" column="add2"></property>
+        <property name="empId3" column="empid3"></property>
+        <property name="add3" column="add3"></property>
+        <property name="empId4" column="empid4"></property>
+        <property name="add4" column="add4"></property>
+        <property name="empId5" column="empid5"></property>
+        <property name="add5" column="add5"></property>
+        <property name="empId6" column="empid6"></property>
+        <property name="add6" column="add6"></property>
+        <property name="empId7" column="empid7"></property>
+        <property name="add7" column="add7"></property>
+        <property name="empId8" column="empid8"></property>
+        <property name="add8" column="add8"></property>
+	</class>
+</hibernate-mapping>

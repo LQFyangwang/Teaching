@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping package="com.ht.bean">
+	<class name="Emp" table="t_emp"> 
+		<id name="empId" column="empid"> 
+            <generator class="uuid.hex"/> 
+        </id>
+        <property name="name" column="name"></property>
+        <property name="pwd" column="pwd"></property>
+        <property name="idCard" column="idcard"></property>
+        <property name="nation" column="nation"></property>
+        <property name="gender" column="gender"></property>
+        <property name="fingerNo" column="fingerno"></property>
+        <property name="birthday" column="birthday"></property>
+        <property name="email" column="email"></property>
+        <property name="phone" column="phone"></property>
+        <property name="qq" column="qq"></property>
+        <property name="wechat" column="wechat"></property>
+        <property name="address" column="address"></property>
+        <property name="married" column="married"></property>
+        <property name="contactName" column="contactname"></property>
+        <property name="contactPhone" column="contactphone"></property>
+        <property name="college" column="college"></property>
+        <property name="major" column="major"></property>
+        <property name="eduBack" column="eduback"></property>
+        <property name="bankName" column="bankname"></property>
+        <property name="accountName" column="accountname"></property>
+        <property name="accountNo" column="accountno"></property>
+        <property name="alipay" column="alipay"></property>
+        <property name="hireDay" column="hireday"></property>
+        <property name="resignDay" column="resignday"></property>
+        <property name="status" column="status"></property>
+        
+        <many-to-one name="dept" class="com.ht.bean.Dept" column="depid" fetch="join"></many-to-one>
+        <many-to-one name="role" class="com.ht.bean.Role" column="roleid" fetch="join" lazy="false"></many-to-one>
+        <set name="talks" inverse="true">
+        	<key column="empid"></key>
+        	<one-to-many class="com.ht.bean.Talk" />
+        </set>
+        <set name="grades1" inverse="true">
+        	<key column="empid1"></key>
+        	<one-to-many class="com.ht.bean.Grade"/>
+        </set>
+         <set name="grades2" inverse="true">
+        	<key column="empid2"></key>
+        	<one-to-many class="com.ht.bean.Grade"/>
+        </set>
+         <set name="grades3" inverse="true">
+        	<key column="empid3"></key>
+        	<one-to-many class="com.ht.bean.Grade"/>
+        </set>
+         <set name="empLeaves" lazy="true" inverse="true">
+        	<key column="empid"></key>
+        	<one-to-many class="com.ht.bean.EmpLeave"></one-to-many>
+        </set>
+        <set name="meetting" inverse="true">
+        	<key column="meettingid" ></key>
+        	<one-to-many class="com.ht.bean.Meetting"/>
+        </set>
+        <set name="empfeedback" inverse="true">
+        	<key column="empfeedbackid"></key>
+        	<one-to-many class="com.ht.bean.EmpFeedBack"/>
+        </set>
+        <set name="progress" inverse="true">
+        	<key column="progressid"></key>
+        	<one-to-many class="com.ht.bean.Progress"/>
+        </set>
+        <set name="dutys1" inverse="true" lazy="false">
+        	<key column="empid1"></key>
+        	<one-to-many class="com.ht.bean.Duty"/>
+        </set>
+        <set name="dutys2" inverse="true" lazy="false">
+        	<key column="empid2"></key>
+        	<one-to-many class="com.ht.bean.Duty"/>
+        </set>
+        <set name="dutys3" inverse="true" lazy="false">
+        	<key column="empid3"></key>
+        	<one-to-many class="com.ht.bean.Duty"/>
+        </set>
+        <set name="dutys4" inverse="true" lazy="false">
+        	<key column="empid4"></key>
+        	<one-to-many class="com.ht.bean.Duty"/>
+        </set>
+        <set name="dutys5" inverse="true" lazy="false">
+        	<key column="empid5"></key>
+        	<one-to-many class="com.ht.bean.Duty"/>
+        </set>
+        <set name="dutys6" inverse="true" lazy="false">
+        	<key column="empid6"></key>
+        	<one-to-many class="com.ht.bean.Duty"/>
+        </set>
+        <set name="dutys7" inverse="true" lazy="false">
+        	<key column="empid7"></key>
+        	<one-to-many class="com.ht.bean.Duty"/>
+        </set>
+        <set name="dutys8" inverse="true" lazy="false">
+        	<key column="empid8"></key>
+        	<one-to-many class="com.ht.bean.Duty"/>
+        </set>
+        <set name="checks"  inverse="true">
+        	<key column="empid"></key>
+        	<one-to-many class="com.ht.bean.Check"/>
+        </set>
+        <set name="stus"  inverse="true">
+        	<key column="empid"></key>
+        	<one-to-many class="com.ht.bean.Stu"/>
+        </set>
+        
+        <set name="summarys"  inverse="true">
+        	<key column="empid"></key>
+        	<one-to-many class="com.ht.bean.Summary"/>
+        </set>
+        <set name="pays" inverse="true" cascade="all" lazy="false">
+        	<key column="empid"></key>
+        	<one-to-many class="com.ht.bean.Pay"/>
+        </set>
+        <set name="incomes" inverse="true" cascade="all" lazy="false">
+        	<key column="empid"></key>
+        	<one-to-many class="com.ht.bean.Income"/>
+        </set>
+        <set name="reports"  inverse="true">
+        	<key column="empid"></key>
+        	<one-to-many class="com.ht.bean.Report"/>
+        </set>
+        <set name="notices" inverse="true" lazy="false">
+        	<key column="empid"></key>
+        	<one-to-many class="com.ht.bean.Notice"/>
+        </set>
+        <set name="empCheckings" inverse="true">
+        	<key column="empid"></key>
+        	<one-to-many class="com.ht.bean.EmpChecking" />
+        </set>
+        <set name="sis" inverse="true" cascade="all">
+			<key column="empid"></key>
+			<one-to-many class="com.ht.bean.SalaryInfo"/>
+		</set>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+    <struts>
+	<package name="goods-struts" extends="my-struts" namespace="/goods">
+		<action name="*" class="com.ht.action.GoodsAction" method="{1}">
+			<result name="pager" type="json"></result>
+			<result name="goodsType" type="json"></result>
+			<result name="add" type="json"></result>
+			<result name="frost" type="json"></result>
+			<result name="activation" type="json"></result>
+			<result name="updateGoods" type="json"></result>
+		</action>
+	</package>
+</struts>

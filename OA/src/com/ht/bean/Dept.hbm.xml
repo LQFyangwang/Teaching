@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+    
+   <hibernate-mapping package="com.ht.bean">
+	<class name="Dept" table="t_dept"> 
+		<id name="depId" column="depid"> 
+            <generator class="uuid.hex"/> 
+        </id>
+        <property name="name" column="name"></property>
+        <property name="des" column="des"></property>
+        <property name="empId" column="empid"></property>
+        <property name="status" column="status"></property>
+        <set name="emps" lazy="false" inverse="true">
+        	<key column="empid"></key>
+        	<one-to-many class="com.ht.bean.Emp"></one-to-many>
+        </set>
+	</class>
+</hibernate-mapping>

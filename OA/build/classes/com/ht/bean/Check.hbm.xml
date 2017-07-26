@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.ht.bean">
+	<class name="Check" table="t_check"> 
+		<id name="checkId" column="checkid"> 
+            <generator class="uuid.hex"/> 
+        </id>
+        <property name="empId" column="empid"></property>
+		<property name="checkTime" column="checktime"></property>
+        <property name="weekDay" column="weekday"></property>
+		<property name="gradeId" column="gradeid"></property>
+		<property name="roomId" column="roomid"></property>
+		<property name="des" column="des"></property>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+ <hibernate-mapping package="com.ht.bean">
+	<class name="Exp" table="t_exp"> 
+		<id name="expId" column="expid"> 
+            <generator class="uuid.hex"/> 
+        </id>
+        <property name="empId" column="empid"></property>
+        <property name="company" column="company"></property>
+        <property name="startDay" column="startday"></property>
+        <property name="endDay" column="endday"></property>
+        <property name="jobTitle" column="jobtitle"></property>
+        <property name="des" column="des"></property>
+	</class>
+</hibernate-mapping>

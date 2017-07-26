@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.ht.bean">
+	<class name="Score" table="t_score"> 
+		<id name="scoreId" column="scoreid"> 
+            <generator class="uuid.hex"/> 
+        </id>
+		<property name="score" column="score"></property>
+		<property name="testDay" column="testDay"></property>
+
+		<many-to-one name="stu" column="stuid" class="com.ht.bean.Stu" fetch="join"></many-to-one>
+		<many-to-one name="course" column="courseid" class="com.ht.bean.Course" fetch="join"></many-to-one>
+	</class>
+</hibernate-mapping>

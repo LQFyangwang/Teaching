@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="stu-struts" extends="my-struts" namespace="/stu">
+		<action name="*" class="com.ht.action.StuAction" method="{1}">
+			<result name="gradeByPager" type="json"></result>
+			<result name="roomByPager" type="json"></result>
+			<result name="stuStatusByPager" type="json"></result>
+			<result name="save" type="json"></result>
+			<result name="update" type="json"></result>
+			<result name="id" type="json"></result>
+			<result name="all" type="json"></result>
+			<result name="status" type="json"></result>
+			<result name="addStus" type="json"></result>
+			<result name="query_type" type="json"></result>
+			<result name="fuzzySearch" type="json"></result>
+			<result name="details">/WEB-INF/views/admin/stu_details.jsp</result>
+			<!-- 
+			<result name="input">/WEB-INF/views/admin/official_stu.jsp</result>
+			 -->
+		</action>
+	</package>
+</struts>

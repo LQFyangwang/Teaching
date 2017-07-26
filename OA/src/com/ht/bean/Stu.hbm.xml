@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.ht.bean">
+	<class name="Stu" table="t_stu"> 
+		<id name="stuId" column="stuid"> 
+            <generator class="uuid.hex"/> 
+        </id>
+        <property name="stuNo" column="stuno"></property>
+        <property name="name" column="name"></property>
+        <property name="pwd" column="pwd"></property>
+		<property name="idCard" column="idcard"></property>
+		<property name="phone" column="phone"></property>
+		<property name="qq" column="qq"></property>
+		<property name="wechat" column="wechat"></property>
+		<property name="school" column="school"></property>
+		<property name="age" column="age"></property>
+		<property name="birthday" column="birthday"></property>
+		<property name="gender" column="gender"></property>
+		<property name="address" column="address"></property>
+		<property name="nation" column="nation"></property>
+		<property name="residence" column="residence"></property>
+		<property name="gradeId" column="gradeid"></property>
+		<property name="parentName" column="parentname"></property>
+		<property name="parentPhone" column="parentphone"></property>
+		<property name="startDay" column="startday"></property>
+		<property name="des" column="des"></property>
+		<property name="status" column="status"></property>
+		<property name="stuStatus" column="stustatus"></property>
+		<property name="role" column="role"></property>
+		<property name="roleId" column="roleid"></property>
+		<property name="roomId" column="roomid"></property>
+		<set name="talks" inverse="true">
+        	<key column="stuid"></key>
+        	<one-to-many class="com.ht.bean.Talk"/>
+        </set>
+        
+        <set name="stuFeedbacks" inverse="true">
+        	<key column="stuid"></key>
+        	<one-to-many class="com.ht.bean.StuFeedback"/>
+        </set>
+        
+        <set name="jobs" inverse="true">
+        	<key column="stuid"></key>
+        	<one-to-many class="com.ht.bean.Job"/>
+        </set>
+        
+        <set name="stuCheckings">
+        	<key column="stuid"></key>
+        	<one-to-many class="com.ht.bean.StuChecking"/>
+        </set>
+        
+        <set name="stuLeaves" inverse="true">
+        	<key column="stuid"></key>
+        	<one-to-many class="com.ht.bean.StuLeave"/>
+        </set>
+        
+        <set name="scores">
+        	<key column="stuid"></key>
+        	<one-to-many class="com.ht.bean.Score"/>
+        </set>
+		
+		<many-to-one name="room" class="com.ht.bean.Room" column="roomid" fetch="join" insert="false" update="false"></many-to-one>
+		<many-to-one name="emp" class="com.ht.bean.Emp" column="empid" fetch="join"></many-to-one>
+		<many-to-one name="grade" class="com.ht.bean.Grade" column="gradeid" fetch="join" insert="false" update="false"></many-to-one>
+		
+		<set name="summarys">
+			<key column="stuid"></key>
+			<one-to-many class="com.ht.bean.Summary"/>
+		</set>
+		
+		<set name="incomes" inverse="true" cascade="all" lazy="false">
+        	<key column="stuid"></key>
+        	<one-to-many class="com.ht.bean.Income"/>
+        </set>
+		
+	</class>
+</hibernate-mapping>

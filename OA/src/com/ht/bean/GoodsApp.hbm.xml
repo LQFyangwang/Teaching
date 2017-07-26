@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.ht.bean">
+	<class name="GoodsApp" table="t_goodsapp"> 
+		<id name="goodsAppId" column="goodsappid"> 
+            <generator class="uuid.hex"/> 
+        </id>
+        <property name="empId" column="empid"></property>
+        <property name="goodsTypeId" column="goodstypeid"></property>
+		<property name="appDay" column="appday"></property>
+        <property name="goodsName" column="goodsname"></property>
+        <property name="price" column="price"></property>
+		<property name="quantity" column="quantity"></property>
+		<property name="des" column="des"></property>
+		<property name="status" column="status"></property>
+        <property name="appStatus" column="appstatus"></property>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping package="com.ht.bean">
+	<class name="Emp" table="t_emp"> 
+		<id name="empId" column="empid"> 
+            <generator class="uuid.hex"/> 
+        </id>
+        <property name="name" column="name"></property>
+        <property name="pwd" column="pwd"></property>
+        <property name="idCard" column="idcard"></property>
+        <property name="nation" column="nation"></property>
+        <property name="gender" column="gender"></property>
+        <property name="fingerNo" column="fingerno"></property>
+        <property name="birthday" column="birthday"></property>
+        <property name="email" column="email"></property>
+        <property name="phone" column="phone"></property>
+        <property name="qq" column="qq"></property>
+        <property name="wechat" column="wechat"></property>
+        <property name="address" column="address"></property>
+        <property name="married" column="married"></property>
+        <property name="contactName" column="contactname"></property>
+        <property name="contactPhone" column="contactphone"></property>
+        <property name="college" column="college"></property>
+        <property name="major" column="major"></property>
+        <property name="eduBack" column="eduback"></property>
+        <property name="bankName" column="bankname"></property>
+        <property name="accountName" column="accountname"></property>
+        <property name="accountNo" column="accountno"></property>
+        <property name="alipay" column="alipay"></property>
+        <property name="hireDay" column="hireday"></property>
+        <property name="resignDay" column="resignday"></property>
+        <property name="status" column="status"></property>
+        
+        <many-to-one name="dept" class="com.ht.bean.Dept" column="depid" fetch="join"></many-to-one>
+        <many-to-one name="role" class="com.ht.bean.Role" column="roleid" fetch="join"></many-to-one>
+        <set name="talks">
+        	<key column="empid"></key>
+        	<one-to-many class="com.ht.bean.Talk"/>
+        </set>
+        <set name="grades1">
+        	<key column="empid1"></key>
+        	<one-to-many class="com.ht.bean.Grade"/>
+        </set>
+         <set name="grades2">
+        	<key column="empid2"></key>
+        	<one-to-many class="com.ht.bean.Grade"/>
+        </set>
+         <set name="grades3">
+        	<key column="empid3"></key>
+        	<one-to-many class="com.ht.bean.Grade"/>
+        </set>
+        
+	</class>
+</hibernate-mapping>

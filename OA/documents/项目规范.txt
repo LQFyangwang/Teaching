@@ -1,0 +1,63 @@
+一、命名规则
+1.方法命名要有意义，如：
+		管理员模块：保存（adminSave）、删除（adminDelete）、更新（adminUpdate）、分页查找（adminQueryByPager）、按id查找（adminQueryById）
+		用户模块：保存（userSave）、删除（userDelete）、更新（userUpdate）、分页查找（userQueryByPager）、按id查找（userQueryById）
+
+2.对象命名，如：
+	一个单词的对象：User user = new User(); --> 第一个单词小写
+	两个单词的对象：AdminAction adminAction = new AdminAction(); --> 第一个单词小写
+	三个单词及以上：UserActionAdvice uaa = new UserActionAdvice(); --> 取三个或多个单词的首字母
+
+3.变量命名，命名有意义，如：
+	个数（count） 总数（total）
+
+4.Struts的命名，如：
+	用户模块（struts-user.xml）、管理员模块（admin-struts.xml）、主文件（struts-main.xml）
+
+5.Spring的命名，如：
+	上下文文件（spring-context.xml）、Hibernate的命名（spring-hibernate.xml）
+
+6.properties文件命名，如：
+	JDBC(jdbc.properties)、错误信息（error.properties）
+
+7.页面端的文件，统一放在WEB-INF目录下的views文件下中，创建对应的文件夹，如：
+	管理员模块的所有JSP文件放置：新建一个文件夹（admin）
+	员工模块的所有JSP文件放置：新建一个文件夹（employee）
+
+8.JSP页面的命名也要有意义，如：
+	登入页面（login.jsp）
+	注册页面（register.jsp）
+	主页（home.jsp）
+	
+9.Action里的方法命名尽量简短，如：
+	根据id查询数据（public String id(){}）
+	分页查询数据（public String pager(){}）
+
+二、注释
+1.每个方法前面都必须加DOC注释，如：
+	/**
+	 * 添加员工
+	 */
+	public void adminSave(Employee employee){}
+
+2.最好每个类前面也加上DOC注释，这个看情况，very easy的可以不用加
+
+3.如果有不理解的地方，请问组长或者查资料搞清楚后，加上注释
+
+4.在配置文件中，每个人写的代码请用注释好，如：
+	<!-- 危锦辉 -->
+	<!-- 实例化user模块的对象 -->
+	<bean id="userDAO" class="com.ht.dao.UserDAOImpl" autowire="byType"></bean>
+  	<bean id="userService" class="com.ht.service.UserServiceImpl" autowire="byType" />
+  	<bean id="userAction" class="com.ht.action.UserAction" autowire="byType"></bean>
+	<!-- 危锦辉 -->
+
+三、测试
+1.每个DAO的方法在使用前最好是先写个测试类进行测试，测试类统一放在com.ht.test包中,测试方法：
+	DAO --> Servle --> Action 为了确保每个对象注入的配置文件没问题，避免空指针异常
+
+四、异常
+1.如果有发现异常，项目不能正常运行，一定先解决异常再进行提交，不要一股脑的写着去，提交时，必须确保你的项目和服务端的代码是保持同步的（先update再commit）
+
+五、项目提交
+1.项目提交前，先修改本机ip，为192.168.0.*，先update，进入eclipse运行项目，没问题，则进行add，最后commit

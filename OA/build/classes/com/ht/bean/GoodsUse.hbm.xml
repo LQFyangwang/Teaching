@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    <hibernate-mapping package="com.ht.bean">
+    	<class name="GoodsUse" table="t_goodsuse">
+    		<id name="useId" column="useid">
+    			<generator class="uuid.hex"></generator>
+    		</id>
+    		<property name="goodsId" column="goodsid"></property>
+    		<property name="empId" column="empid"></property>
+    		<property name="quantity" column="quantity"></property>
+    		<property name="useDay" column="useday"></property>
+    		<property name="ereturnDay" column="ereturnday"></property>
+    		<property name="returnDay" column="retrunday"></property>
+    	</class>
+    </hibernate-mapping>

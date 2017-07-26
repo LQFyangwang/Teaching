@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.ht.bean">
+	<class name="StuLeave" table="t_stuleave"> 
+		<id name="leaveId" column="leaveid"> 
+            <generator class="uuid.hex"/> 
+        </id>
+        <property name="startTime" column="starttime"></property>
+		<property name="endTime" column="endtime"></property>
+		<property name="leaveDay" column="leaveday"></property>
+		<property name="des" column="des"></property>
+		<property name="status" column="status"></property>
+		<property name="firstLevel" column="firstlevel"></property>
+		<property name="secondLevel" column="secondlevel"></property>
+		<property name="pass" column="pass"></property>
+		
+		<many-to-one name="stu" column="stuid" class="com.ht.bean.Stu" fetch="join"></many-to-one>
+		
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+    
+   <hibernate-mapping package="com.ht.bean">
+	<class name="Duty" table="t_duty"> 
+		<id name="dutyId" column="dutyid"> 
+            <generator class="uuid.hex"/> 
+        </id>
+        <property name="weekDay" column="weekday"></property>
+        <property name="add1" column="add1"></property>
+        <property name="add2" column="add2"></property>
+        <property name="add3" column="add3"></property>
+        <property name="add4" column="add4"></property>
+        <property name="add5" column="add5"></property>
+        <property name="add6" column="add6"></property>
+        <property name="add7" column="add7"></property>
+        <property name="add8" column="add8"></property>
+        
+        <many-to-one name="emp1" class="com.ht.bean.Emp" column="empid1" fetch="join"></many-to-one>
+        <many-to-one name="emp2" class="com.ht.bean.Emp" column="empid2" fetch="join"></many-to-one>
+        <many-to-one name="emp3" class="com.ht.bean.Emp" column="empid3" fetch="join"></many-to-one>
+        <many-to-one name="emp4" class="com.ht.bean.Emp" column="empid4" fetch="join"></many-to-one>
+        <many-to-one name="emp5" class="com.ht.bean.Emp" column="empid5" fetch="join"></many-to-one>
+        <many-to-one name="emp6" class="com.ht.bean.Emp" column="empid6" fetch="join"></many-to-one>
+        <many-to-one name="emp7" class="com.ht.bean.Emp" column="empid7" fetch="join"></many-to-one>
+        <many-to-one name="emp8" class="com.ht.bean.Emp" column="empid8" fetch="join"></many-to-one>
+	</class>
+</hibernate-mapping>

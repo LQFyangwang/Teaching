@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping package="com.ht.bean">
+	<class name="EmpFeedBack" table="t_empfeedback">
+		<id name="feedBackId" column="feedbackid">
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="empId" column="empid"></property>
+		<property name="feedBackDay" column="feedbackday"></property>
+		<property name="des" column="des"></property>
+		<property name="status" column="status"></property>
+		
+	</class>
+</hibernate-mapping>

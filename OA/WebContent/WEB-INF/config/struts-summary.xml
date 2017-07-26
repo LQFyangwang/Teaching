@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="summary-struts" extends="my-struts" namespace="/summary">
+		<action name="*" class="com.ht.action.SummaryAction" method="{1}">
+			<result name="pager" type="json"></result>
+			<result name="add" type="json"></result>
+			<result name="edit" type="json"></result>
+			<result name="status" type="json"></result>
+			<result name="pagerByName" type="json"></result>
+			<result name="pagerByDay" type="json"></result>
+			<result name="pagerByStuId" type="json"></result>
+			<result name="pagerByDay1" type="json"></result>
+		</action>
+	</package>
+</struts>

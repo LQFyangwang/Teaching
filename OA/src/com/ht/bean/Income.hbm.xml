@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    <hibernate-mapping package="com.ht.bean">
+    	<class name="Income" table="t_income">
+    		<id name="incomeId" column="incomeid">
+    			<generator class="uuid.hex"></generator>
+    		</id>
+    		<property name="incomeDay" column="incomeday"></property>
+    		<property name="des" column="des"></property>
+    		<property name="income" column="income"></property>
+    		
+    		<many-to-one name="emp" class="com.ht.bean.Emp" column="empid" fetch="join"></many-to-one>
+    		<many-to-one name="it" class="com.ht.bean.IncomeType" column="incometypeid" fetch="join"></many-to-one>
+    		<many-to-one name="stu" class="com.ht.bean.Stu" column="stuid" fetch="join"></many-to-one>
+    	</class>
+    </hibernate-mapping>

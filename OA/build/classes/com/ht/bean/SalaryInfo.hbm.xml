@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.ht.bean">
+	<class name="SalaryInfo" table="t_salaryinfo"> 
+		<id name="salaryinfoId" column="salaryinfoid">
+            <generator class="uuid.hex"/> 
+        </id>
+        <property name="empId" column="empid"></property>
+        <property name="basicSalary" column="basicsalary"></property>
+        <property name="jobSalary" column="jobsalary"></property>
+
+	</class>
+</hibernate-mapping>

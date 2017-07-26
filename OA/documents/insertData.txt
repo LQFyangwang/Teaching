@@ -1,0 +1,58 @@
+/**
+	所有的角色
+*/
+insert into t_authority_role(authorityid, roleid) values(1, '4028808c5961a80a015961bcb7100000');
+insert into t_authority_role(authorityid, roleid) values(1, '4028808c5961a80a015961bd2bc70001');
+insert into t_authority_role(authorityid, roleid) values(1, '4028808c5961a80a015961bda7030002');
+insert into t_authority_role(authorityid, roleid) values(1, '4028808c59697c0c015969a165b2000a');
+insert into t_authority_role(authorityid, roleid) values(1, '4028808c596d9c2001596d9f24200000');
+insert into t_authority_role(authorityid, roleid) values(1, '4028808c596d9c2001596d9ff7a30001');
+insert into t_authority_role(authorityid, roleid) values(1, '4028808c596d9c2001596da08cad0002');
+insert into t_authority_role(authorityid, roleid) values(1, '4028808c5972e397015972e8afe70000');
+insert into t_authority_role(authorityid, roleid) values(1, '4028808c5972e397015972e95e740001');
+insert into t_authority_role(authorityid, roleid) values(1, '4028da265981b09d015981d91d6f0001');
+insert into t_authority_role(authorityid, roleid) values(1, 'cd8089aec7f211e6a24b3065ec373466');
+
+/**
+	总经理、校长、班主任
+*/
+insert into t_authority_role(authorityid, roleid) values(33, '4028808c5961a80a015961bcb7100000');
+insert into t_authority_role(authorityid, roleid) values(33, '4028808c59697c0c015969a165b2000a');
+insert into t_authority_role(authorityid, roleid) values(33, 'cd8089aec7f211e6a24b3065ec373466');
+
+/**
+	出了学生，所有员工
+*/
+insert into t_authority_role(authorityid, roleid) values(36, '4028808c5961a80a015961bcb7100000');
+insert into t_authority_role(authorityid, roleid) values(36, '4028808c5961a80a015961bd2bc70001');
+insert into t_authority_role(authorityid, roleid) values(36, '4028808c5961a80a015961bda7030002');
+insert into t_authority_role(authorityid, roleid) values(36, '4028808c59697c0c015969a165b2000a');
+insert into t_authority_role(authorityid, roleid) values(36, '4028808c596d9c2001596d9f24200000');
+insert into t_authority_role(authorityid, roleid) values(36, '4028808c596d9c2001596d9ff7a30001');
+insert into t_authority_role(authorityid, roleid) values(36, '4028808c596d9c2001596da08cad0002');
+insert into t_authority_role(authorityid, roleid) values(36, '4028808c5972e397015972e8afe70000');
+insert into t_authority_role(authorityid, roleid) values(36, '4028808c5972e397015972e95e740001');
+insert into t_authority_role(authorityid, roleid) values(36, 'cd8089aec7f211e6a24b3065ec373466');
+
+/**
+	总经理、财务主任
+*/
+insert into t_authority_role(authorityid, roleid) values(38, 'cd8089aec7f211e6a24b3065ec373466');
+insert into t_authority_role(authorityid, roleid) values(38, '4028808c596d9c2001596da08cad0002');
+
+/**
+	学生，自己查自己的；查询所有的：超级管理员，行政部主任，班主任，任课老师，辅导老师
+
+*/
+insert into t_authority_role(authorityid, roleid) values(38, '4028da265981b09d015981d91d6f0001');
+insert into t_authority_role(authorityid, roleid) values(38, 'cd8089aec7f211e6a24b3065ec373466');
+insert into t_authority_role(authorityid, roleid) values(38, '4028808c59697c0c015969a165b2000a');
+insert into t_authority_role(authorityid, roleid) values(38, '4028808c5961a80a015961bcb7100000');
+insert into t_authority_role(authorityid, roleid) values(38, '4028808c5961a80a015961bd2bc70001');
+insert into t_authority_role(authorityid, roleid) values(38, '4028808c5961a80a015961bda7030002');
+
+/**
+	学生，自己改变自己的
+
+*/
+insert into t_authority_role(authorityid, roleid) values(38, '4028da265981b09d015981d91d6f0001');

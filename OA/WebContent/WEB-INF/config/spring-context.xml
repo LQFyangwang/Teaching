@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context"  
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">  
+  
+  <!-- 锦辉 -->
+  <!-- 配置员工DAO - Service - Action -->
+  <bean id="empDAO" class="com.ht.dao.impl.EmpDAOImpl" autowire="byType"></bean>
+  <bean id="empService" class="com.ht.service.impl.EmpServiceImpl" autowire="byType" />
+  <bean id="adminAction" class="com.ht.action.AdminAction" autowire="byType"></bean>
+  
+  <!-- 配置谈心表DAO - Service - Action -->
+  <bean id="talkDAO" class="com.ht.dao.impl.TalkDAOImpl" autowire="byType"></bean>
+  <bean id="talkService" class="com.ht.service.impl.TalkServiceImpl" autowire="byType" />
+  <bean id="talkAction" class="com.ht.action.TalkAction" autowire="byType"></bean>
+  
+  <!-- 配置谈心信息DAO - Service - Action -->
+  <bean id="tiDAO" class="com.ht.dao.impl.TalkInfoDAOImpl" autowire="byType"></bean>
+  <bean id="tis" class="com.ht.service.impl.TalkInfoServiceImpl" autowire="byType" />
+  
+  <!-- 配置学生表DAO - Service - Action -->
+  <bean id="stuDAO" class="com.ht.dao.impl.StuDAOImpl" autowire="byType"></bean>
+  <bean id="stuService" class="com.ht.service.impl.StuServiceImpl" autowire="byType" />
+  <bean id="stuAction" class="com.ht.action.StuAction" autowire="byType"></bean>
+  
+  <!-- 配置学生反馈表DAO - Service - Action -->
+  <bean id="stuFeedbackDAO" class="com.ht.dao.impl.StuFeedbackDAOImpl" autowire="byType"></bean>
+  <bean id="stuFeedbackService" class="com.ht.service.impl.StuFeedbackServiceImpl" autowire="byType" />
+  <bean id="stuFeedbackAction" class="com.ht.action.StuFeedbackAction" autowire="byType"></bean>
+  
+  <!-- 配置学生就业表DAO - Service - Action -->
+  <bean id="jobDAO" class="com.ht.dao.impl.JobDAOImpl" autowire="byType"></bean>
+  <bean id="jobService" class="com.ht.service.impl.JobServiceImpl" autowire="byType" />
+  <bean id="jobAction" class="com.ht.action.JobAction" autowire="byType"></bean>
+  
+  <!-- 配置学生考勤表DAO - Service - Action -->
+  <bean id="stuCheckingDAO" class="com.ht.dao.impl.StuCheckingDAOImpl" autowire="byType"></bean>
+  <bean id="scs" class="com.ht.service.impl.StuCheckingServiceImpl" autowire="byType" />
+  <bean id="stuCheckingAction" class="com.ht.action.StuCheckingAction" autowire="byType"></bean>
+  
+  <!-- 配置学生请假表DAO - Service - Action -->
+  <bean id="stuLeaveDAO" class="com.ht.dao.impl.StuLeaveDAOImpl" autowire="byType"></bean>
+  <bean id="stuLeaveService" class="com.ht.service.impl.StuLeaveServiceImpl" autowire="byType" />
+  <bean id="stuLeaveAction" class="com.ht.action.StuLeaveAction" autowire="byType"></bean>
+  
+  <!-- 配置学生成绩表DAO - Service - Action -->
+  <bean id="scoreDAO" class="com.ht.dao.impl.ScoreDAOImpl" autowire="byType"></bean>
+  <bean id="scoreService" class="com.ht.service.impl.ScoreServiceImpl" autowire="byType" />
+  <bean id="scoreAction" class="com.ht.action.ScoreAction" autowire="byType"></bean>
+  
+  <!-- 配置总结表DAO - Service - Action -->
+  <bean id="summaryDAO" class="com.ht.dao.impl.SummaryDAOImpl" autowire="byType"></bean>
+  <bean id="summaryService" class="com.ht.service.impl.SummaryServiceImpl" autowire="byType" />
+  <bean id="summaryAction" class="com.ht.action.SummaryAction" autowire="byType"></bean>
+  
+  <!-- 配置员工工资信息（员工工资发放情况）DAO - Service - Action -->
+  <bean id="salaryInfoDAO1" class="com.ht.dao.impl.SalaryInfoDAOImpl1" autowire="byType"></bean>
+  <bean id="salaryInfoService1" class="com.ht.service.impl.SalaryInfoServiceImpl1" autowire="byType" />
+  <bean id="salaryInfoAction1" class="com.ht.action.SalaryInfoAction1" autowire="byType"></bean>
+  
+  <!-- 配置员工工资基本信息DAO - Service -->
+  <bean id="salaryDAO" class="com.ht.dao.impl.SalaryDAOImpl" autowire="byType"></bean>
+  <bean id="salaryService" class="com.ht.service.impl.SalaryServiceImpl" autowire="byType" />
+  
+  <!-- 配置员权限关系表DAO - Service -->
+  <bean id="authorityRoleDAO" class="com.ht.dao.impl.AuthorityRoleDAOImpl" autowire="byType"></bean>
+  <bean id="authorityRoleService" class="com.ht.service.impl.AuthorityRoleServiceImpl" autowire="byType" />
+  <!-- 锦辉 -->   
+ <!-- 配置部部门类型DAO -->
+  <bean id="deptTypeDAO" class="com.ht.dao.impl.DeptTypeDAOImpl" autowire="byType"></bean>
+  <bean id="deptType" class="com.ht.service.impl.DeptTypeServiceImpl" autowire="byType"></bean>
+  <bean id="deptTypeAction" class="com.ht.action.DeptTypeAction" autowire="byType"></bean>
+  <!-- cj -->
+  <!-- xiaoqiang --> 
+  <!-- 配置部门DAO - Service - Action -->
+  <bean id="deptDAO" class="com.ht.dao.impl.DeptDAOImpl" autowire="byType"></bean>
+  <bean id="deptService" class="com.ht.service.impl.DeptServiceImpl" autowire="byType" />
+  <bean id="deptInfoDAO" class="com.ht.dao.impl.DeptInfoDAOImpl" autowire="byType"></bean>
+  <bean id="deptInfoService" class="com.ht.service.impl.DeptInfoServiceImpl" autowire="byType" />
+  <bean id="deptAction" class="com.ht.action.DeptAction" autowire="byType"></bean> 
+  
+  <!-- 配置员工请假管理DAO - Service - Action -->
+  <bean id="empLeaveDAO" class="com.ht.dao.impl.EmpLeaveDAOImpl" autowire="byType"></bean>
+  <bean id="empLeaveService" class="com.ht.service.impl.EmpLeaveServiceImpl" autowire="byType"></bean>
+  <bean id="empLeaveAction" class="com.ht.action.EmpLeaveAction" autowire="byType"></bean>
+  
+  <!-- 配置值班管理DAO - Service - Action -->
+  <bean id="dutyDAO" class="com.ht.dao.impl.DutyDAOImpl" autowire="byType"></bean>
+  <bean id="dutyService" class="com.ht.service.impl.DutyServiceImpl" autowire="byType"></bean>
+  <bean id="dutyAction" class="com.ht.action.DutyAction" autowire="byType"></bean>
+  
+  <!-- 配置巡查管理DAO - Service - Action -->
+  <bean id="checkDAO" class="com.ht.dao.impl.CheckDAOImpl" autowire="byType"></bean>
+  <bean id="checkService" class="com.ht.service.impl.CheckServiceImpl" autowire="byType"></bean>
+  <bean id="checkAction" class="com.ht.action.CheckAction" autowire="byType"></bean>
+  
+  <!-- 配置工作日志管理DAO - Service - Action -->
+  <bean id="reportDAO" class="com.ht.dao.impl.ReportDAOImpl" autowire="byType"></bean>
+  <bean id="reportService" class="com.ht.service.impl.ReportServiceImpl" autowire="byType"></bean>
+  <bean id="reportAction" class="com.ht.action.ReportAction" autowire="byType"></bean>
+  
+  <!-- 配置员工考勤管理DAO - Service - Action -->
+  <bean id="empCheckingDAO" class="com.ht.dao.impl.EmpCheckingDAOImpl" autowire="byType"></bean>
+  <bean id="empCheckingService" class="com.ht.service.impl.EmpCheckingServiceImpl" autowire="byType"></bean>
+  <bean id="empCheckingAction" class="com.ht.action.EmpCheckingAction" autowire="byType"></bean>
+  <!-- xiaoqiang -->
+  
+  <!-- Asa -->
+  <!-- 班级DAO,Service,Action -->
+  <bean id="gradeDAO" class="com.ht.dao.impl.GradeDAOImpl" autowire="byType"></bean>
+  <bean id="gradeService" class="com.ht.service.impl.GradeServiceImpl" autowire="byType"></bean>
+  <bean id="gradeAction" class="com.ht.action.GradeAction" autowire="byType"></bean>
+  
+  <!-- 宿舍DAO,Service,Action -->
+  <bean id="roomDAO" class="com.ht.dao.impl.RoomDAOImpl" autowire="byType"></bean>
+  <bean id="roomService" class="com.ht.service.impl.RoomServiceImpl" autowire="byType"></bean>
+  <bean id="roomAction" class="com.ht.action.RoomAction" autowire="byType"></bean>
+  <!-- Asa -->
+  <!-- cj -->
+  <!-- 员工InfoDAO,Service -->
+  <bean id="empInfoDAO" class="com.ht.dao.impl.EmpInfoImpl" autowire="byType"></bean>
+  <bean id="empInfoService" class="com.ht.service.impl.EmpInfoServiceImpl" autowire="byType"></bean>
+  <bean id="empAction" class="com.ht.action.EmpAction" autowire="byType"></bean>
+  <!-- cj -->
+  <!-- cj -->
+  <!-- 角色roleTypeDAO -->
+  <bean id="roleTypeDAO" class="com.ht.dao.impl.RoleTypeDAOImpl" autowire="byType"></bean>
+  <bean id="roleTypeService" class="com.ht.service.impl.RoleTypeServiceImpl" autowire="byType"></bean>
+  <!-- cj -->
+  
+  <!-- 邹敏祥 -->
+  <!-- 配置课程DAO - Service - Action -->
+  <bean id="courseDAO" class="com.ht.dao.impl.CourseDAOImpl" autowire="byType"></bean>
+  <bean id="courseService" class="com.ht.service.impl.CourseServiceImpl" autowire="byType"></bean>
+  <bean id="courseAction" class="com.ht.action.CourseAction" autowire="byType"></bean>
+  
+  <!-- 配置研讨会DAO - Service - Action  -->
+  <bean id="meettingDAO" class="com.ht.dao.impl.MeettingDAOImpl" autowire="byType"></bean>
+  <bean id="meettingService" class="com.ht.service.impl.MeettingServiceImpl" autowire="byType"></bean>
+  <bean id="meettingAction" class="com.ht.action.MeettingAction" autowire="byType"></bean>
+  
+  <!-- 配置员工反馈DAO - Service - Action  -->
+  <bean id="empfeedbackDAO" class="com.ht.dao.impl.EmpFeedBackDAOImpl" autowire="byType"></bean>
+  <bean id="empfeedbackService" class="com.ht.service.impl.EmpFeedBackServiceImpl" autowire="byType"></bean>
+  <bean id="empfeedbackAction" class="com.ht.action.EmpFeedBackAction" autowire="byType"></bean>
+  
+  <!-- 配置课程进度DAO - Service - Action -->
+  <bean id="progressDAO" class="com.ht.dao.impl.ProgressDAOImpl" autowire="byType"></bean>
+  <bean id="progressService" class="com.ht.service.impl.ProgressServiceImpl" autowire="byType"></bean>
+  <bean id="progressAction" class="com.ht.action.ProgressAction" autowire="byType"></bean>
+  
+  <!-- 配置班级gradeTypeDAO -->
+  <bean id="gradeTypeDAO" class="com.ht.dao.impl.GradeTypeDAOImpl" autowire="byType"></bean>
+  <bean id="gradeTypeService" class="com.ht.service.impl.GradeTypeServiceImpl" autowire="byType"></bean>
+  <bean id="gradeTypeAction" class="com.ht.action.GradeTypeAction" autowire="byType"></bean>
+  <!-- 邹敏祥 -->
+  
+  <!-- 姚勇 -->
+  <!-- 配置公告类型表DAO - Service - Action -->
+  <bean id="noticeTypeDAO" class="com.ht.dao.impl.NoticeTypeDAOImpl" autowire="byType"></bean>
+  <bean id="noticeTypeService" class="com.ht.service.impl.NoticeTypeServiceImpl" autowire="byType"></bean>
+  <bean id="noticeTypeAction" class="com.ht.action.NoticeTypeAction" autowire="byType"></bean>
+  <!-- 姚勇 -->
+  
+  <!-- 姚勇 -->
+  <!-- 配置公告表DAO - Service - Action  -->
+  <bean id="noticeDAO" class="com.ht.dao.impl.NoticeDAOImpl" autowire="byType"></bean>
+  <bean id="noticeService" class="com.ht.service.impl.NoticeServiceImpl" autowire="byType"></bean>
+  <bean id="noticeAction" class="com.ht.action.NoticeAction" autowire="byType"></bean>
+  <!-- 姚勇 -->
+  
+  <!-- 杨泽桥 -->
+  <!-- 杨泽桥 -->
+  <bean id="ptDAO" class="com.ht.dao.impl.PayTypeDAOImpl" autowire="byType"></bean>
+  <bean id="ptService" class="com.ht.service.impl.PayTypeServiceImpl" autowire="byType"></bean>
+  <bean id="payTypeAction" class="com.ht.action.PayTypeAction" autowire="byType"></bean>
+  
+  <bean id="itDAO" class="com.ht.dao.impl.IncomeTypeDAOImpl" autowire="byType"></bean>
+  <bean id="itService" class="com.ht.service.impl.IncomeTypeServiceImpl" autowire="byType"></bean>
+  <bean id="incomeTypeAction" class="com.ht.action.IncomeTypeAction" autowire="byType"></bean>
+  
+  <bean id="piDAO" class="com.ht.dao.impl.PayInfoDAOImpl" autowire="byType"></bean>
+  <bean id="piService" class="com.ht.service.impl.PayInfoServiceImpl" autowire="byType"></bean>
+  
+  <bean id="payDAO" class="com.ht.dao.impl.PayDAOImpl" autowire="byType"></bean>
+  <bean id="payService" class="com.ht.service.impl.PayServiceImpl" autowire="byType"></bean>
+  <bean id="payAction" class="com.ht.action.PayAction" autowire="byType"></bean>
+  
+  <bean id="iiDAO" class="com.ht.dao.impl.IncomeInfoDAOImpl" autowire="byType"></bean>
+  <bean id="iiService" class="com.ht.service.impl.IncomeInfoServiceImpl" autowire="byType"></bean>
+  
+  <bean id="incomeDAO" class="com.ht.dao.impl.IncomeDAOImpl" autowire="byType"></bean>
+  <bean id="incomeService" class="com.ht.service.impl.IncomeServiceImpl" autowire="byType"></bean>
+  <bean id="incomeAction" class="com.ht.action.IncomeAction" autowire="byType"></bean>
+
+  <bean id="esiDAO" class="com.ht.dao.impl.EmpSalaryInfoDAOImpl" autowire="byType"></bean>
+  <bean id="esiService" class="com.ht.service.impl.EmpSalaryInfoServiceImpl" autowire="byType"></bean>
+  
+  <bean id="siDAO" class="com.ht.dao.impl.SalaryInfoDAOImpl" autowire="byType"></bean>
+  <bean id="siService" class="com.ht.service.impl.SalaryInfoServiceImpl" autowire="byType"></bean>
+  <bean id="salaryInfoAction" class="com.ht.action.SalaryInfoAction" autowire="byType"></bean>
+  <!-- 杨泽桥 -->
+  <!-- 杨泽桥 -->
+  
+  <!-- 姚勇 -->
+  <!-- 配置打卡时间管理DAO - Service - Action -->
+  <bean id="empCheckingInfoDAO" class="com.ht.dao.impl.EmpCheckingInfoDAOImpl" autowire="byType"></bean>
+  <bean id="empCheckingInfoService" class="com.ht.service.impl.EmpCheckingInfoServiceImpl" autowire="byType"></bean>
+  <bean id="empCheckingInfoAction" class="com.ht.action.EmpCheckingInfoAction" autowire="byType"></bean>
+  <!--  -->
+  
+  <!-- cj -->
+  <!-- 配置物品类型DAO -->
+  	<bean id="goodsTypeDAO" class="com.ht.dao.impl.GoodsTypeDAOImpl" autowire="byType"></bean>
+  	<bean id="goodsTypeService" class="com.ht.service.impl.GoodsTypeServiceImpl" autowire="byType"></bean>
+  	<bean id="goodsTypeAction" class="com.ht.action.GoodsTypeAction" autowire="byType"></bean>
+  <!-- cj -->
+  <!-- cj -->
+  <!-- 配置物品管理DAO -->
+  <bean id="goodsDAO" class="com.ht.dao.impl.GoodsDAOImpl" autowire="byType"></bean>
+  <bean id="goodsService" class="com.ht.service.impl.GoodsServiceImpl" autowire="byType"></bean>
+  <bean id="goodsAction" class="com.ht.action.GoodsAction" autowire="byType"></bean>
+  <!-- cj -->
+  
+  <!-- 姚勇 -->
+  <!-- 配置角色DAO - Service -Action -->
+  <bean id="roleDAO" class="com.ht.dao.impl.RoleDAOImpl" autowire="byType"></bean>
+  <bean id="roleService" class="com.ht.service.impl.RoleServiceImpl" autowire="byType"></bean>
+  <bean id="roleAction" class="com.ht.action.RoleAction" autowire="byType"></bean>
+  <!-- 姚勇 -->
+  <!-- cj -->
+  <!-- 配置 用品申购DAO-->
+  <bean id="goodsAppDAO" class="com.ht.dao.impl.GoodsAppDAOImpl" autowire="byType"></bean>
+  <bean id="goodsAppService" class="com.ht.service.impl.GoodsAppServiceImpl" autowire="byType"></bean>
+  <bean id="goodsAppAction" class="com.ht.action.GoodsAppAction" autowire="byType"></bean>
+  <!-- cj -->
+  <!-- cj -->
+  <!-- 配置用品领用DAO -->
+  <bean id="goodsUseDAO" class="com.ht.dao.impl.GoodsUseDAOImpl" autowire="byType"></bean>
+  <bean id="goodsUseService" class="com.ht.service.impl.GoodsUseServiceImpl" autowire="byType"></bean>
+</beans>  

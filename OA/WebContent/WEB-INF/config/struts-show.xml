@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="show-struts" extends="my-struts" namespace="/show">
+		<action name="*" class="com.ht.action.ShowAction" method="{1}">
+			<result name="home">/WEB-INF/views/admin/home.jsp</result>
+			<result name="empLogin">/WEB-INF/views/admin/login.jsp</result>
+			<result name="talk">/WEB-INF/views/admin/student_talk.jsp</result>
+			<result name="refresh">/WEB-INF/views/admin/home.jsp</result>
+			<result name="emp">/WEB-INF/views/admin/employee.jsp</result>
+			<result name="depts">/WEB-INF/views/admin/depts.jsp</result>
+			<result name="grade">/WEB-INF/views/admin/grades.jsp</result>
+			<result name="room">/WEB-INF/views/admin/room.jsp</result>
+			<result name="noticeType">/WEB-INF/views/admin/noticetype.jsp</result>
+			<result name="intention">/WEB-INF/views/admin/intention_stu.jsp</result>
+			<result name="reserve">/WEB-INF/views/admin/reserve_stu.jsp</result>
+			<result name="official">/WEB-INF/views/admin/official_stu.jsp</result>
+			<result name="feedback">/WEB-INF/views/admin/student_feedback.jsp</result>
+			<result name="job">/WEB-INF/views/admin/student_job.jsp</result>
+			<result name="empLeaves">/WEB-INF/views/admin/empLeaves.jsp</result>
+			<result name="checking">/WEB-INF/views/admin/student_checking.jsp</result>
+			<result name="notice">/WEB-INF/views/admin/notice.jsp</result>
+			<result name="course">/WEB-INF/views/admin/courses.jsp</result>
+			<result name="meetting">/WEB-INF/views/admin/meetting.jsp</result>
+			<result name="empfeedback">/WEB-INF/views/admin/empfeedback.jsp</result>
+			<result name="progress">/WEB-INF/views/admin/progress.jsp</result>
+			<result name="stuLeave">/WEB-INF/views/admin/student_leave.jsp</result>
+			<result name="dutys">/WEB-INF/views/admin/dutys.jsp</result>
+			<result name="empCheckingInfo">/WEB-INF/views/admin/empcheckinginfo.jsp</result>
+			<result name="score">/WEB-INF/views/admin/student_score.jsp</result>
+			<result name="goodsTypePage">/WEB-INF/views/admin/goodsType.jsp</result>
+			<result name="role">/WEB-INF/views/admin/role.jsp</result>
+			<result name="updatePwd">/WEB-INF/views/admin/update_password.jsp</result>
+			<result name="goods">/WEB-INF/views/admin/goods.jsp</result>
+			<result name="goodsApp">/WEB-INF/views/admin/goodsApp.jsp</result>
+			<result name="checks">/WEB-INF/views/admin/checks.jsp</result>
+			<result name="use">/WEB-INF/views/admin/goodsUse.jsp</result>
+			<result name="goodsReturn">/WEB-INF/views/admin/goodsReturn.jsp</result>
+			<result name="summary">/WEB-INF/views/admin/student_summary.jsp</result>
+			<result name="paytype">/WEB-INF/views/admin/paytype.jsp</result>
+			<result name="incometype">/WEB-INF/views/admin/incometype.jsp</result>
+			<result name="pay">/WEB-INF/views/admin/pay.jsp</result>
+			<result name="income">/WEB-INF/views/admin/income.jsp</result>
+			<result name="salaryinfo">/WEB-INF/views/admin/salaryinfo.jsp</result>
+			<result name="reports">/WEB-INF/views/admin/reports.jsp</result>
+			<result name="todayDuty">/WEB-INF/views/admin/today_duty.jsp</result>
+			<result name="information">/WEB-INF/views/admin/EmpInformation.jsp</result>
+			<result name="empSalaryInfo">/WEB-INF/views/admin/emp_salaryInfo.jsp</result>
+			<result name="error">/WEB-INF/views/admin/error.jsp</result>
+			
+			<result name="stuLogin">/WEB-INF/views/student/login.jsp</result>
+			<result name="stuHome">/WEB-INF/views/student/home.jsp</result>
+			<result name="stuRefresh">/WEB-INF/views/student/home.jsp</result>
+			<result name="student_checking">/WEB-INF/views/student/student_checking.jsp</result>
+			<result name="student_feedback">/WEB-INF/views/student/student_feedback.jsp</result>
+			<result name="student_job">/WEB-INF/views/student/student_job.jsp</result>
+			<result name="student_leave">/WEB-INF/views/student/student_leave.jsp</result><!-- 1 -->
+			<result name="student_score">/WEB-INF/views/student/student_score.jsp</result><!-- 1 -->
+			<result name="student_summary">/WEB-INF/views/student/student_summary.jsp</result>
+			<result name="student_talk">/WEB-INF/views/student/student_talk.jsp</result>
+			<result name="stuUpdatePwd">/WEB-INF/views/student/update_password.jsp</result>
+			<result name="empCheckings">/WEB-INF/views/admin/empCheckings.jsp</result>
+		</action>
+	</package>
+</struts>

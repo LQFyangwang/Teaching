@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.ht.bean">
+	<class name="Grade" table="t_grade"> 
+		<id name="gradeId" column="gradeid"> 
+            <generator class="uuid.hex"/> 
+        </id>
+        <property name="name" column="name"></property>
+        <property name="des" column="des"></property>
+        <property name="quantity" column="quantity"></property>
+        <property name="status" column="status"></property>
+        <property name="empId1" column="empid1"></property>
+        <property name="empId2" column="empid2"></property>
+        <property name="empId3" column="empid3"></property>
+        
+        <many-to-one name="emp1" class="com.ht.bean.Emp" column="empid1" fetch="join" insert="false" update="false"></many-to-one>
+        <many-to-one name="emp2" class="com.ht.bean.Emp" column="empid2" fetch="join" insert="false" update="false"></many-to-one>
+        <many-to-one name="emp3" class="com.ht.bean.Emp" column="empid3" fetch="join" insert="false" update="false"></many-to-one>
+        
+        <set name="checks">
+        	<key column="gradeid"></key>
+        	<one-to-many class="com.ht.bean.Check"/>
+        </set>
+        
+        <set name="progress" inverse="true">
+        	<key column="progressid"></key>
+        	<one-to-many class="com.ht.bean.Progress"/>
+        </set>
+        
+        <set name="stus">
+        	<key column="gradeid"></key>
+        	<one-to-many class="com.ht.bean.Stu"/>	
+        </set>
+        
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.ht.bean">
+	<class name="Progress" table="t_progress"> 
+		<id name="progressId" column="progressid"> 
+            <generator class="uuid.hex"/> 
+        </id>
+        
+        <property name="des" column="des"></property>
+        <property name="progressDay" column="progressday"></property>
+        <property name="status" column="status"></property>
+        
+        <many-to-one name="emp" column="empid" class="com.ht.bean.Emp" fetch="join"></many-to-one>
+        <many-to-one name="grade" column="gradeid" class="com.ht.bean.Grade" fetch="join"></many-to-one>
+	</class>
+</hibernate-mapping>

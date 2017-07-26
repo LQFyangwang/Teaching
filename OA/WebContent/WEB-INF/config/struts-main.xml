@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.action.extension" value="action,,do" />
+	<constant name="struts.multipart.maxSize" value="20971520" />
+	
+	<package name="my-struts" extends="json-default">
+		<!-- <global-results>
+			<result name="ex">/WEB-INF/views/error.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="ex" exception="java.lang.Exception"></exception-mapping>
+		</global-exception-mappings> -->
+	</package>
+	
+	<include file="../config/struts-index.xml" />
+	<include file="../config/struts-show.xml" />
+	<include file="../config/struts-admin.xml" />
+	<include file="../config/struts-talk.xml" />
+	<include file="../config/struts-deptType.xml"/>
+	<include file="../config/struts-grade.xml" />
+	<include file="../config/struts-room.xml" />
+	<include file="../config/struts-stu.xml" />
+	<include file="../config/struts-noticetype.xml" />
+	<include file="../config/struts-dept.xml" />
+	<include file="../config/struts-stuFeedback.xml" />
+	<include file="../config/struts-emp.xml"/>
+	<include file="../config/struts-job.xml" />
+	<include file="../config/struts-empLeave.xml" />
+	<include file="../config/struts-notice.xml" />
+	<include file="../config/struts-roleType.xml"/>
+	<include file="../config/struts-stuChecking.xml" />
+	<include file="../config/struts-course.xml" />
+	<include file="../config/struts-meetting.xml" />
+	<include file="../config/struts-empfeedback.xml"/>
+	<include file="../config/struts-progress.xml"/>
+	<include file="../config/struts-gradeType.xml"/>
+	<include file="../config/struts-stuLeave.xml" />
+	<include file="../config/struts-duty.xml" />
+	<include file="../config/struts-empcheckinginfo.xml"></include>
+	<include file="../config/struts-score.xml" />
+	<include file="../config/struts-goodsType.xml"/>
+	<include file="../config/struts-goods.xml"/>
+	<include file="../config/struts-role.xml" />
+	<include file="../config/struts-goodsApp.xml"/>
+	<include file="../config/struts-check.xml" />
+	<include file="../config/struts-goodsUse.xml"/>
+	<include file="../config/struts-summary.xml" />
+	<include file="../config/struts-paytype.xml" />
+	<include file="../config/struts-incometype.xml" />
+	<include file="../config/struts-pay.xml" />
+	<include file="../config/struts-income.xml" />
+	<include file="../config/struts-report.xml" />
+	<include file="../config/struts-salaryInfo.xml" />
+	<include file="../config/struts-salaryInfo1.xml" />
+	<include file="../config/struts-empDetails.xml" />
+	<include file="../config/struts-auth.xml" />
+	<include file="../config/struts-student.xml" />
+	<include file="../config/struts-empChecking.xml" />
+</struts>

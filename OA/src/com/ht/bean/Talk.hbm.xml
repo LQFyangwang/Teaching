@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.ht.bean">
+	<class name="Talk" table="t_talk"> 
+		<id name="talkId" column="talkid"> 
+            <generator class="uuid.hex"/> 
+        </id>
+		<property name="talkDay" column="talkday"></property>
+        <property name="des" column="des"></property>
+		<property name="status" column="status"></property>
+		
+		<many-to-one name="emp" column="empid" class="com.ht.bean.Emp" fetch="join"></many-to-one>
+		<many-to-one name="stu" column="stuid" class="com.ht.bean.Stu" fetch="join"></many-to-one>
+	</class>
+</hibernate-mapping>

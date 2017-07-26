@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.ht.bean">
+	<class name="StuChecking" table="t_stuchecking"> 
+		<id name="checkingId" column="checkingid"> 
+            <generator class="uuid.hex"/> 
+        </id>
+        <property name="stuId" column="stuid"></property>
+        <property name="checkingDay" column="checkingday"></property>
+		<property name="checking1"></property>
+		<property name="checking2"></property>
+		<property name="checking3"></property>
+		
+	</class>
+</hibernate-mapping>

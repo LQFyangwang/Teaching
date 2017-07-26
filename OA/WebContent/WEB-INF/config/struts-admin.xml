@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="admin-struts" extends="my-struts" namespace="/admin">
+		<action name="*" class="com.ht.action.AdminAction" method="{1}">
+			<result name="updatePwd" type="json"></result>
+			<result name="login" type="redirectAction">home</result>
+			<result name="login_fail">/WEB-INF/views/admin/login.jsp</result>
+		</action>
+		<action name="home" class="com.ht.action.AdminAction">
+			<result name="success">/WEB-INF/views/admin/home.jsp</result>
+		</action>
+	</package>
+</struts>

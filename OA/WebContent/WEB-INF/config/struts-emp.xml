@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+    <struts>
+	<package name="emp-struts" extends="my-struts" namespace="/emp">
+		<action name="*" class="com.ht.action.EmpAction" method="{1}">
+			<result name="pager" type="json"></result>
+			<result name="empSave" type="json"></result>
+			<result name="update" type="json"></result>
+			<result name="id" type="json"></result>
+			<result name="query_type" type="json"></result>
+			<result name="empPage" type="json"></result>
+			<result name="empName" type="json"></result>
+			<result name="empInfo" type="json"></result>
+			<result name="empIdByPager" type="json"></result>
+			<result name="emp_page" type="json"></result>
+		</action>
+	</package>
+	<package name="emp2-struts" extends="my-struts" namespace="/emp2">
+		<action name="*" class="com.ht.action.QueryDepIdEmpAction" method="{1}">
+			<result name="pager" type="json"></result>
+		</action>
+	</package>
+</struts>

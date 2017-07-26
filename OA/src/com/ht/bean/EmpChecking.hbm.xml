@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping package="com.ht.bean">
+	<class name="EmpChecking" table="t_empchecking">
+		<id name="checkingId" column="checkingid">
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="checkingDay" column="checkingday"></property>
+		<property name="time1" column="time1"></property>
+		<property name="time2" column="time2"></property>
+		<property name="time3" column="time3"></property>
+		<property name="time4" column="time4"></property>
+		<property name="time5" column="time5"></property>
+		<property name="time6" column="time6"></property>
+		<property name="time7" column="time7"></property>
+		<property name="time8" column="time8"></property>
+		<many-to-one name="emp" class="com.ht.bean.Emp" column="empid" fetch="join"></many-to-one>
+	</class>
+</hibernate-mapping>

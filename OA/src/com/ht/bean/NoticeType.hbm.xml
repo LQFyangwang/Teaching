@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.ht.bean">
+	<class name="NoticeType" table="t_noticetype"> 
+		<id name="noticeTypeId" column="noticetypeid"> 
+            <generator class="uuid.hex"/> 
+        </id>
+        
+        <property name="name" column="name"></property>
+		<property name="des" column="des"></property>
+        <property name="status" column="status"></property>
+        
+        <set name="notice" lazy="true"  inverse="true" >
+		    <key column="typeid"></key>
+		    <one-to-many class="com.ht.bean.Notice"></one-to-many>
+		</set>
+	</class>
+</hibernate-mapping>

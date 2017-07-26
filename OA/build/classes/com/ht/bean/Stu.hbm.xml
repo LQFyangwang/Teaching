@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.ht.bean">
+	<class name="Stu" table="t_stu"> 
+		<id name="stuId" column="stuid"> 
+            <generator class="uuid.hex"/> 
+        </id>
+        <property name="stuNo" column="stuno"></property>
+        <property name="name" column="name"></property>
+        <property name="pwd" column="pwd"></property>
+		<property name="idCard" column="idcard"></property>
+		<property name="phone" column="phone"></property>
+		<property name="qq" column="qq"></property>
+		<property name="wechat" column="wechat"></property>
+		<property name="school" column="school"></property>
+		<property name="age" column="age"></property>
+		<property name="birthday" column="birthday"></property>
+		<property name="gender" column="gender"></property>
+		<property name="address" column="address"></property>
+		<property name="nation" column="nation"></property>
+		<property name="residence" column="residence"></property>
+		<property name="gradeId" column="gradeid"></property>
+		<property name="roomId" column="roomid"></property>
+		<property name="parentName" column="parentname"></property>
+		<property name="parentPhone" column="parentphone"></property>
+		<property name="startDay" column="startday"></property>
+		<property name="empId" column="empid"></property>
+		<property name="des" column="des"></property>
+		<property name="status" column="status"></property>
+		<property name="stuStatus" column="stustatus"></property>
+		<property name="role" column="role"></property>
+		
+		<set name="talks">
+        	<key column="talkid"></key>
+        	<one-to-many class="com.ht.bean.Talk"/>
+        </set>
+		
+	</class>
+</hibernate-mapping>

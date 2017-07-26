@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping package="com.ht.bean">
+	<class name="Meetting" table="t_meetting">
+		<id name="meettingId" column="meettingid">
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="meettingDay" column="meettingday"></property>
+		<property name="createdDay" column="createdday"></property>
+		<property name="des" column="des"></property>
+		<property name="status" column="status"></property>
+		
+		<many-to-one name="emp" column="empid" class="com.ht.bean.Emp" fetch="join"></many-to-one>
+		
+	</class>
+</hibernate-mapping>
