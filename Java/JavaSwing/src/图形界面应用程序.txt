@@ -1,0 +1,203 @@
+1、AWT	abstract window toolkit 抽象窗口工具包
+	包含有各种图形应用的组件
+	为Java程序提供的建立图形用户界面GUI(Graphics User Interface)工具集
+	
+	优点：
+	AWT提供用于创建生动而高效的GUI的各种组件
+	GUI以通过键盘或鼠标来响应用户的操作
+	
+	在java api中
+	java.awt包
+		java.awt.Font 字体
+		java.awt.Color 颜色
+		java.awt.Component 组件(包含有：java.awt.Button 按钮, java.awt.Canvas 画布, java.awt.Checkbox 多选框, 
+									java.awt.Choice 单选按钮, java.awt.Container 容器, java.awt.Label 标签, 
+									java.awt.List 列表, java.awt.Scrollbar 滚动条, java.awt.TextComponent 文本组件 )
+			java.awt.Container 容器
+				java.awt.Window 窗口
+					java.awt.Frame 窗体
+				java.awt.Panel 面板
+			java.awt.TextComponent 文本组件
+						java.awt.TextArea 多行文本 
+						java.awt.TextField 单行文本
+		java.awt.FlowLayout 流式布局
+		java.awt.BorderLayout 边框布局
+		java.awt.CardLayout 卡片布局
+		java.awt.GridLayout 网格布局
+		java.awt.GridBagLayout 网格包布局
+		
+	三个部分：
+		1）组件：定义了所有的图形化界面元素及绘制方法，其中大多数组件是从抽象类Component派生而来
+		2）容器：容器类用于包含组件，也可以包含容器以便统一操作和管理。
+			在容器中可以设定它所包含组件的布局方式
+			组件必须被包含到容器中
+		3）布局管理器：用于规定所有组件在屏幕上如何布置
+		
+		使用布局管理器把相应的组件放置在容器中
+
+2、抽象类java.awt.Component
+	Component类中封装了组件通用的方法和属性 。
+	getComponentAt(int x, int y)  确定此组件或其直接子组件之一是否包含（x，y）位置，并且如果是，则返回包含该位置的组件
+	getFont() 获取该组件的字体
+	getForeground() 前景色
+	getName() 名字
+	getSize() size
+	getLocation() 位置
+	getX();
+	getY();
+	paint(Graphics g) 绘制
+	repaint() 重新绘制
+	update() 更新
+	setVisible(boolean b) 设置可见性
+	setSize(Dimension d) 设置size
+	getWidth()
+	getHeight()
+	setName(String name) 设置name
+	
+3、窗体Frame
+	Frame是Window的一个子类，是带有标题和缩放角的窗口。
+	1)Frame可以设置自己的标题、边框、菜单、大小等等 。
+	2)默认的Frame实例化对象都是没有大小和不可见的，必须调用setSize( )来设置大小，调用setVisible(true)来设置该窗口为可见的
+	
+4、Panel面板对象
+	java.awt.Panel
+	需要添加到Frame窗体中才能显示出来
+	如何添加到Frame，使用frame的add(panel)
+	面板不仅可以添加到frame还可以添加到panel，由一个面板包含另外一个面板，也是使用panel.add(panel1);
+	
+5、Color颜色类
+	java.awt.Color，此类中定义了常用颜色的字符串常量
+	
+6、如何关闭Frame窗体
+	java.awt.event.WindowListener接口
+	java.awt.event.WindowAdapter抽象类（适配器）实现了上面的接口
+	// 给当前窗体添加窗体监听器
+		addWindowListener(new WindowAdapter() {
+			
+			// 当窗体正在被关闭时，接收到此正在关闭事件，则在此时可以把整个程序退出
+			@Override
+			public void windowClosing(WindowEvent e) {
+				System.out.println("窗口正在关闭...");
+				System.exit(0);
+				// dispose(); // 释放当前窗口所占用的屏幕资源
+			}
+			
+		});
+		
+7、java.awt.Button按钮类, java.awt.Label标签类，java.awt.TextField文本框类
+	Button b1 = new Button("按钮显示的文本");
+	// b1.setLabel("按钮1"); // 设置按钮显示的文本
+	b1.setSize();
+	b1.setLocation();
+	add(b1);
+	
+	Label label = new Label(); // 实例化一个标签组件
+	label.setText("标签");
+	label.setSize(100, 100);
+	label.setLocation(120, 50);
+	add(label);
+		
+	TextField text = new TextField();
+	text.setText("文本区域显示的文本");
+	text.setSize(200, 50);
+	text.setLocation(220, 50);
+	add(text);
+	
+8、java.awt.FlowLayout流式布局
+	FlowLayout表示组件一个接着一个摆放，默认从左往右放置，并且整体居中，如果在同一行中放不下，则自动到下一行
+	(按照组件的添加顺序，先从左往右，再从上往下)
+	
+	setLayout(new FlowLayout()); // 给当前窗体设置流式布局
+	对齐方式如下：
+	1）new FlowLayout(FlowLayout.LEADING) // 所有控件靠左显示
+	2）new FlowLayout(FlowLayout.CENTER) // 所有控件居中显示，为默认的
+	3)setLayout(new FlowLayout(FlowLayout.LEFT)); // 靠左
+	4)setLayout(new FlowLayout(FlowLayout.RIGHT)); // 靠右
+	5)setLayout(new FlowLayout(FlowLayout.TRAILING)); // 靠右
+	
+9、java.awt.BorderLayout边框布局
+	BorderLayout把窗体分成固定的5个部分，上下左右中（北南西东中）
+	上北：BorderLayout.NORTH
+	下南：BorderLayout.SOUTH
+	左西：BorderLayout.WEST
+	右东：BorderLayout.EAST
+	中：BorderLayout.CENTER
+	
+	对BorderLayout，如果指定了占用哪个区域，则此区域内的组件就会占满该区域，如加入Panel到指定的位置上，则该panel占用整个位置上的区域
+	
+10、java.awt.CardLayout 卡片布局
+	类似于层叠布局，一层遮一层，最先添加的组件在最上面，每个组件都占据整个容器的大小，哪怕是指定了组件的size
+	
+11、java.awt.GridLayout网格布局
+	GridLayout gl = new GridLayout(int rows, int cols);
+	直接添加组件，按照添加的顺序从网格的第一行开始从左往右放置组件，如果第一行放满，则到第二行开始放
+	
+12、事件处理机制
+	对组件注册事件监听,当有某个动作触发了这个该事件后，Java运行时系统将调用对应的方法响应该操作
+	
+	通过监听器（Listener）来监听某个事件源是否产生某个事件（Event）
+	
+	老鼠夹捕捉老鼠：
+		事件源：老鼠夹
+		事件对象：夹到老鼠这个动作
+		监听器：人
+		
+	1）Event（事件对象）
+		MouseEvent 鼠标事件
+		KeyEvent 键盘事件
+		WindowEvent 窗体事件
+		
+	2）Event Source（事件源）
+		Window
+		Button
+		TextField
+		Checkbox
+		List
+		TextArea
+		
+	3）Event Handler-事件处理者（谁来监听事件，监听器）
+	
+	add***Listener表示某个对象添加相关的监听器
+	***Listener表示监听器
+	***Event表示事件对象
+
+13、AWT事件处理
+	java.awt.AWTEvent是所有AWT组件的事件的父类
+	AWT事件分为两大类 ：
+	低级事件：基于组件和容器的事件。
+	如：鼠标的进入，点击，拖放等，或组件的窗口开关等。 
+		java.awt.event.ComponentEvent(组件事件：组件尺寸的变化，移动) java.awt.event.ComponentListener(java.awt.event.ComponentAdapter适配器类)
+			java.awt.event.ContainerEvent（容器事件：组件增加，移动） java.awt.event.ContainerListener(java.awt.event.ComponentAdapter适配器类)
+			java.awt.event.WindowEvent（窗口事件：关闭窗口，图标化） java.awt.event.WindowListener(java.awt.event.WindowAdapter适配器类)
+			java.awt.event.FocusEvent（焦点事件：焦点的获得和丢失） java.awt.event.FocusListener（java.awt.event.FocusAdapter适配器类）
+			java.awt.event.KeyEvent（键盘事件：键按下、释放） java.awt.event.KeyListener（java.awt.event.KeyAdapter适配器类）
+			java.awt.event.MouseEvent（鼠标事件：鼠标单击，移动） java.awt.event.MouseListener(java.awt.event.MouseAdapter适配器类)
+	
+	高级事件：基于语义的事件，它不和特定的动作相关联，而依赖于触发此事件的类。 
+	如：TextField中按Enter键会触发ActionEvent事件。滑动滚动条会触发AdjustmentEvent事件。选中项目列表的某一条就会触发ItemEvent事件
+		java.awt.event.ActionEvent（动作事件：按钮按下） 由java.awt.event.ActionListener监听器来监听并处理
+		java.awt.event.AdjustmentEvent（调节事件：调节滚动条上数值） java.awt.event.AdjustmentListener
+		java.awt.event.ItemEvent（项目事件：修改下拉列表中的选项） 由java.awt.event.ItemListener监听器来监听并处理
+		java.awt.event.TextEvent（文本事件：文本对象改变） 由java.awt.event.TextListener监听器来监听并处理
+		
+14、如何给事件源添加监听器并监听事件
+	component.add***Listener(new ***Listener() {
+		// 该Listener接口中的事件处理方法
+		@Override
+		public void handle(***Event e) {
+			// 处理某个具体的事件
+		}
+	});
+	
+15、MenuBar的使用
+	MenuItem->Menu->MenuBar->Frame
+	MenuItem添加ActionListener
+		
+		
+匿名内部类：
+	1）没有名字的一个类
+	2）在方法内部
+	
+	如果要生成一个匿名内部类的对象，则直接使用new 类名称或接口名称{// 对类中方法的重写或接口中方法的实现}
+
+Swing

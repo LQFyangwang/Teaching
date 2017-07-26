@@ -1,0 +1,149 @@
+1、为什么要用Java来连接数据库并对数据库进行操作？
+	使用Java连接数据库，并提供一些普通用户可以进行操作的界面，让用户可以方便地从数据库中获取数据，或者插入数据，或者更新数据，或者删除数据
+	
+	提供方便的界面进行数据库的增删改查（CRUD, create, retrieve, update, delete）
+	
+	Java通过什么技术来连接关系型数据库？
+	JDBC: Java DataBase Connectivity(Java数据库连接)
+	JDBC是由JDK提供的连接数据库并对数据库进行操作的规范
+	
+	由数据库厂商如Oracle，SqlServer, MySQL自行提供实现了JDBC规范的JAR文件，这个JAR库文件通常又叫做数据库驱动程序
+	
+	JDBC所做的事：
+	1）与数据库服务器建立连接
+	2）从Java应用程序发送SQL语句到数据库
+	3）把数据库执行SQL语句的结果返回给Java应用程序
+	
+	JDBC最终是通过操作系统提供的ODBC来操作数据库
+	ODBC open data base connectivity 开放数据库连接（起到连接器的作用，把JDBC跟数据库服务器连接）
+	
+2、如何让Java应用程序能够使用JDBC驱动文件
+	1）把驱动程序copy到项目的某个目录中，如libs
+	2）项目上点击右键
+	3）选择Build Path->Configure Build Path
+	4）在打开的界面上右侧点击Add JARs
+	5）找到当前的项目，展开其目录，找到 libs目录后选择相应的驱动程序jar文件
+
+3、JDBC的技术基础
+	1）数据库连接对象Connection
+	java.sql.Connection（接口）
+	2）通过此Connection发送SQL语句到DB
+		java.sql.Statement(接口) 用于执行静态 SQL 语句并返回它所生成结果的对象
+		java.sql.PreparedStatement（接口） 表示预编译的 SQL 语句的对象。 
+			SQL 语句被预编译并存储在 PreparedStatement 对象中。然后可以使用此对象多次高效地执行该语句
+	3）返回结果
+		由Statement或PreparedStatement执行后返回的结果用ResultSet(结果集)，适用于查询数据库的记录集
+		java.sql.ResultSet(接口)
+		
+		javax.sql(提供了与数据库相关的数据源的接口和类)
+		
+4、编写JDBC程序
+	1）必须在应用程序中手动加载驱动程序
+	Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+	2）使用DriverManager类的getConnection(String url, String user, String password)来创建与数据库的连接
+	Connection conn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;DatabaseName=jdbc", "sa", "123456");
+	
+	URL: jdbc:sqlserver://localhost:1433;DatabaseName=jdbc
+	localhost:数据库服务器所在的计算机，指本机。也可以使用ip地址来指示数据库服务器安装在哪台计算机上。localhost对应的ip:127.0.0.1
+	1433:端口号，表示数据库服务器在计算机上使用的哪个网络端口，
+	DatabaseName：用来表示连接到数据库服务器上的哪个数据库
+	3）创建执行静态SQL语句的Statement对象
+	Statement stmt = conn.createStatement();
+	stmt.executeQuery("select * from t_user"); // 这个SQL语句会被发送到数据库服务器，并让数据库服务器执行该查询SQL
+	4）Statement执行的executeQuery方法将会返回由记录组成的结果集
+	ResultSet rs = stmt.executeQuery("select * from t_user"); // 存储了由SQL语句返回的所有的行的记录
+	5）从结果集中拿数据
+	while (rs.next()) {// 直接指向结果集中的下一行记录。初始在第一行记录的前面。一直到所有记录都读取完毕。如果还有下一行记录，则返回true
+		// 开始从指向的一行记录读取数据
+		rs.getString(int columnIndex); // 读取与数据库中varchar对应的字符串数据, columnIndex从1开始
+		rs.getString(String columnName); // columnName表示读取指定字段名的值
+		rs.getInt();
+		rs.getFloat();
+		rs.getLong();
+		rs.getShort();
+		rs.getFloat();
+		rs.getDouble();
+	}
+	6）使用完的ResultSet, Statement, Connection都需要关闭
+	
+5、Statement
+	1)查询executeQuery(String querySQL); 返回值 是ResultSet
+	2)插入execute(String insertSQL); 返回值 是boolean
+	3)删除execute(String deleteSQL); 返回值 是boolean
+	4)更新executeUpdate(String updateSQL); 返回值 是int，表示更新的行数
+	
+	conn.prepareStatement(String sql);
+	PreparedStatement
+	1)查询executeQuery();
+	2)插入execute();
+	3)删除execute();
+	4)更新executeUpdate();
+	
+	区别：
+	1）Statement:如果sql语句中需要拼接来自于应用程序中的参数，则必须使用字符串的拼接方式，拼接完后才是一个完整的SQL语句。
+	采用这种拼接的方式很有可能会被SQL注入（不法分子或者无聊的人，尝试在你的程序中的文本框中输入一些SQL语句，这些输入的SQL语句与程序中定义的SQL
+	进行拼接后，执行可能会造成意想不到的情况）。
+	2)PreparedStatement:不用对SQL语句进行拼接，而是使用?的方式来代替想要的参数
+	ps.setString(int paramIndex, String value); 给指定索引上的参数设置值，索引从1开始
+	
+	请使用PreparedStatement，解决Statement可能出现的SQL注入问题，性能高
+	
+6、常用的方法
+	PreparedStatement, Statement, ResultSet, Connection共有的方法：
+	isClosed(); 判断是否关闭
+	close(); 关闭相关对象
+	
+	Connection:
+	setAutoCommit(boolean autoCommit); 设置执行完sql语句后，是否自动提交到数据库
+	默认是自动提交，所以不需要调用connection对象的commit()方法；
+	如果设置为false，则执行完SQL语句后必须手动调用commit()方法
+	
+	rollback(); 在未提交前把数据库恢复到原始状态
+	
+7、事务处理
+	涉及到提交与回滚，则需要考虑数据库事务处理
+	一系列的事情，做完第一个，做第二个，再做第三个，每一个操作都 成功，才表示整件事情做完成了，如果其中有一个不成功，则整件事情
+	失败。如果所有事情都成功，则提交，一旦发现某个事情不成功，则应该回滚
+
+8、java.sql.CallableStatement接口，用来执行数据库存储过程的类	
+
+	CallableStatement cst = con.prepareCall("{ call getTestData( ?, ? ) }");
+	名称为getTestData是存储过程，是在数据库中编写的一个函数
+	
+	CallableStatement是用Connection方法创建的，例如：
+	Connection con;
+	……
+	CallableStatement cst = con.prepareCall(“{ call getTestData( ?, ? ) }”);
+	
+	常用的方法
+	setString( String parameterName, String x )
+	将指定参数设置为给定的JAVA String值。
+	registerOutParameter( int parameterIndex, int sqlType )
+	按顺序位置parameterIndex将OUT参数注册为JDBC类型sqlType。
+	getString( int parameterIndex )
+	以JAVA编程语言中String的形式检索指定的JDBC CHAR、VARCHAR或LONGVARCHAR参数的值（获得结果）。
+	
+9、DAO程序设计
+	什么是DAO？Data Access Object，数据访问对象
+	
+	实体Bean：跟数据表字段对应的一个JavaBean，一张表对应一个JavaBean，JavaBean里的属性
+	与表中的字段一致（应该提供跟表中字段相对应的属性），提供所有属性的getter和setter
+	
+	数据表中的一行记录对应一个实体Bean对象，多行记录则对应多个实体Bean对象组成的集合
+	
+	持久化：把存在于内存中的数据永久保存到存储介质中。对于 DAO程序设计来说，就是把数据永久存储
+	到数据库中
+	
+10、如何编写DAO
+	1）建立数据库及数据表
+	2）建立与数据表相对应的JavaBean，每一个属性与表中的字段对应，提供getter和setter方法，放在bean包中
+	3）建立BaseDAO，此DAO负责获取Connection对象，放在DAO包中
+	4）建立与数据表操作关联的DAO接口，在接口中规定好需要哪些操作数据库的方法
+	5）建立DAO接口的实现类，并且继承自BaseDAO，在此实现类中完成对数据库操作的所有方法
+	6）建立使用此DAO的类
+	
+	分层结构，DAO是其中一层（分成4个层次，每一个数据访问DAO层，第二个业务逻辑层Service，第三个控制器层Controller， 第四个视图层Views）
+	MVC设计模式（Model, Views, Controller）
+	
+	
+	

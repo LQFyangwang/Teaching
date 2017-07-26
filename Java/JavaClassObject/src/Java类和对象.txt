@@ -1,0 +1,78 @@
+1、面向对象的特征：
+	封装 ：
+	将对象的属性和方法放在一个类里，提供相应的方法供外界调用
+	A B
+	类A并不知道 类B有一些什么样的属性和方法 
+	（将其信息属性和方法具体实现隐藏起来，只提供调用方法的接口，既封装）
+
+	继承：
+	将一个已有类中的属性和方法保留，可再加上自己特有的属性和方法形成一个新类，既继承
+	
+	A B
+	B继承自A: B可以拥有A的属性和方法，并且B还可以拥有自己的属性和方法 
+	public class A {
+		String name;
+		String password;
+		public void login(){}
+	}
+	
+	B继承自A： extends
+	 
+	public class B extends A {
+		String height;
+		String weight;
+		
+		public void sleep();
+	}
+	B不仅有类A中声明的name和password两个属性和login()方法，
+	还拥有自己类中声明的height,weight属性和sleep()方法 
+
+	多态：
+	提供一个标准，在Java里称为接口，不同的类可以实现同一个接口，但是实现方式不一样
+	接口：interface
+	public interface Test {
+		public void sleep();
+	}
+	
+	public class Student implements Test {
+		public void sleep() {
+			//学生类自身的实现
+		}
+	}
+	
+	public class Teacher implements Test {
+		public void sleep() {
+			//教师类自身的实现
+		}
+	}
+	
+	类Student和类Teacher都去实现同一个sleep方法，但是实现的内容不一样
+	
+	指同名但有不同的具体实现的多个方法同时存在一个程序中。有两种是方法：重载和重写
+	
+2、类和对象
+	类（Class）是对一组具有相同属性、操作和关系的同类事物的描述，是抽象的、概念上的定义。
+
+	对象（Object）是实际存在的该类事物的每个个体，因而也称实例(instance)
+	
+	instanceof: 用来判断某个对象是否是某个类的实例
+	
+3、类的定义
+	类修饰符 class 类名称 extends 父类的名称 {
+		属性修饰符 属性类型 属性名称;
+		...
+		
+		修饰符 返回值类型 方法名称(形式参数列表) {
+			// 方法体
+		}
+	}
+	类修饰符：public, 默认的（不写类修饰符）, private, protected
+	
+	属性修饰符：public, 默认的（不写）, private, protected
+	
+	类最外层括号里的称为类体
+	
+	java.lang.ArrayIndexOutOfBoundsException;
+	java.lang.NullpointerException;
+	java.lang.ClassCasetException;
+	java.lang.NumberFromatException;

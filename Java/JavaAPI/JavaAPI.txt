@@ -1,0 +1,76 @@
+1、String类
+	参考StringTest.java
+	
+	String类是常量，不可更改
+	
+	String a = "abc"; // 创建了一个String的对象a
+	a = "bcd"; // 而是创建了一个新的String对象，名称也是a，原先的对象a不被使用了
+	
+	String a = "abc";
+	a = a + "abc"; // a = a + "abc" 后面的那个a是上面所定义的String对象a， "abc"实际上也创建了一个对象，做连接操作后生成一个新的String对象，名称也叫a
+	
+	String类的性能是最低的
+	
+2、StringBuilder, StringBuffer
+	也是字符串操作类，不能直接用字符串赋值，必须创建对象，可以在创建对象的时候初始化
+	不支持+运算来连接字符串，而使用append(String)来连接字符串
+	
+	StringBuilder的性能是最高的
+	
+	StringBuffer的性能在中间
+	
+	StringBuilder > StringBuffer > String
+	
+	StringBuilder是线程不安全的，多个线程操作同一个StringBuilder出现数据安全性问题
+	StringBuffer是线程安全的，多个线程操作同一个StringBuffer不会出现数据安全性问题
+	
+3、请说明StringBuilder和StringBuffer的区别
+	StringBuilder是线程不安全的，而StringBuffer是线程安全的，
+	如果在多线程环境下，则应用StringBuffer
+	如果是在非多线程环境下，则应用StringBuilder
+	
+	String多用来少量字符串操作
+	
+4、时间日期类Date
+	yy 年 16
+	y, yyy, yyyy 完整的年 2016
+	M 月	7
+	MM 月 07， 12
+	
+	d 日 9
+	dd 日 09
+	
+	E 星期
+	
+	H 时 2
+	HH 时 02
+	
+	m 分 1
+	mm 分 01
+	s 秒 1
+	ss 秒 01
+	
+	Date类用来表示与1900年1月1日 0:00的时间差的毫秒值
+	java.util.Date date = new java.util.Date();// 获取当前时间的对象
+	
+	使用java.text.SimpleDateFormat来进行日期的格式化
+	java.text.DateFormat df = new java.text.SimpleDateFormat("想要的格式");
+	
+5、日历类Calendar
+	java.util.Calendar
+	
+	获取Calendar类的实例
+	Calendar cal = Calendar.getInstance();
+	java.util.Date date = cal.getTime(); // 可以由SimpleDateFormat进行格式化
+	
+	通过get或set方法来获取或设置指定字段的值，字段是指年，月，日，时，分秒
+	Calendar.YEAR
+	Calendar.MONTH
+	Calendar.MINUTE
+	
+	此类是用来替换Date类的，并且是单例模式
+	
+	用java.text.SimpleDateFormat类的format对cal所对应的时间进行格式化cal.getTime();
+	
+		
+	

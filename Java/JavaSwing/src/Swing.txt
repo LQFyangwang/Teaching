@@ -1,0 +1,247 @@
+1、Swing窗口程序设计
+	1）Swing是AWT的扩展
+	2）Swing是由100%纯Java实现的轻量级组件，不依赖本地组件和操作系统支持
+		什么是轻量级？
+			轻量级是相对于重量级来说，其实现方式更简单，性能可能更好（大部分情况下性能都更好），使用复杂度更低，依赖度更低
+	3）Swing采用MVC的设计范式，即“模型-视图-控制器”
+		MVC表示Model(模型，服务), View（视图）, Controller（控制器）
+		分层结构，减少代码，增加可维护性，层次分明
+	4）Swing外观采用可插入的界面设计（Pluggable Look and Feel，PL&F）
+		可以方便地设置Swing各种组件的外观，Swing可通过UIManager来设置组件的外观界面，不依赖本地操作系统
+		
+2、java.awt.Compoenent组件
+	java.awt.Container
+		*javax.swing.JComponenet(所有Swing组件的基类)
+			javax.swing.JComboBox下拉菜单
+			javax.swing.AbstractButton(表示Button按钮的抽象类)
+				javax.swing.JButton按钮
+				javax.swing.JMenuItem菜单项
+					javax.swing.JMenu用于显示出菜单项的实现
+				javax.swing.JToggleButton具有两个状态的（two-state）按钮的实现
+					javax.swing.JCheckBox复选框(一旦使用ButtonGroup把JCheckBox归为一组，则类似于单选按钮的功能)
+					javax.swing.JRadioButton单选按钮
+			java.swing.JLabel标签
+			javax.swing.text.JTextComponent 文本组件的实现
+				javax.swing.JTextField单行文本框
+				javax.swing.JTextArea多行文本框
+				javax.swing.JTextPane可编辑各种内容的文本组件 text/plain text/html text/rtf(富文本格式)
+			java.swing.JList显示对象列表并且允许用户选择一个或多个项的组件
+			java.swing.JMenuBar菜单栏
+			java.swing.JPanel轻量级面板的实现 
+			java.swing.JScollBar滚动条
+			
+	窗体
+	java.awt.component
+		java.awt.Container
+			java.awt.window
+				java.awt.Frame
+					javax.swing.JFrame轻量级窗体的实现
+				java.awt.Dialog
+					javax.swing.JDialog轻量级对话框的实现
+					
+3、JComponent 类提供的功能
+	1）是所有标准或自定义Swing组件的基类。
+	2）通过L&F可以定义组件程序在运行过程中的表现形式。 
+	3）提供了对键盘事件的支持，即“热键”。
+	4）提供了对“tool tips”的支持，既“短描述”。
+	5）实现了Accessible接口，提高了对可存取性的支持。
+	6）提供了双缓冲区，改进频繁变化的组件的显示效果
+	
+	
+	顶层容器：JFrame , JApplet , JDialog , JWindow
+
+	中间容器：JPanel , JScrollPane , JSplitPane , JToolBar，JInternalFrame , JLayeredPane , JRootPane.
+
+	基本控件：实现人际交互的组件，如JCheckBox ,
+    	JButton, JList , JMenu , JSlider , JTextField等
+    	
+4、Swing使用的基本规范
+	1）Swing的基本组件要布局在内容面板中，而不能直接放在顶级容器中。
+	2） Swing的内容面板要添加到Swing的顶层容器中才能显示，通过setContentPane （container）等方法来实现
+		内容面板：
+			所有组件都需要添加在JFrame窗体的内容面板上，该内容面板如果没有重新设置，则使用默认的内容面板。且在JFrame中
+			直接调用add(Component c)的方法把组件添加在容器中，其实现是把组件添加在该容器的内容面板上(相当于以下的两行)
+			Containter panel = getContentPane(); // 获取当前窗体的内容面板
+			panel.add(new Button());
+			
+			如果要添加自定义的内容面板，则该自定义的内容面板继承自javax.swing.JPanel类
+			
+		根面板：包含有MenuBar和内容面板
+	3）每个GUI组件只能被容纳一次。
+	4）避免使用非Swing的重量级组件
+	
+5、dialog的使用（参考ComponentTest类的btn的事件处理）
+	javax.swing.JOptionPane类来创建指定类型的对话框 
+		1）消息对话框
+		2）确认对话框
+			showConfirmDialog会根据用户点击了哪个按钮而返回int值，是按钮返回0，否返回1， 取消返回2
+		3）输入对话框
+		
+6、文件选择器javax.swing.JFileChooser
+	JFileChooser c = new JFileChooser();
+				int result = c.showOpenDialog(ComponentTest.this);// showOpenDialog()表示打开一个选择文件的对话框，showSaveDialog()表示打开保存文件的对话框
+				if (result == JFileChooser.APPROVE_OPTION) {
+					File file = c.getSelectedFile(); // 获取到选择的文件
+					System.out.println(file.getPath() + ", " + file.getName());
+					System.out.println("成功打开文件");
+				} else if (result == JFileChooser.CANCEL_OPTION) {
+					System.out.println("取消文件选择");
+				}
+				
+			点击不同的按钮返回相对应的int值，打开成功返回JFileChooser.APPROVE_OPTION,取消返回JFileChooser.CANCLE_OPTION,如果出错则返回JFileChooser.ERROR_OPTION
+	
+7、组件的使用
+	1）JFrame的关闭
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE|WindowConstant.DISPOSE_ON_CLOSE|WindowConstants.DO_NOTHING_ON_CLOSE);
+		退出程序，释放窗体占用的屏幕资源但程序不退出，什么都不做
+		
+	2)使用javax.swing.UIManager.setLookAndFeel(String className)方法来设置组件的外观样式
+		className:
+		javax.swing.plaf.metal.MetalLookAndFeel Java默认的外观
+		
+8、JList的使用(下拉列表，支持多选使用ctrl+鼠标)
+	javax.swing.JList
+	
+	以下两种方式可以为其添加数据：
+	Object[] args = new Object[]{};	
+	new JList<Object>(args);
+	
+	javax.swing.DefaultListModel<String> listModel = new javax.swing.DefaultListModel<String>();
+	listModel.add(0, "item1");
+	new JList(listModel); // DefaultListModel实现了javax.swing.ListModel接口
+	
+	事件：
+		1）选择事件 list.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+				public void valueChanged(ListSelectionEvent e) {
+					// TODO
+				}
+			}
+		);
+		
+		2)ListModel的事件，model.addListDataListener(new javax.swing.event.ListDataListener() {
+				@Override
+				public void intervalRemoved(ListDataEvent e) { // 从ListModel中移除某一项时触发
+				}
+	
+				@Override
+				public void intervalAdded(ListDataEvent e) { // 向ListModel中添加数据时触发 
+				}
+	
+				@Override
+				public void contentsChanged(ListDataEvent e) { // 修改ListModel中的某一项时触发
+				}
+			}
+		);
+		
+		具体的操作及其他的方法参见JListTest.java
+		
+9、JTree的使用（树节点）
+	javax.swing.JTree
+	
+	1）new JTree(Object[] args) 直接就是展开的形式，不能收起
+	
+	2）	java.util.Hashtable table = new java.util.Hashtable();
+		// table.put("根的名称", 根名称下想要的节点的名称的数组)
+		table.put("根名称", new String[]{"节点1", "节点2"})
+		new JTree(Hashtable table)
+
+	3）使用javax.swing.tree.DefaultMutableTreeNode创建相应的树节点，不管是根节点还是子节点，都是该类的对象
+		详见JTreeTest.java
+		
+	事件：tree.addTreeSelectionListener(new javax.swing.event.TreeSelectionListener() {
+			
+			public void valueChanged(TreeSelectionEvent e) { // 选中某个节点时触发
+				// TODO
+			}
+			
+		});
+		
+10、JTable的使用
+
+	1)表格由一个表格头部（列头部），表格列和单元值组成。
+	2)表格单元值由实现javax.swing.table.TableCellRender接口的对象绘制,并由实现了javax.swing.CellEditor
+		(如果是JTable中的接口则是javax.swing.table.TableCellEditor)接口的对象进行编辑。
+	3)表格支持很多选取模式，包括行、列和单元选取。
+	4)表格单独在swing.table包中有接口和类。
+	5)只有放在滚动窗格中的表格才会显示表格头部
+	
+	javax.swing.JTable
+		1)JTable table = new JTable(int rows, int columns);
+			for (int i = 0, rows = table.getRowCount(); i < rows; i++) {
+			for (int j = 0, columns = table.getColumnCount(); j < columns; j++) {
+				table.setValueAt("row-" + (i + 1) + "-coloumn-" + (j + 1), i, j); // setValueAt(value, row, column) 行，列索引都是从0开始
+			}
+		}
+		
+		2)new JTable(Object[][] 二维数组存储的数据, String[] 列名称)
+		
+		3）DefaultTableModel tableModel = new DefaultTableModel(); // 默认的TableModel每个单元格都是可以编辑的，如果单元格被修改了，则会触发javax.swing.event.TableModelListener中的tableChanged事件
+			tableModel.addColumn("aaa", new String[]{"row-1-column-1", "row-2-column-1", "row-3-column-1"});
+			tableModel.addColumn("bbb", new String[]{"row-1-column-2", "row-2-column-2", "row-3-column-2"});
+			tableModel.addColumn("ccc", new String[]{"row-1-column-3", "row-2-column-3", "row-3-column-3"});
+			
+			new JTable(tabelModel);
+			
+		4)在第三种的基础上再添加一个TableColumnModel
+			DefaultTableColumnModel tableColumnModel = new DefaultTableColumnModel(); // 指定每一个列
+			tableColumnModel.addColumn(new TableColumn(0, 20));
+			tableColumnModel.addColumn(new TableColumn(1, 120));
+			
+			new JTable(tabelModel, tableColumnModel);
+			
+		5)自定义javax.swing.table.TableModel
+			public class MyTableModel implements TableModel {
+			 	// 具体需要实现的方法请参见MyTableModel.java类
+			}
+			
+	事件:
+		JTable的TableModel事件和TableColumnModel事件
+		1）tableModel.addTableModelListener(new TableModelListener() {
+			
+			@Override
+			public void tableChanged(TableModelEvent e) {
+				System.out.println("table changed..."); // 用来监听单元格中的数据是否被修改，修改的时候触发
+			}
+		});
+		
+		2）tableColumnModel.addColumnModelListener(new TableColumnModelListener() { // 用来监听列的宽度，大小，是否移动，是否移除，是 否添加列
+			@Override
+			public void columnSelectionChanged(ListSelectionEvent e) { // 选择监听
+				System.out.println("column  selection changed...");
+			}
+			@Override
+			public void columnRemoved(TableColumnModelEvent e) { // 移除列
+				System.out.println("column removed...");
+			}
+			@Override
+			public void columnMoved(TableColumnModelEvent e) { // 移动列
+				System.out.println("column moved...");
+			}
+			@Override
+			public void columnMarginChanged(ChangeEvent e) { // 列的边距修改
+				System.out.println("column  margin changed...");
+			}
+			@Override
+			public void columnAdded(TableColumnModelEvent e) { // 添加列
+				System.out.println("column  added...");
+			}
+		});
+	
+11、LookAndFeel
+	look and feel可以指定Swing窗体和组件的外观，包含以下风格：
+	1）metal风格（默认）
+		javax.swing.plaf.metal.MetalLookAndFeel
+	2）Windows风格
+		com.sun.java.swing.plaf.windows.WindowsLookAndFeel
+	3）Windows Classic风格
+		com.sun.java.swing.plaf.windows.WindowsClassicLookAndFeel
+	4）Motif风格
+		com.sun.java.swing.plaf.motif.MotifLookAndFeel
+	5）Mac风格
+		com.sun.java.swing.plaf.mac.MacLookAndFeel
+	6）GTK风格
+		com.sun.java.swing.plaf.gtk.GTKLookAndFeel
+	7）跨平台风格
+		String lookAndFeel = UIManager.getSystemLookAndFeelClassName(); // 获取当前系统支持的风格类型字符串
+	
+			

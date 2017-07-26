@@ -1,0 +1,70 @@
+1、网络
+	大部分的应用都基于TCP/IP或UDP协议的
+	TCP： transfer controll protocal 传输控制协议
+		可靠传输的，客户端与服务端需要建立可靠连接，此连接基于三次握手协议
+		可靠,传输大小无限制,但是需要时间来建立连接,差错控制开发大；主要用于文本、程序等可靠性高的数据传输
+	IP:internet protocal 网际协议
+	UDP: user datagrame protocal 用户数据报协议
+		不可靠传输
+		不可靠,传输大小限制在64K以下,不需要建立连接,差错控制开销小；
+		主要用于类似图像、声音、网络游戏、视频会议等等对可靠性要求没有那么高的业务进行传输
+		
+2、如何使用TCP/IP协议建立连接及收发数据
+	Socket套接字，java中的TCP/IP应用程序就是基于Socket的应用程序
+	
+	Socket套接字：ip + 端口号，通过ip地址找到网络上的计算机，通过端口号找到此计算机上的某个应用程序
+	HTTP协议的端口号默认为80
+	smtp协议（邮件发送协议）25
+	pop3协议（邮件接收协议）110
+	ftp协议（文件传输协议）21
+	qq:8000
+	
+	端口号的范围：0~65535， 0-1023是系统保留端口号，如果写自己的网络应用程序，则需要指定从1025-65535的端口号
+	
+	Socket: 127.0.0.1:8000
+	
+	服务端Socket:
+	java.net.ServerSocket
+	
+	客户端Socket:
+	java.net.Scoket
+	
+	1）建立服务端
+		ServerSocket ss = new ServerSocket(int port); // 8888
+		ss.accpet(); // 等待客户端的连接
+		
+	2）建立客户端
+		InetAddress address = InetAddress.getByName("localhost"); // 本机就是服务器 InetAddress.getByName("127.0.0.1");
+		Socket s = new Socket(address, 8888);
+		
+	3）如果是从服务器发送数据至客户端，则需要在服务器端的Socket连接获取输出流
+		OutputStream out = socket.getOuputStream();
+		
+	4）客户端使用输入流读取由服务端OutputStream发送的数据
+		InputStream in = socket.getInputStream();
+		
+	5）如果是从客户端发送数据到服务端，则需要在客户端的Socket获取输出流
+		OutputStream out = socket.getOutputStream();
+		
+	6）服务器端用输入流读取由客户端OutputStream发送的数据
+		InputStream in = socket.getInputStream()
+		
+3、URL和URLConeection
+	URL表示一个URL（统一资源定位符）类，比如http://www.baidu.com
+	URL url = new URL("http://www.baidu.com");
+	URLConnection conn = url.openConnection(); // 获取到http://www.baidu.com的连接
+	最后使用conn的方法去获取网页相关的信息
+	
+	*如果要对网页进行解析，可以使用JSOAP库文件
+	
+4、网络对对象的传输
+	如果一个对象需要在网络上传输，则该对象必须实现序列化接口java.io.Serializable，标识接口，没有任何方法
+	实现了该接口的类，表示可以被序列化和反序列化
+	
+	序列化：可以把一个对象转化成字节数组保存
+	反序列化：把一个对象的字节数组封装成对象
+	
+	如何在网络上进行传输？
+	ObjectInputStream和ObjectOutputStream
+		
+		

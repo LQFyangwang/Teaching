@@ -1,0 +1,88 @@
+1、什么是异常？
+	在程序运行过程中所发生的破坏了正常的指令流程的事件称为例外
+	
+2、目前接触到的异常
+	1）java.lang.NullPointerException 空指针异常，使用了一个为null的对象（该对象没有被初始化）
+		String a = null;
+		a.equals("aa");
+	2）java.lang.ArrayIndexOutOfBoundsException 数组越界异常
+		int[] a = new int[10]; // index: 0-9
+		a[10];
+	3）java.lang.ClassCastException 类型转化异常，比如Integer=>String， 父类=>子类
+	4）java.lang.NumberFormatException 数字格式化异常 
+	5）java.lang.ArithmeticException 算术运算异常，比如除零
+	
+	以上异常编译阶段不报错，运行阶段报错
+
+3、异常分为运行时异常和编译时异常
+	通常情况下，要非常注意运行时异常
+	1）RuntimeException, 运行时异常不需要开发者人为地处理，由JVM（java虚拟机）来处理这些异常，抛出了一个异常，
+	把异常信息显示在 标准输出
+	
+4、异常类关系
+	java.lang.Object->java.lang.Throwable->java.lang.Exception->java.lang.RuntimeException: java.lang.***Exception运行时异常类都是java.lang.RuntimeException的子类
+		NullPointerException
+		
+	java.lang.Throwable是所有异常类的父类，派生出Exception和Error两个类，前者表示异常，后者表示错误(编译时和系统错误)
+	
+5、自定义异常
+	1)写一个类MyException，继承自java.lang.Exception
+	2）增加构造方法
+		*MyException(){}
+		*MyException(String message) {}
+		MyException(String message, Throwable cause){}
+		MyException(Throwable cause){}
+		MyException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace)
+	
+6、异常的处理机制
+	1）抛出异常
+		抛出异常的声明：由方法使用throws关键字将可能的异常抛出： public void test() throws 异常类 {}
+		抛出异常的操作：
+		
+	2）捕获异常
+		a. 对运行时异常来说，抛出的异常由java虚拟机捕获，并且把错误信息输出到终端
+		b. 对非运行时异常来说，抛出的异常需要开发者在代码中指定捕获异常
+			1)如果调用的某个方法抛出了异常，该方法最终可以在main方法把该异常重新抛出给jvm.一层抛出到一层，最终由main抛出
+			2)使用try...catch...语句块来捕获异常
+				try {
+					// 抛出某个异常的方法
+				} catch(异常类 异常类的对象) {
+					// 可以使用异常类对象输出相关信息
+				} finally {
+					// 表示最后要执行的代码，并且这段代码一定会被执行到
+					// 如果说有异常产生，处理完异常后，还有一些收尾工作，那么就放到此finally语句块中
+					// 此finally语句块可以省略
+				}
+				
+				一个方法可以声明抛出多个异常，每个异常间用，隔开，捕捉异常可以用多个catch语句块，try和finally只出现一次
+	
+				try不一定要跟catch，而可以直接使用finally语句块，但此时需要抛出异常
+	3）处理异常
+		a. 对于运行时异常，不需要处理
+		b. 对于非运行时异常，可以简单地抛出该异常，或者使用try... catch... 语句块捕获异常，并在catch语句内增加处理的代码
+	4）终止或重新处理代码
+	
+7、异常类的常用方法
+	1）getMessage(), 表示产生该异常的信息
+	2）printStackTrace(), 表示打印异常堆栈信息(到标准输出)，打印出异常从哪个类的对象的方法抛出的，并且还会打印出调用该方法的其他方法的信息
+		如：堆栈的最前面是最原始的产生异常的那个方法，包括方法名，行号
+		com.gs.MathException: 两个加数都必须是正整数
+		at com.gs.ThrowException.add(ThrowException.java:25)
+		at com.gs.ThrowExceptionTest.test2(ThrowExceptionTest.java:23)
+		at com.gs.ThrowExceptionTest.main(ThrowExceptionTest.java:36)
+	3）getStackTrace()，获取堆栈信息
+	
+8、垃圾及垃圾回收机制
+	垃圾就是占用了内存空间却不再被使用到的对象
+	JVM虚拟机会在合适的时间主动地回收该对象所占用的内存空间
+	
+	使用java.lang.Object.finalize()方法回收内存空间
+	finalize()方法是在对象被当成垃圾从内存中释放之前调用
+	finalize()方法不用在程序中启动，JVM会在需要的时候自己启动该方法进行垃圾处理
+	有可能直到程序终止，该方法都不会执行
+	
+	如果想要强制JVM虚拟机回收内存空间，则可调用 System.gc()
+	
+	
+	
+	

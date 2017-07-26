@@ -1,0 +1,79 @@
+1、Java的集成开发环境（IDE）
+	1）创建项目，构建项目（编译与运行）
+	2) 代码提示与自动补全
+	3) 语法高亮
+	4) 错误提示
+	5) 调试功能
+	
+	eclipse: 开源软件，免费, 完全用Java开发的
+		www.eclipse.org
+		
+		Eclipse for Java Developer: Java应用开发者 只能做一些基于J2SE的应用
+		!Eclipse for JavaEE Developer: Java企业级应用开发者 包含了上面这个版本的功能，还包含有企业级开发所需的功能
+		Eclipse for PHP Developer
+		Eclipse for C/C++ Developer
+		......
+		
+	MyEclipse: 基于eclipse开发的企业开发IDE，提供了企业级开发所需的各种框架
+	IntellijIdea:全球最智能的Java IDE
+	JBuilder
+	NetBeans: Sun公司开发的，适用于PHP, C/C++，Java开发
+	
+2、Workspace
+	工作间
+	对于eclipse来说，工作间就是用来存储所有Java项目的一个目录
+	
+	eclipse透视图：
+	整个eclipse工作区域所能看到的窗口，Java透视图，Java EE透视图
+	不同的透视图显示不同的窗口（View : 视图）
+	
+	Package Explorer:包浏览器, 项目浏览器
+	Console:控制台视图
+	problems：问题视图
+	outline:框架视图
+	
+	如何显示相应的视图：
+	Window => Show View = > Package Explorer, Console, Javadoc，Outline
+	
+3、如何在eclipse中创建Java项目
+	方法一、在package explorer中点击右键=>New=>Java Project
+	方法二、在package explorer中点击右键=>New=>Project=>Wizard(创建项目向导)=>Java=>Java Project
+	方法三、File=>New=>Java Project
+	方法四、Alt+Shift+N=>Java Project(多使用快捷键)
+	
+	弹出New Java Project窗口：
+	1）指定项目名称：Project Name
+	2) Next后可看到Source的目录src
+	3) Finish
+	
+	src目录用来存储Java源代码
+	
+	如何创建类(Class)：
+	在src目录下点击右键=>New=>Class=>New Java Class=>Class Name=>Finish
+	Class Name: Test
+	public class Test {
+	
+	}
+	
+	在此类的窗口上点击右键=>Run As=> Java Application:以Java应用程序的方式编译并运行包含有main方法的类
+	或在工具栏点击绿色的三角形
+	
+	创建Class时，可以勾选上public static void main(String[] args)方法
+	
+4、Eclipse Perferences配置
+	Window=>Perferences 对整个eclipse进行相关配置的地方
+	
+5、创建项目时看到的JRE区域
+	指定的eclipse所使用的jdk（jre）Java Runtime Environment，java运行时环境
+	
+	在项目中所看到的JRE System Library[JavaSE-1.8]：说明了此项目基于jdk1.8开发，并且使用jdk1.8运行环境
+	项目上点击右键=>Build Path=>Configure Build Path=>Libraries
+	Build Path(构建路径):告诉eclipse从哪里去找项目所使用的jar库
+	
+	如果某个项目上出现红色小叉叉或者红色叹就说明缺少了相关的库文件，此时需要告诉eclipse此项目从哪里去找jar库文件
+	如何添加相应的库文件：Build Path=> Configure Build Path => Libraries => Add Library
+	
+6、项目导入
+	File=>Import=>General=>Existing Projects into Workspace=>Select Root Directory(选择要导入的项目的根目录)
+	该窗口的Options区域勾选上Copy Projects into workspace，把项目copy一份到工作空间目录
+	=>Finish

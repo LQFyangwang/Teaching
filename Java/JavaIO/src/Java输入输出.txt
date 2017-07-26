@@ -1,0 +1,59 @@
+1、输入与输出 
+	IO: Input Output
+	
+	基本的规律：输入与输出都是以内存为中心，输入是指输入到内存中，输出是指从内存中输出
+	
+	输入与输出都是指对数据流进行操作，二进制数据，字节数据，字符数据，数据流分为输入流和输出流
+	
+	使用IO来读取文件，读写图片，在网络中传输数据
+	读取文件：Input就是指从磁盘或其他的存储介质中读入到计算机内存
+			Output就是从计算机内存中保存到磁盘或其他存储介质中
+			
+2、文件的读取
+	文件包括有后缀名的文件（Windows系统文件都带有后缀名，Linux/Unix系统文件不带后缀名），也包括目录
+	用java.io.File来表示文件和目录
+	详细请参考FileTest.java类
+	
+	java.io.RandomAccessFile类，随机存取文件类，不是按顺序来读取。参考RandomAccessFileTest.java类
+			
+3、Java中InputStream对应输入流
+	java.io.InputStream抽象类
+		java.io.FileInputStream用于处理文件输入
+		java.io.ObjectInputStream用于处理对象输入
+		java.io.ByteArrayInputStream用来处理字节数组输入
+		java.io.StringBufferInputStream用来处理字符串缓冲输入(已经被弃用)
+
+4、Java中OutputStream对应输出流
+	java.io.OutputStream抽象类
+		java.io.FileOutputStream
+		java.io.ObjectOutputStream
+		java.io.ByteArrayOutputStream
+		
+		参考com.gs.input包和com.gs.output包
+		
+5、java.io.Reader抽象类，用于读取，类似于InputStream的作用
+	java.io.BufferedReader缓冲输入， 一整行读入，效率更高
+	java.io.InputStreamReader(不单独拿来使用，会跟BufferedReader和InputStream结合起来用)， 一个一个字符读入，效率更低
+	java.io.StringReader
+
+6、java.io.Writer抽象类，用于写出，类似于OutputStream的作用
+	java.io.BufferedWriter缓冲输出
+	java.io.OutputStreamWriter
+	java.io.StringWriter
+	java.io.PrintWriter
+	
+
+
+
+补充：
+ java.io.Serializable接口，该接口表示序列化接口，内部没有任何方法，是一个空接口，Java中空接口表示标识接口，用来告诉实现
+ 该标识接口的类需要具有什么样的标识
+ 
+ public class A implements java.io.Serializable {
+ 	// 需要提供序列化版本号
+ }
+ 
+则类A中就必须提供序列化版本号，否则警告。可标识该类可以被序列化
+			
+			
+	

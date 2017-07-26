@@ -1,0 +1,49 @@
+1、如何获取一个类中的所有信息
+	信息包括：类的名称，类的属性，类的方法，父类，接口，子类
+	
+	JDK提供了一个java.lang.Class类来表示任意一个类的基本信息
+	
+	以前碰到的：
+		1）Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver"); // 通过类的全限定名把类加载到JVM虚拟机中
+		2）A.getClass().getResourceAsStream("/images/a.jpg"); // A.getClass();返回一个与对象A类对应的Class基本信息类
+		
+		Class类还可以获取存在于项目中的一些资源，用来实例化某个类的对象，用来执行私有方法，用来修改私有属性的值（哪怕没有提供此私有属性的setter）
+		
+2、什么是反射？
+	反射主要是指程序可以访问、检测和修改它本身状态或行为的一种能力
+	
+	*不必要记   
+	它使我们能够创建灵活的代码，这些代码可以在运行时装配，无需在组件之间进行源代码链接。
+	反射允许我们在编写与执行程序时，使我们的程序代码能够接入或装载到JVM中类的内部，而不是源代码中选定的类协作的代码。
+	这使反射成为构建灵活的应用程序的主要工具。（以后所学的JavaEE开发框架，几乎都是基于Java反射写的框架）
+	但是要注意：使用得当，否则反射的成本会很高
+	
+3、反射的功能
+	1）在运行时判断任意一个对象所属的类 
+	
+4、反射相关的类
+	java.lang.Class
+	java.lang.reflect
+		java.lang.reflect.Field与属性对应的类 
+		java.lang.reflect.Method与方法对应的类
+		java.lang.reflect.Constructor与构造方法对应的类（用法与Method类的用法一致）
+		java.lang.reflect.Array Array 类提供了动态创建和访问 Java 数组的方法	
+		
+5、如何获取Class类（以下方法都可以返回一个java.lang.Class类的对象）
+	obj.getClass()
+	A.class
+	Integer.TYPE(只适用于基本数据类型的包装类)
+	Class.forName(String className)
+	
+6、动态使用
+	1）Class clazz = Class.forName()
+		clazz.newInstance()
+	2）先获取构造方法，再调用构造 方法的newInstance()
+	
+	3）动态调用指定的方法 
+	method.invoke(Object obj, String... params);// String... 表示后面的参数是可变个数的参数，调用的时候，每个参数用逗号隔开
+	
+	4）动态改变成员属性的值
+	field.set(Object obj, Object value)
+	
+	

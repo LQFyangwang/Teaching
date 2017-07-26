@@ -1,0 +1,60 @@
+1、AWT绘图
+	AWT的绘图机制主要涉及三个方法：java.awt.Component
+	1）paint(Graphics g)：进行绘图的具体操作，可以通过重写此方法来实现图形绘制
+	2）update(Graphics g)：用于更新图形，先清除背景、前景，然后再调用paint(Graphics g)方法。
+	3）repaint(Graphics g)：用于重绘图形，在组件外形发生变化，即大小改变或位置移动时，
+		repaint(Graphics g)方法立即被系统自动调用，而实际上repaint(Graphics g)方法是自动调用update(Graphics g)方法
+		
+2、java.awt.Graphics画笔
+	使用Graphics对象来绘制相应的图形
+	
+	setColor(Color c)设置画笔颜色
+	
+	drawLine(int x1, int y1, int x2, int y2);直线
+	drawRect(int x, int y, int width, int height); 画方形
+	draw3DRect(int x, int y, int width, int height, boolean raised);
+	
+	drawArc(int x, int y, int width, int height, int startAngle, int endAngle);
+		绘制一个覆盖指定矩形的圆弧或椭圆弧边框。 
+		得到的弧从 startAngle 开始跨越 arcAngle 度，并使用当前颜色。对角度的解释如下：0 度角位于 3 点钟位置。正值指示逆时针旋转，负值指示顺时针旋转。 
+		
+		弧的中心是矩形的中心，此矩形的原点为 (x, y)，大小由 width 和 height 参数指定。 
+		
+		得到的弧覆盖 width + 1 像素宽乘以 height + 1 像素高的区域。 
+		
+		角度是相对于外接矩形的非正方形区域指定的，45 度角始终落在从椭圆中心到外接矩形右上角的连线上。因此，如果外接矩形在一个轴上远远长于另一个轴，则弧段的起点和结束点的角度将沿边框长轴发生更大的偏斜。 
+	、
+	
+	g.drawString("我是字符串", 100, 500); // 绘制字符串， String想要绘制的字符串，   字符串开始的左上角的x,y坐标
+	g.drawChars(new char[]{'a', 'b', 'c', 'd'},  1, 2, 100, 550); // 输出指定开始位置的指定长度字符
+	
+	g.drawImage(Image, int x, int y, null);
+		try {
+			BufferedImage img = ImageIO.read(this.getClass().getResource("/images/1.jpg")); // 如何获取图片
+			g.drawImage(img, 100, 600, null);
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	g.drawPolygon(new int[]{310, 340, 420, 450, 500, 510}, 
+						new int[]{200, 220, 310, 330, 400, 420}, 6); 这些点按统一的顺序进行连接
+						
+	g.drawOval(int x, int y, int width, int height); 在指定的方形内画圆 
+	
+	g.drawRoundRect(int x, int y, int width, int height, int widthAngle, int heightAngle) 圆角矩形
+	
+	除了画线，以上方法都有对应的填充方法，把draw换成fill
+	
+	java支持jpg, png, gif
+	
+3、字体类的使用
+	Graphics对象可以设置字体，输出指定字体的文本到图像上
+	Font font = new Font("字体名称", Font.BOLD | Font.ITALIC, 20);
+	g.setFont(font);
+	
+	java.awt.TextField, java.awt.TextArea
+	setFont()设置字体，setForeground()设置前景色
+
+		
