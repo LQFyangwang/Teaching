@@ -1,0 +1,421 @@
+1、架构（框架）Framework
+	就是某种应用的半成品，就是一组组件，供你选用完成你自己的系统。
+	
+	简单说就是使用别人搭好的舞台，你来做表演。
+	
+	框架一般是成熟的，不断升级的软件。
+	
+	通常将被验证为有效的、相同类型问题的解决方案进行抽象，即可提取形成一个应用程序框架 
+
+
+2、struts1和struts2
+	struts1是apache组织下的项目，ActionSupport, ActionForm, 与struts2完全不一样的实现，依赖性比较大
+	Struts2是基于xwork的一个项目，xwork是struts2的核心，包括Result(JSON，StreamResult)，拦截器（类似于Filter），Action(获取页面数据，页面的跳转)
+	
+	Struts是一个Web框架,他以一种更加优雅的方式来实现控制器,并提供如国际化,类型转换,数据验证,ajax等一系列的功能
+	
+3、Struts2的整体结构及运行原理
+	Action:本质上类似于原始的Servlet，完成数据的交互，页面的跳转
+	ActionContext：Action 上下文，包含有Action的一些基本信息，还包含有返回到页面的一些数据，也可以能过此类来获取ServletAPI里的一些常用类
+	
+	FitlerDispatcher:Struts2提供的核心过滤器，用于启动整个Struts2框架。
+		StrutsPrepareAndExecuteFilter：分成两个部分，Prepare:负责把页面的数据转换成Action中的属性（完成request.getParameter的功能）
+												execute:完成执行Action中的某个方法的功能
+		必须在web.xml文件中声明使用此过滤器，只有声明了，才能正常使用Struts提供的功能
+			
+4、如何写Action并且运行起来？
+	1）导入Struts2的jar文件：
+		commons-io(输入输出)
+		commons-fileupload(文件上传)
+		commons-logging(日志记录)
+		commons-lang(commons核心库)
+		
+		freemarker(模板引擎)
+		javaassist(Java反射的包装)
+		ognl(对象图导航语言，jar包)
+		xwork(Struts2基于xwork开发的框架)
+		struts2-core(Struts2的核心库)
+	2)在web.xml文件中配置Struts2的核心过滤器
+		<filter>
+		  	<filter-name>Struts2</filter-name>
+		  	<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+		  </filter>
+		  
+		  <filter-mapping>
+		  	<filter-name>Struts2</filter-name>
+		  	<url-pattern>/*</url-pattern>
+		  </filter-mapping>
+	3）编写Action类文件，不需要继承自任何类，如果继承自ActionSupport类，
+		则支持读取国际化信息，处理验证错误，处理类型转换错误
+	
+		public String execute() {
+			return "结果字符串"; // ActionMapper配置文件需要用到此结果字符串
+		}
+	4）在src目录下创建struts.xml（目录不能改，文件名称不要改）
+		文档声明和dtd文档的引用
+		<?xml version="1.0" encoding="UTF-8"?>
+
+		<!DOCTYPE struts PUBLIC
+		    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+		    "http://struts.apache.org/dtds/struts-2.3.dtd">
+		    
+	5）在创建的struts.xml文件中，添加对Action类的配置
+		a、增加一个package，name,extends(继承哪个struts已经定义好的package,struts-default)
+			namespace(用来指定访问action的url的限定部分)
+		b、在package里面增加action配置，name(访问action的url)， class(对应哪个Action类的全限定名)
+		c、在action里面增加result结果的配置，name（Action里的方法返回字符串），如果execute方法方法success，
+		则如果result的name设置成success，则使用此result标签的内容结果（默认情况是转发到指定的页面）
+		
+		result name="" type="dispatcher|redirect|redirectAction|stream"
+		
+5、Action的后缀
+	默认为.action，但是一般可以省略掉
+	
+6、struts的一些默认文件
+	struts-default.xml  
+		result
+			dispatcher转发
+			redirect重定向到JSP页面
+			redirectAction重定向到某个action，不需要/
+			stream返回流数据（文件下载）
+		拦截器
+			1）conversionError， 从JSP的字符串参数转换到后台action所需要的各种类型的数据，如果出错了，则由此拦截器进行处理		
+			2）exception，异常处理的拦截器
+			3）fileUpload，文件上传拦截器
+			4）i18n，国际化拦截器
+			5）modelDriven，Action中JavaBean的处理
+			6）params，获取请求参数的拦截器
+			7）actionMappingParams，获取Action配置中的参数
+			8）validation，Struts提供数据验证拦截器
+		拦截器栈
+			是对已经定义好的拦截器的有序集合
+			
+			defaultStack是开发者自定义的action所使用的拦截器栈
+			
+			<default-interceptor-ref name="defaultStack"/>  配置整个Struts使用的默认拦截器栈
+			
+	default.properties(org.apache.struts)，定义了struts所使用的一些默认的常量值
+		如修改action的后缀名<constant name="struts.action.extension" value="action,,do" />
+	
+7、属性的自动封装
+	jsp页面的请求参数自动封装到action所指定的属性
+		1）jsp页面中name值对应action中的某个属性，并且提供属性的getter(如果action中的属性需要显示到jsp页面，则提供getter)和setter（如果JSP页面的参数要到action中，则提供setter）
+		2）jsp页面中name值对应action中的某个JavaBean属性，并且对JavaBean属性提供setter和getter方法
+			private User user;
+			
+			user.id
+			user.name
+			
+8、Struts只识别struts.xml文件
+	其他的struts配置文件则必须在struts.xml文件中使用include包含进来 <include file=""></include>
+		
+		
+9、方法的使用
+	1）修改默认的execute方法
+		<action name="" class="" method="">  用method属性重新指定action需要跑哪个方法，而不是跑默认的execute方法
+		
+		</action>
+	2)动态方法调用 Dynamic Method Invoke
+		a. 在struts.xml文件中使用
+		<constant name="struts.enable.DynamicMethodInvocation" value="true" />开启动态方法调用
+		b. 写一个action类，此类中可以有多个方法
+		c. 配置action类，每一个方法 返回不同的字符串
+		d. 在调用的时候contextpath/namespace/action_name!method
+	3)通配符方式
+		a. 写一个action类，此类中可以有多个方法（有规律）
+		b. 配置Action类， 
+			<action name="*-*-user" class="" method="{1}{2}User">
+		c. 在调用的时候contextpath/namespace/a-b-user   =====> abUser()
+		
+10、struts类型转换
+	Struts默认提供了从String转到int, float, double, long, Date转换器
+		提供了org.apache.struts2.util.StrutsTypeConverter抽象类用于类型转换。如果想要自定义一个类型转换器，则必须继承自StrutsTypeConverter类
+		实现以下两个抽象方法： 
+		public abstract Object convertFromString(Map context, String[] values, Class toClass); // JSP页面中的字符串转换成Java所需要的类型的数据
+		public abstract String convertToString(Map context, Object o); // Java中的数据类型转换成String数据类型
+		
+		自定义完类型转换器后需要对类型转换器进行注册 
+		局部注册，哪个类的哪个属性需要用到自定义的转换器
+		在需要使用此转换器的类的包中，建立一个properties文件，文件名称以类的简单名称开头-conversion.properties
+		在properties文件中，指定Action中的哪个属性用哪个转换器
+		array=com.gs.converter.MyConverter
+		
+		详情见com.gs.converter.MyConverter.java，com.gs.action.MyConverterAction.java, com.gs.action.MyConverterAction-conversion.properties
+		
+	如果类型转换出现错误，则此错误会被<interceptor name="conversionError" class="org.apache.struts2.interceptor.StrutsConversionErrorInterceptor"/>
+	拦截器处理
+	
+		在Action所在的包中创建一个类型转换出错的提示信息文件，文件名以Action简单类名开头,MyConverterAction.properties
+		在此文件中指定某个属性如果转换出错，则提示指定的内容
+		invalid.fieldvalue.array=错误提示信息
+		
+		在Action的配置文件中，必须提供一个name为input的result，这个result通常转发到表单出错的页面
+		
+		在需要显示类型转换出错的页面中，引入struts-tags标签库，
+		使用<s:fielderror fieldName="array"/>
+		
+	备注：自带的类型转换要是出错了，一样的处理方式
+		
+11、Struts数据验证，使用<interceptor name="validation" class="org.apache.struts2.interceptor.validation.AnnotationValidationInterceptor"/>
+         拦截器完成数据验证及错误提示
+      写一个继承自ActionSupport的类
+  在包含有此类的包中提供一个以简单类名开关的xml文件，Action-validation.xml(具体参考ValidationAction-validation.xml)
+  在此xml文件中可以定义哪个属性需要进行数据验证
+  
+  如果出现错误，则会通过<result name="input">/form.jsp<result>
+  
+  form.jsp页面中使用<s:fielderror fieldName="field" />。如果不指定显示具体的某个属性的错误信息，则直接显示所有的错误<s:fielderror />
+  
+12、拦截器
+	OOP，Object Oriented Programming面向对象编程
+	AOP的一种实现， Aspect Oriented Programming，面向切面编程
+	
+	Struts默认使用defaultStack作为拦截器栈，此配置在struts-default.xml文件 中的<default-interceptor-ref name="defaultStack" />
+	
+	
+	1）自定义拦截器
+		extends AbstractInterceptor或implements Interceptor
+		实现三个方法 ，public void init(); public void destroy(); public String intercept(ActionInvocation invocation) throws Exception;
+		ActionInvocation的invoke方法传递到下一个拦截器或者传递到action的方法
+	2）在Action的配置文件 中，声明此拦截器
+		必须在package里面，并且必须在action的配置之前
+		<interceptors>
+			<interceptor name="" class="" />
+			<interceptor name="" class="" />
+		</interceptors>
+		
+	3)在某个action中指定此Action使用哪个拦截器
+		<action>
+			<result><result>
+			<interceptor-ref name="" />
+			<interceptor-ref name="" />
+			// 也可以引用struts提供的拦截器，拦截器栈
+		</action>
+		
+	如果所有的action都需要有一个默认的拦截器栈，并且此拦截器包含有自定义的拦截器，
+	则
+	2）<interceptors>
+		<interceptor name="" class="" />
+		<interceptor name="" class="" />
+		<interceptor-stack name=""> // 自定义拦截器栈
+			<interceptor-ref name="" />
+			<interceptor-ref name="" />
+			// 也可以引用struts提供的拦截器，拦截器栈
+		</interceptor-stack>
+	</interceptors>
+	
+	3)在action配置的前面，且在<interceptors>配置的后面添加
+		<default-interceptor-ref name="自定义的拦截器栈的名称"></default-interceptor-ref>
+		
+		
+	如果只想拦截Action中的指定的方法，则需要继承自MethodFilterInterceptor抽象类
+	实现doInterceptor(ActionInvocation) throws Exception;
+	
+	
+	<action name="" class="" method="">
+		<result name=""></result>
+		<interceptor-ref name="">
+			<param name="includeMethods">addUser,deleteUser</param>// 配置需要拦截的方法 
+			<param name="excludeMethods>queryUser</param> // 配置不需要拦截的方法
+		</interceptor-ref>
+	</action>
+	
+13、struts解决重复提交问题
+	1）在validation.jsp的form表单中使用<s:token name="token"></s:token>
+	2)在提交到的Action的配置中添加一个result
+		<result name="invalid.token">/validation.jsp</result> // 如果发现重复提交，则直接转发到validation.jsp页面
+		<interceptor-ref name="token" />
+		<interceptor-ref name="defaultStack" />	
+	
+14、OGNL
+	Object Graphics Navigation Language,对象图导航语言
+	#attr.property
+	#request.property，在Action中的属性默认放在request中
+	#session.property
+	#application.property
+	
+	与<s:property value="" />结合使用
+	<s:property value="#parameters.id"/> 获取请求参数的值（也有相对应的EL表达式）
+	
+	以上的任何一种情况都可以直接用EL表达式
+	
+15、Struts标签库
+	<s:fielderror fieldName="" />显示指定属性的错误信息（类型转换，数据验证）
+	**********
+	<s:fielderror />所有属性的错误信息一次性显示出来
+	******
+	<s:token name="token"></s:token>
+	
+	<s:property value="ognl表达式" />
+	
+	*********Map结构的迭代
+	<s:iterator value="#{'a':'a'}" var="v">
+		<s:property value="#v.key" /> -- ${v.key}    ${requestScope.v.key }
+		<s:property value="#v.value" /> -- ${v.value}     ${requestScope.v.value }
+	</s:iterator>
+	
+	数组或List的迭代
+	<s:iterator value="{'a','b'}" var="v" begin="0" end="5" status="status">
+		<s:property value="#v" /> -- ${v}    ${requestScope.v }
+	</s:iterator>
+	
+	如果数据是从Action来的
+	
+		Map结构的迭代v
+		<s:iterator value="#request.property" var="v">  -- <s:iterator value="${requestScope.property }"
+			<s:property value="#v.key" /> -- ${v.key}    ${requestScope.v.key }
+			<s:property value="#v.value" /> -- ${v.value}     ${requestScope.v.value }
+		</s:iterator>
+		
+		数组或List的迭代
+		<s:iterator value="#request.property" var="v" begin="0" end="5" status="status">
+			<s:property value="#v" /> -- ${v}    ${requestScope.v }
+		</s:iterator>
+		
+	<s:push value="">
+		<s:property value="[0].top" />
+	</s:push>
+	
+
+	***********************
+	<s:if test="#request.ok">
+		ok is true
+	</s:if>
+	<s:elseif test="">
+	
+	</s:elseif>
+	<s:else>
+		ok is false
+	</s:else>
+	
+	<s:include value="include.jsp"></s:include>  动态包含文件
+	
+	
+	<s:append>表示给指定的一个Iterator附加数组，列表，Map
+	<s:append var="a">
+		<s:param value="{'中国', '美国', '日本'}"></s:param>
+		<s:param value="{'中国1', '美国1', '日本1'}"></s:param>
+	</s:append>
+	<s:iterator value="#request.a" var="aa">
+		${aa }
+	</s:iterator>
+	
+	<s:merge>表示对多个列表进行合并，不同列表的相同索引位置合并到一起
+	<s:merge var="b">
+		<s:param value="{'中国', '美国', '日本'}"></s:param>
+		<s:param value="{'中国1', '美国1', '日本1'}"></s:param>
+	</s:merge>
+	<s:iterator value="#request.b" var="bb">
+		${bb }
+	</s:iterator>
+	
+	
+	实例化想要对象
+	<s:bean name="com.gs.bean.User" var="u">
+		<s:property value="#request.u.setName('aaa')" />
+		<s:property value="#request.u.name" />
+		<s:param name="pwd" value="123456" /> <!--对象的属性赋值 -->
+	</s:bean>
+	<s:property value="#request.u.pwd" />
+	
+	
+	直接指定值存放在某个作用范围内
+	<s:set name="nameAA" value="'test'" scope="request|session|application">
+	</s:set>
+	<s:property value="#attr.nameAA" />
+	
+	字符串的分割
+	<s:generator separator="," val="'a,b,c,d'" var="strArray"></s:generator>
+	<s:iterator value="#strArray" var="str">
+		${str }
+	</s:iterator>
+	
+	<s:subset source="{'a', 'b', 'c', 'd'}" start="1" count="2" var="newArray">
+		<s:iterator var="a">    不需要额外指定value，而是默认使用subset生成的var作为value
+			${a }
+		</s:iterator>
+	</s:subset>
+	
+	<s:sort></sort>
+	
+	
+	表单标签：
+	1、form标签
+	<s:form action="" method="" theme="">
+		struts默认提供的主题叫做xhtml主题，默认添加了table
+		另外的主题：
+		simple
+	以上的主题与Struts的freemarker文件相关，struts-core包下的template.xhtml, template.simple
+		
+	能不能自定义自己的样式？
+	在使用默认主题的时候，table改不动，只能给相应的其他标签设置样式。cssClass来增加样式
+	如果想完全自定义，则需要使用simple主题，cssClass来增加样式
+	
+	表单数据的自动回显：
+	1）form的name值与action的属性保持一致
+	2）action内的属性需要被赋值
+	3）action跳转回相对应的form表单
+	
+	<s:form action="此处不要使用<%=path >" />
+	
+	
+16、Action上下文
+	ValueStack值栈
+	用来存储Action一些相关的信息，如属性，fieldErrors,action errors action message, lcoal
+	[0].users.    [0]表示栈顶的内容，通常都是当前的action对象
+	
+	Map栈，使用OGNL或EL表达式来获取数据
+	#request. ${requestScope.}
+	#session. ${sessionScope.}
+	#application. ${applicationScope.}
+	#attr.
+	
+17、Struts文件上传和下载
+	借助commons-fileUpload.jar
+	
+	重要的配置：（org.apache.struts2   sdefault.properties）
+		struts.multipart.parser=jakarta // 文件解析器
+		struts.multipart.saveDir=     // 上传的文件保存到哪个目录下
+		struts.multipart.maxSize=2097152    // 支持的最大大小，以字节为单位，默认为2MB大小
+		
+	也可以在action中单独配置文件上传的拦截器
+	<action name="up" class="com.gs.upload.UploadAction">
+			<result name="success">/upload.jsp</result>
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">5485760</param>
+				<param name="allowedExtensions">.exe,.html</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			
+		</action>
+		
+	详情请参考com.gs.upload.UploadAction，下载请参考com.gs.upload.DownloadAction
+	
+18、异常处理
+	struts提供了完善的异常处理机制 
+		1)全局异常处理
+			<global-results>
+			<result name="ex">/error/ex.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="ex" exception="java.lang.Exception"></exception-mapping>
+		</global-exception-mappings>
+		2）单个action进行处理
+		<action>
+			<result></result>
+			<exception-mapping result="" exception=""></exception-mapping>
+		</action>
+	
+19、struts自定义包
+	自定义包写在主配置文件里，继承自struts-default包，以后任何一个其他的包都继承自自定义的包
+	
+20、Struts返回JSON
+	1)导入struts2-json-plugin.jar
+	2)写一个action，写法与常规写法完全一样
+	3)配置文件，package继承自json-default(才提供了json的拦截器)
+	4)配置文件中注意，result的type一定要设置为json
+	
+21、国际化与错误信息
+	在Action的同一个包里，以Action的简单类名为前缀，加上_zh_CN.properties, _en_US.properties
+		
+		

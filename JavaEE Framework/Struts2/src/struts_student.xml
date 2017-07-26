@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+	<package name="student-struts" extends="my-struts" namespace="/stu">
+	
+		<action name="*" class="com.gs.form.StudentAction" method="{1}">
+			<result name="all">/student/show-students.jsp</result>
+			<result name="show">/student/show-student.jsp</result>
+			<result name="edit">/student/edit-student.jsp</result>
+			<result name="save" type="redirectAction">all</result>
+			<result name="update" type="redirectAction">all</result>
+			<result name="show_add">/student/add-student.jsp</result>
+		</action>
+	
+	</package>
+</struts>

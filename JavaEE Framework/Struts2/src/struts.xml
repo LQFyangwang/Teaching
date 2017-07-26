@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	
+	<constant name="struts.action.extension" value="action,,do" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<constant name="struts.multipart.maxSize" value="20971520" />
+	
+	<package name="my-struts" extends="struts-default">
+	
+		<global-results>
+			<result name="null">/error/ex.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="null" exception="java.lang.NullPointerException"></exception-mapping>
+		</global-exception-mappings>
+	
+	</package>
+
+	<package name="main-struts" extends="my-struts" namespace="/h">
+	
+		<action name="hello" class="com.gs.action.HelloAction">
+			<result name="success">/hello.jsp</result><!-- result 的name跟Action类里的execute方法的返回值，转发到指定的页面 -->
+		</action>
+		
+		<action name="form" class="com.gs.action.FormAction">
+			<result name="success" type="redirectAction">hello</result>
+		</action>
+		
+		<action name="form1" class="com.gs.action.FormAction1">
+			<result name="success">/hello.jsp</result>
+		</action>
+	
+	</package>
+	
+	<include file="struts_user.xml"></include>
+	<include file="struts_method.xml" />
+	<include file="struts_dynamic_method.xml" />
+	<include file="struts_methods.xml" />
+	<include file="struts_my_converter.xml" />
+	<include file="struts_validation.xml"></include>
+	<include file="struts_interceptor.xml" />
+	<include file="struts_interceptor1.xml" />
+	<include file="struts_ognl.xml" />
+	<include file="struts_tag.xml" />
+	<include file="struts_form.xml"></include>
+	<include file="struts_student.xml"></include>
+	<include file="struts_upload.xml"></include>
+	<include file="struts_json.xml"></include>
+	<include file="struts_i18n.xml"></include>
+	
+</struts>

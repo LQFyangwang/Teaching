@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE car SYSTEM "car.dtd">
+<cars>
+	<car id="001" name="bmw x5">
+		<engine id="xxxxxx" type="oil">
+			<brand></brand>
+			<power></power>
+		</engine>
+		<wheels>
+			<brand></brand>
+			<count></count>
+		</wheels>
+		<seats>
+			<brand></brand>
+			<kind></kind>
+			<count></count>
+		</seats>
+	</car>
+	<car id="002" name="benz s350">
+		<engine id="xxxxxx">
+			<brand></brand>
+			<power></power>
+		</engine>
+		<wheels>
+			<brand></brand>
+			<count></count>
+		</wheels>
+		<seats>
+			<brand></brand>
+			<kind></kind>
+			<count></count>
+		</seats>
+	</car>
+</cars>

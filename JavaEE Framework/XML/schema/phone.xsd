@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+    <element name="phone">
+    	<complexType>
+    		<sequence><!-- 表示子标签按顺序出现 -->
+    			<element name="name" type="string"></element>
+    			<element name="brand" type="string"></element>
+    		</sequence>
+    	</complexType> <!-- 复杂标签，说明phone元素下还有其他的元素 -->
+    </element>
+</schema>

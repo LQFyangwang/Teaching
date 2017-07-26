@@ -1,0 +1,13 @@
+<!ELEMENT cars (car*)>
+<!ELEMENT car (engine,wheels,seats)>
+<!ATTLIST car id CDATA #REQUIRED>
+<!ATTLIST car name CDATA #IMPLIED>
+<!ELEMENT engine (brand,power)>
+<!ELEMENT power (#PCDATA)>
+<!ATTLIST engine id CDATA #REQUIRED>
+<!ATTLIST engine type CDATA #FIXED "oil">
+<!ELEMENT wheels (brand,count)>
+<!ELEMENT seats (brand,kind,count)>
+<!ELEMENT brand (#PCDATA)>
+<!ELEMENT kind (#PCDATA)>
+<!ELEMENT count (#PCDATA)>

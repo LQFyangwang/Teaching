@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>jQueryEasyUI</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <resource-ref>
+  	<res-ref-name>datasource/mysql</res-ref-name>
+  	<res-type>javax.sql.DataSource</res-type>
+  	<res-auth>Container</res-auth>
+  </resource-ref>
+  
+  <filter>
+  	<filter-name>EncodingFilter</filter-name>
+  	<filter-class>com.gs.filter.EncodingFilter</filter-class>
+  </filter>
+  
+  <filter-mapping>
+  	<filter-name>EncodingFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <servlet>
+  	<servlet-name>ProductController</servlet-name>
+  	<servlet-class>com.gs.controller.ProductController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>ProductController</servlet-name>
+  	<url-pattern>/product/*</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+  	<servlet-name>ProductTypeController</servlet-name>
+  	<servlet-class>com.gs.controller.ProductTypeController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>ProductTypeController</servlet-name>
+  	<url-pattern>/pt/*</url-pattern>
+  </servlet-mapping>
+  
+</web-app>

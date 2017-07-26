@@ -1,0 +1,129 @@
+1、注解 
+	jUnit: @Test   确定是一个测试方法 
+	@Override   用于说明是一个重写的方法 
+	@SuppressWarnings    用于说明压制警告
+	
+2、MVC
+	Model
+	View
+	Controller(使用xml配置action， @Controller)
+	
+	Service(在spring的配置文件配置service, @Service)
+	
+	DAO(在spring的配置文件中配置DAO， @Repository)
+	
+	组件（bean, @Component）
+	
+	都是来源于Spring 
+	
+	SpringMVC(Restful API)：
+	1）配置url:@RequestMapping
+	2）Restful API @PathVariable
+	3）查询字符串 @Param
+	
+3、如何在Controller中描述出一个页面
+	SpringMVC ：
+	ModelAndView:把哪些数据在哪个视图上显示出来， 包含两个部分的内容，第一个部分：哪些数据要放到视图上，第二个部分：哪个视图
+	
+4、SpringMVC的配置与使用
+	1）导入必须的JAR包：spring-web.jar, spring-webmvc.jar, commons-io, commons-fileupload, jackson
+	2）web.xml文件中配置Spring的Servlet(类似于Struts提供的StrutsPrepareAndExecuteFilter)
+		<servlet>
+		    <servlet-name>springMVC</servlet-name>
+		    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		    <init-param>
+	            <param-name>contextConfigLocation</param-name>
+	            <param-value>/WEB-INF/config/springmvc-servlet.xml</param-value>
+	        </init-param>
+		    <load-on-startup>1</load-on-startup>
+		</servlet>
+		<servlet-mapping>
+		    <servlet-name>springMVC</servlet-name>
+		    <url-pattern>/</url-pattern>
+		</servlet-mapping>
+	3)增加Spring MVC的配置文件 
+		a、开启注解方式
+			<mvc:annotation-driven />
+		b、到哪个包下对Controller进行自动扫描
+			这个包下面所有的Controller都必须使用@Controller注解
+			<context:component-scan base-package="com.gs.controller"/>
+		c、哪个类用于处理RequestMapping注解
+			<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
+		d、使用哪个数据转换服务（从页面的字符串类型转换到服务器端正常使用的int, String, float, double, Date）
+			 <bean class="org.springframework.format.support.FormattingConversionServiceFactoryBean"></bean>
+		e、告诉SpringMVC到哪里找到所有的视图文件
+			<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		        <property name="prefix" value="/WEB-INF/views/"></property>
+		        <property name="suffix" value=".jsp"></property>
+		    </bean>
+		f、告诉SpringMVC静态文件在哪个位置 
+			<mvc:resources location="/images/" mapping="/images/**"/>
+		    <mvc:resources location="/css/" mapping="/css/**"/>
+		    <mvc:resources location="/js/" mapping="/js/**"/>
+		    <mvc:resources location="/uploads/" mapping="/uploads/**" />
+		    
+		g、哪个类用于生成JSON格式的数据
+			<bean id="mappingJacksonHttpMessageConverter"
+		          class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+		        <property name="supportedMediaTypes">
+		            <list>
+		                <value>text/plain;charset=UTF-8</value>
+		                <value>application/json;charset=UTF-8</value>
+		            </list>
+		        </property>
+		    </bean>
+		    
+		h、引用产生JSON数据的类
+			<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		        <property name="messageConverters">
+		            <list>
+		                <ref bean="mappingJacksonHttpMessageConverter"/>
+		            </list>
+		        </property>
+		    </bean>
+		i、文件上传的配置
+			<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		        <property name="defaultEncoding" value="UTF-8" />
+		        <property name="maxUploadSize" value="209715200" />
+		        <property name="maxInMemorySize" value="40960" />
+		    </bean>
+		    
+	4）编写Controller类
+		a、在类的前面使用@Controller注解
+		b、在类的前面使用@RequestMapping来配置要访问到该类的一个url
+		c、编写方法，使用@RequestMapping来配置要访问该方法的一个url
+			备注：由b和c可以唯一确定跑哪个控制器类的哪个方法
+			
+		方法如果是返回一个页面则使用ModelAndView
+		如果是返回JSON格式的数据，则返回值是对象，并且在方法加@ResponseBody注解
+ 
+5、前端页面传递数据到后台
+	1）如果是一个form表单，则form表单里的name与后台Controller的对象参数里的属性一致就可以
+	2）查询字符串的形式，查询字符串的名称与Controller这个方法的参数名保持一致
+	3）SpringMVC Restful
+		/user/reg?aa=test&bb=100
+		/user/reg/test/100
+		a、RequestMapping的URL部分，有多少参数就写/{第一个参数的名称}/{第二个参数的名称}
+		b、在方法的参数部分用@PathVariable("参数的名称") int b 
+	
+	
+	数据回显：
+		mav.addObject()   页面端使用EL表达式
+		mav.addObject()   SpringMVC提供的form标签库，form:form modelAttribute="admin"   modelAttribute的名称与mav.addObject(key, value)保持一致
+
+6、Controller中如何获取Session
+	在方法中添加一个参数HttpSession session
+	代码中就可以直接使用session对象了
+	
+	获取HttpSerlvetRequest对象的方法是一致的
+	
+7、文件上传 
+	form表单与原先的写法一样
+	Controller的方法增加一个MultipartFile file
+	使用这个对象的file.transferTo(File) 拷贝到目标文件
+	
+8、其他 注解：
+	@RequestHeader获取请求 头信息
+	@CookieValue获取Cookie信息
+	
+	

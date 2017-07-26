@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<books>
+	<book id="001" title="十万个为什么" price="20" total="20"></book>
+	<book>
+		<id>002</id>
+		<title>蓝猫淘气三千问</title>
+		<price>30</price>
+		<total>50</total>
+	</book>
+</books> 

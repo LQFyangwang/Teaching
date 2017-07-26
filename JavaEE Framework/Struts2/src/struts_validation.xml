@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+	<package name="validation-struts" extends="my-struts" namespace="/val">
+	
+		<action name="validate" class="com.gs.action.ValidationAction">
+			<result name="success">/user.jsp</result>
+			<result name="input">/validation.jsp</result>
+			<result name="invalid.token">/validation.jsp</result>
+			<interceptor-ref name="token"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+	
+	</package>
+</struts>

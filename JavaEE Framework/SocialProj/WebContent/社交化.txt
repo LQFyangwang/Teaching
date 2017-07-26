@@ -1,0 +1,38 @@
+http://wiki.open.qq.com/wiki/website/OAuth2.0%E7%AE%80%E4%BB%8B
+
+1、账号绑定，已经有账户的情况下，再用qq号登录，此时需要与已有的账号进行绑定
+	t_user
+	id  email  pwd  nickname    openid
+	
+	增加qq登录
+		openid:   开放id，用于唯一标识一个qq号    一个QQ号在一个项目中对应于一个唯一的openid
+		
+		openid可以保存到自己的数据库中，腾讯的服务器也有一个openid，这两个openid是一样的
+		
+		当在qq登录的时候就应该提示是否需要绑定到已经有的账号
+		
+2、账号绑定，还没有注册成系统的用户，而是直接使用qq登录
+	t_user
+	id email pwd nickname    openid
+	
+	账号设置：提供常用邮箱和使用此邮箱登录用的密码
+	
+3、API接口
+	OAuth2.0协议
+	OAuth： OAuth（开放授权）是一个开放标准，允许用户授权第三方网站访问他们存储在另外的服务提供者上的信息，而不需要将用户名和密码提供给第三方网站或分享他们数据的所有内容
+		
+4、OpenAPI开放接口
+	提供了获取用户信息，及相关数据的接口（url，使用JSON进行数据的交互）
+	
+5、SDK
+	针对不同的语言提供了不同的软件开发包，已经封装了调用 url的方法 
+	JS版的sdk帮助文档：
+	http://wiki.open.qq.com/wiki/website/JS_SDK%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E
+	
+6、access_token   expires_in
+	前者表示授权标识   后者表示授权的失效时间
+	如果已经过了失效时间，则需要重新授权
+	并且每一次授权得到的access_token都是不一样的
+	
+	
+	access_token可以用来获取openid

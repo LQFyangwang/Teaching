@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+	<package name="in-struts" extends="my-struts" namespace="/in">
+	
+		<interceptors>
+			<interceptor name="myInterceptor" class="com.gs.interceptor.MyInterceptor"></interceptor>
+			<interceptor name="myInterceptor1" class="com.gs.interceptor.MyInterceptor1"></interceptor>
+			<interceptor-stack name="myDefaultStack">
+				<interceptor-ref name="myInterceptor"></interceptor-ref>
+				<interceptor-ref name="myInterceptor1"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="myDefaultStack"></default-interceptor-ref>
+	
+		<action name="in" class="com.gs.action.MyInterceptorAction">
+			<result name="success">/index.jsp</result>
+		</action>
+	
+	</package>
+</struts>

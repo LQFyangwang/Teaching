@@ -1,0 +1,11 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gs.dao.RolePermissionDAO">
+
+	<select id="queryAllPermissionByRoleName" parameterType="string" resultType="string">
+		select permission from roles_permissions where role_name = #{roleName}
+	</select>
+	
+</mapper>

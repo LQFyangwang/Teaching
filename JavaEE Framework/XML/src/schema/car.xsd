@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<!-- 
+	数据类型：
+	xs:string 
+xs:decimal 
+xs:integer 
+xs:boolean 
+xs:date 
+xs:time 
+
+xs:restriction可以对数据进行限制
+	xs:maxLength xs:minLengeh
+	xs:minInclusive xs:maxInclusive
+	xs:pattern 正则表达式
+	
+ <xs:choice>   表示元素只能选其一
+      <xs:element name="employee" type="employee"/>
+      <xs:element name="member" type="member"/>
+ </xs:choice>
+	
+ -->
+    <xs:element name="cars">
+    	
+        <xs:complexType>
+    		<xs:sequence maxOccurs="unbounded"> <!-- cars标签下的car标签按顺序出现，并且不限制个数 -->
+    			<xs:element name="car">
+    				<xs:complexType><!-- 复杂类型 -->
+    					<xs:all> <!-- all表示car标签下的子标签可以不按顺序出现 -->
+    						<xs:element name="engine" minOccurs="0"> <!-- element的minOccurs和maxOccurss用来指定元素最少或最多出现多少次 -->
+    							<xs:complexType>
+    								<xs:sequence>
+    									<xs:element name="brand" type="xs:string"></xs:element>
+    									<xs:element name="power" type="xs:string"></xs:element>
+    								</xs:sequence>
+    								<xs:attribute id="engine_id" name="id" type="xs:string" use="required"></xs:attribute><!-- attribute的id是唯一的，name跟xml文档中的属性名保持一致-->
+    								<xs:attribute id="type" name="type" type="xs:string" fixed="oil"></xs:attribute><!-- use="optional|required" fixed -->
+    								<!-- fixed和default都可以指定默认的一个值，但是fixed不能被修改，而default指定的可以修改 -->
+    							</xs:complexType>
+    						</xs:element>
+    						<xs:element name="wheels">
+    							<xs:complexType>
+    								<xs:sequence>
+    									<xs:element name="brand">
+    										<!-- 一个包含有内容的标签，并且此标签还有属性
+    											此标签首先定义为复杂类型
+    											在复杂类型里定义为简单内容，什么类型？用xs:extension base="xs:string" 中的base来指定内容的类型
+    											在扩展里添加属性
+    										 -->
+    										<xs:complexType>
+    											<xs:simpleContent>
+    												<xs:extension base="xs:string">
+    													<xs:attribute id="aaa" name="aaa" type="xs:string" use="required"></xs:attribute>
+    												</xs:extension>
+    											</xs:simpleContent> 
+    										</xs:complexType>
+    									</xs:element>
+    									<xs:element name="count" type="xs:string"></xs:element>
+    								</xs:sequence>
+    							</xs:complexType>
+    						</xs:element>
+    						<xs:element name="seats">
+    							<xs:complexType>
+    								<xs:sequence>
+    									<xs:element name="brand" type="xs:string"></xs:element>
+    									<xs:element name="kind">
+    										<xs:simpleType>
+    											<xs:restriction base="xs:string">
+    												<xs:minLength value="1"></xs:minLength>
+    												<xs:maxLength value="10"></xs:maxLength>
+    											</xs:restriction>
+    										</xs:simpleType>
+    									</xs:element>
+    									<xs:element name="count">
+    										<xs:simpleType><!-- 简单类型 -->
+											  <xs:restriction base="xs:integer"><!-- 数据约束 -->
+											    <xs:minInclusive value="0"/>
+											    <xs:maxInclusive value="10"/>
+											  </xs:restriction>
+											</xs:simpleType>
+    									</xs:element>
+    								</xs:sequence>
+    							</xs:complexType>
+    						</xs:element>
+    					</xs:all>
+    					<xs:attribute id="car_id" name="id" type="xs:string"></xs:attribute>
+    					<xs:attribute id="name" name="name">
+    						<xs:simpleType>
+    							<xs:restriction base="xs:string">
+    								<xs:minLength value="1"></xs:minLength>
+    								<xs:maxLength value="10"></xs:maxLength>
+    							</xs:restriction>
+    						</xs:simpleType>
+    					</xs:attribute>
+    					<xs:attribute id="pdate" name="pdate" type="xs:date" use="required"></xs:attribute>
+    				</xs:complexType>
+    			</xs:element>
+    		</xs:sequence>
+    	</xs:complexType>
+    </xs:element>
+</xs:schema>

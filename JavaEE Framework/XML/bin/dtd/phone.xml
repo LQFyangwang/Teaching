@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+<!DOCTYPE phone [
+	<!ELEMENT phone (name, brand)>
+	<!ELEMENT name (#PCDATA)>
+	<!ELEMENT brand (#PCDATA)>
+]>
+-->
+<!DOCTYPE phone SYSTEM "phone.dtd">
+<phone>
+	<name>aa</name>
+	<brand></brand>
+</phone>

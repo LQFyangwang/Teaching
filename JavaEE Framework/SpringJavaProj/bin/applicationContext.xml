@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans.xsd 
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+       
+       <bean id="userDAO" class="com.gs.dao.UserDAOImpl"></bean>
+       
+       <bean id="userService" class="com.gs.service.UserServiceImpl" autowire="byName"></bean>
+       
+       <bean id="loginAction" class="com.gs.action.LoginAction" autowire="byName"></bean>
+       
+       <bean id="LoginActionAdvice" class="com.gs.advice.LoginActionAdvice" />
+       
+       <aop:config>
+	       <aop:aspect ref="LoginActionAdvice">
+	       		<aop:pointcut id="login" expression="execution(* com.gs.action.LoginAction.*(..))"></aop:pointcut>
+	       		<aop:before method="beforeExecute" pointcut-ref="login"></aop:before>
+	       		<aop:after method="afterExecute" pointcut-ref="login"/>
+	       		<aop:after-throwing method="throwExecute" pointcut-ref="login"/>
+	       </aop:aspect>
+       </aop:config>
+       
+</beans>

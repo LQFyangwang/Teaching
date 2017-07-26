@@ -1,0 +1,57 @@
+1、Spring是什么？
+	JavaEE使用的一个轻量级框架
+	
+	IoC: Inverse of Control(控制反转)
+	DI:Dependency Injection(依赖注入)
+	AOP：Aspect Oriented Programming(面向切面的程序设计)
+	
+2、在src目录下创建applicationContext.xml配置文件
+	<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+</beans>
+	
+3、Spring的Bean概念
+	任何一个类都可以作为一个Bean组件，一个Bean组件可能依赖于另外的Bean组件
+	如：一个Service是一个Bean组件，且依赖于一个DAO bean组件
+	
+	依赖注入：把一个Bean组件通过配置的形式注入到另外Bean组件
+	
+	构造方法注入：
+		1)按参数的顺序
+			<constructor-arg index="0" value="1" />
+	   		<constructor-arg index="1" value="abc"></constructor-arg>
+	   		<constructor-arg index="2" value="abcc"></constructor-arg>
+   		
+   		2）按参数的名称来注入
+   			<constructor-arg name="id" value="1"></constructor-arg>
+	   		<constructor-arg name="name" value="abc"></constructor-arg>
+	   		<constructor-arg name="pwd" value="pwd"></constructor-arg>
+   		
+	setter注入：
+		<property name="属性名" value="属性值"></property>
+		
+		
+	autowire可以根据属性名称和配置文件中的Bean组件的名称进行匹配，如果名称一致 ，则注入   byName
+	根据属性类型来自动注入，如果属性的类型与配置文件中的某个bean组件的类型一致，则注入   byType
+		
+4、Spring AOP
+	核心思想是动态代理：JDK Proxy， CGLib
+	
+	前置通知 MethodBeforeAdvice 
+		public void before(Method arg0, Object[] arg1, Object arg2)
+	后置通知 AfterReturningAdvice
+		public void afterReturning(Object arg0, Method arg1, Object[] arg2, Object arg3)
+	环线通知 MethodInterceptor
+		public Object invoke(MethodInvocation mi) throws Throwable
+	
+	异常通知 ThrowsAdvice(没有定义要实现哪个方法，可选 以下其中之一)
+		public void afterThrowing(Exception ex)
+		public void afterThrowing(RemoteException)
+		public void afterThrowing(Method method, Object[] args, Object target, Exception ex)
+	public void afterThrowing(Method method, Object[] args, Object target, ServletException ex)
+	
+	

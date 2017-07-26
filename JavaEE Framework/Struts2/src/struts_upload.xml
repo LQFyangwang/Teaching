@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+	<package name="up-struts" extends="my-struts" namespace="/up">
+	
+		<action name="up" class="com.gs.upload.UploadAction">
+			<result name="success">/upload.jsp</result>
+			<result name="input">/upload.jsp</result>
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">5485760</param>
+				<param name="allowedTypes">image/jpg,image/png,image/gif,image/jpeg,text/html,application/pdf</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			
+		</action>
+		
+		<action name="down" class="com.gs.upload.DownloadAction">
+			<result name="success" type="stream"><!-- 数据流，文件 -->
+               <param name="contentDisposition">attachment;fileName="${fileName}"</param>  
+               <param name="inputName">inputStream</param>  
+               <param name="bufferSize">1024</param>  
+			</result>
+		</action>
+	
+	</package>
+</struts>

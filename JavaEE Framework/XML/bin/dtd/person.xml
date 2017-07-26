@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<person>
+	<name>张三
+	</name>
+	<age>20</age>
+	<height>180</height>
+	<weight>70</weight>
+</person>

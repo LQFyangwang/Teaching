@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<cars xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="car.xsd">  
+  <car id="new 001" name="bmw x5" pdate="2016-11-09" test="test value"> 
+    <engine id="bmw_001"> 
+      <brand>bmw</brand>  
+      <power>12</power> 
+    </engine>  
+    <wheels> 
+      <brand aaa="aaa">23</brand>  
+      <count>5</count> 
+    </wheels>  
+    <seats> 
+      <brand>nappa</brand>  
+      <kind>织物</kind>  
+      <count>5</count> 
+    </seats>  
+    <test_e>文本</test_e>
+    <test_ee/>
+  </car>  
+  <car id="new 001" name="benz s350" pdate="2016-11-09" test="test value"> 
+    <engine id="benz_001" type="oil"> 
+      <brand>benz</brand>  
+      <power>10</power> 
+    </engine>  
+    <wheels> 
+      <brand aaa="aaa"/>  
+      <count>5</count> 
+    </wheels>  
+    <seats> 
+      <brand>nappa</brand>  
+      <kind>真皮</kind>  
+      <count>5</count> 
+    </seats>  
+    <test_e>文本</test_e>
+    <test_ee/>
+  </car> 
+</cars>

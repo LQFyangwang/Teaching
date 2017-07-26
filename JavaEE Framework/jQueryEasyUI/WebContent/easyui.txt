@@ -1,0 +1,130 @@
+1、什么是easyui?
+	easyui是一种基于jQuery的用户界面插件集合, js文件+css文件+图标文件（css+图标==>主题）。
+	
+	datagrid数据表格，window窗口, panel面板， DateBox日期控件, DatetimeBox时间日期控件, NumberBox数字框, ComboBox下拉框,
+	ValidateBox验证框， layout布局
+
+	easyui为创建现代化，互动，JavaScript应用程序，提供必要的功能。
+
+	使用easyui你不需要写很多代码，你只需要通过编写一些简单HTML标记，就可以定义用户界面。
+	
+	easyui是个完美支持HTML5网页的完整框架。
+	
+	easyui节省您网页开发的时间和规模。
+	
+	easyui很简单但功能强大的。
+	
+	easyui(比较轻量化),extJS（重量级）适用后台界面的开发，前端界面bootstrap, amazeui, purecss, jquery-mobile-ui, jquery-ui
+	
+2、如何引用easyui?
+	下载->解压后->copy到项目里->去掉不必要的文件local语言文件，plugins， demo, demo-mobile,src,
+	
+	在页面中：
+	1)<link rel="stylesheet" href="jquery-easyui/themes/default/easyui.css" />
+	2)<link rel="stylesheet" href="jquery-easyui/themes/icon.css" />
+	3)先引用jquery.min.js文件<script type="text/javascript" src="js/jquery.min.js"></script>
+	4)引用jquery easyui的js文件<script type="text/javascript" src="jquery-easyui/jquery.min.js"></script>
+	
+3、EasyUI的控件
+	1）layout布局控件  easyui-layout   div body
+	
+	2)手风琴：easyui-accordion    div
+	au
+	3)选项卡：easyui-tabs    div
+		添加选项卡的方法，使用这个方法请参考main.js文件和layout_full_screen.jsp文件里的tab选项卡
+		
+	4)树形菜单：easyui-tree    ul
+	
+	5)数据表格datagrid:     easyui-datagrid    table
+	{"total":28,"rows":[
+		{"productid":"FI-SW-01","productname":"Koi","unitcost":10.00,"status":"P","listprice":36.50,"attr1":"Large","itemid":"EST-1"},
+		{"productid":"K9-DL-01","productname":"Dalmation","unitcost":12.00,"status":"P","listprice":18.50,"attr1":"Spotted Adult Female","itemid":"EST-10"},
+		{"productid":"RP-SN-01","productname":"Rattlesnake","unitcost":12.00,"status":"P","listprice":38.50,"attr1":"Venomless","itemid":"EST-11"},
+		{"productid":"RP-SN-01","productname":"Rattlesnake","unitcost":12.00,"status":"P","listprice":26.50,"attr1":"Rattleless","itemid":"EST-12"},
+		{"selected":true,"productid":"RP-LI-02","productname":"Iguana","unitcost":12.00,"status":"P","listprice":35.50,"attr1":"Green Adult","itemid":"EST-13"},
+		{"productid":"FL-DSH-01","productname":"Manx","unitcost":12.00,"status":"P","listprice":158.50,"attr1":"Tailless","itemid":"EST-14"},
+		{"productid":"FL-DSH-01","productname":"Manx","unitcost":12.00,"status":"P","listprice":83.50,"attr1":"With tail","itemid":"EST-15"},
+		{"productid":"FL-DLH-02","productname":"Persian","unitcost":12.00,"status":"P","listprice":23.50,"attr1":"Adult Female","itemid":"EST-16"},
+		{"productid":"FL-DLH-02","productname":"Persian","unitcost":12.00,"status":"P","listprice":89.50,"attr1":"Adult Male","itemid":"EST-17"},
+		{"productid":"AV-CB-01","productname":"Amazon Parrot","unitcost":92.00,"status":"P","listprice":63.50,"attr1":"Adult Male","itemid":"EST-18"}
+	]}
+	
+	整个表格需要两类数据，第一类是总行数：total属性
+	第二类是每一页数据所对应的对象数组:rows
+	
+	设置分布组件请参考products.jsp页面及main.js里的setPagination方法
+	
+	$("datagridid").datagrid("reload"); // 重新加载数据
+	$("datagridid").datagrid("getSelected"); // 获取选中行的数据
+	
+	6)分布组件pagination，参考第5点
+	
+	7)窗口window组件： easyui-window          div
+	
+			$("winid").window("close|open")
+	
+	8)表单组件form: easyui-form
+		表单的验证：
+		
+		如何把数据表格中的选中行的数据加载到Form表单
+		var row = $("datagridid").datagrid("getSelected"); // 返回的row是JSON格式的
+			if (row) {
+				$("formId").form("load", row);
+			}
+		
+	9)文本输入框：easyui-textbox      input
+		如果是多行文本，则添加data-options="multiline:true"   style="height:100px;"
+	
+	10)链接式按钮组件：easyui-linkbutton       a
+	
+	11)Datagrid数据表格的工具栏
+	
+	12)消息组件:messager
+		$.messager.alert("title", "message", "type");
+		type如下:
+		info
+		error
+		warning
+		
+		$.messager.confirm("提示", "确定删除吗？", function (r) {
+			if (r) {
+				// 点击了确定按钮
+			}
+		})
+		
+	13)验证箱validate-box    input
+		<input type="text" class="easyui-validatebox easyui-textbox" data-options="在这里填写验证方式"
+		
+		data-options="required:true, validType:'email'"
+		data-options="validType:'length[1,20]'"
+	
+		$("formid").form("validate");
+		
+	14)数字框easyui-numberbox    input
+		data-options="precision:2", 指定小数点位数
+						prefix:'$', 指定前缀
+						suffix:'€'	指定后缀
+	15）组合框easyui-combobox(下拉框)     input
+	<input class="easyui-validatebox easyui-combobox" name="type" data-options="required:true,
+						data:[{'id':'a','text':'A'},{'id':'b','text':'B'}],
+						valueField:'id',
+						textField:'text',
+						panelHeight:'auto'
+					"/>
+	
+	<input class="easyui-combobox" name="type" data-options="required:true,
+						url:'<%=path %>/pt/all',
+						method:'get',
+						valueField:'id',
+						textField:'text',
+						panelHeight:'auto'
+					"/>
+	16)日期框：easyui-datebox   input
+		
+	17)时间日期框 ：easyui-datetimebox   input
+	
+	18)对话框：easyui-dialog    div
+		
+		
+		
+		

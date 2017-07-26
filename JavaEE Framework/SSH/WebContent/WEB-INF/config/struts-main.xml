@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	
+	<constant name="struts.action.extension" value="action,,do" />
+	<constant name="struts.multipart.maxSize" value="20971520" />
+	
+	<package name="my-struts" extends="json-default">
+	
+	
+	</package>
+	
+	<include file="../config/struts-user.xml" />
+	
+</struts>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<persons id="all_person">
+	<person id="person1">
+		<name>张三</name>
+		<age>20</age>
+		<height>170</height>
+		<weight>60</weight>
+	</person>
+	<person id="person2" name="李四" age="29" height="190" weight="80">
+		<name>李四</name>
+		<age>29</age>
+		<height>190</height>
+		<weight>80</weight>
+		<des>&lt;&gt;&amp;&#xA9;&quot;&apos;</des><!-- 特殊符号需要做转义& -->
+		<des1><![CDATA[><xml]]></des1>
+	</person>
+</persons>

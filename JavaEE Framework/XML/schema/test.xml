@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><cars xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="car.xsd">
+	<car id="aaaaaaaaaaaaaaaaaaaaa" name="aaaaaaaaaaaaaaaaaaaaa" pdate="aaaaaaaaaaaaaaaaaaaaa">
+		<engine id="bmw_001">
+			<brand>bmw</brand>
+			<power>12</power>
+		</engine>
+		<wheels>
+			<brand aaa="aaa">23</brand>
+			<count>5</count>
+		</wheels>
+		<seats>
+			<brand>nappa</brand>
+			<kind>织物</kind>
+			<count>5</count>
+		</seats>
+	<test/></car>
+	<car id="aaaaaaaaaaaaaaaaaaaaa" name="aaaaaaaaaaaaaaaaaaaaa" pdate="aaaaaaaaaaaaaaaaaaaaa">
+		<engine id="benz_001" type="oil">
+			<brand>benz</brand>
+			<power>10</power>
+		</engine>
+		<wheels>
+			<brand aaa="aaa"/>
+			<count>5</count>
+		</wheels>
+		<seats>
+			<brand>nappa</brand>
+			<kind>真皮</kind>
+			<count>5</count>
+		</seats>
+	<test/></car>
+</cars>

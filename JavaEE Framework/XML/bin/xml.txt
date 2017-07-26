@@ -1,0 +1,121 @@
+1、xml,eXtention Markup Language, 可扩展标记语言
+	标记可以自定义并且扩展
+	<my id="" name="" total="">
+		<my-1>
+			<my-1-1 id="" name="" count=""></my-1-1>
+		</my-1>
+		<my-2></my-2>
+	</my>
+
+	HTML: <a> <div> <p> <img> <span> ，标记是固定的
+	
+	但是任何一个xml文件都应该遵循一定的规则（产品内部的开发人员商量好的规则：标记名称，属性）
+	
+2、XML基本特征
+	1）数据是自描述的
+	2）数据可用标准工具加以处理（DOM4J）
+	3)数据可用标准工具查看
+	4)用样式单可以容易地说明同样数据的不同视图（xsd文件可以使xml文件以不同的样式展示出来）
+
+	XML技术带来的好处
+	1）数据的搜索
+	2）数据的显示
+	3）数据的交换（最重要的，需要被其他的工具平台读取到，一个应用的数据要想被另外一个应用所使用，则通过xml文件的方式把数据传递过去。现在大部分应用直接使用JSON格式来传递数据）
+
+	
+3、自定义xml文件
+	1）文档声明，必须在xml文件的第一行
+		<?xml version="1.0" encoding="UTF-8" ?>
+		<persons>
+			<person id="" name="" age="" height="" weight="">
+			
+			</person>
+			<person>
+				<name></name>
+				<age></age>
+				<height></height>
+				<weight></weight>
+				<a id="" name=""/>
+			</person>
+		</persons>
+		
+	任何一个xml文件都必须有一个唯一的根标签
+	
+	特殊符号：
+	&lt;小于
+	&gt;大于
+	&amp;&
+	&#xA9;版本符号
+	&quot;"
+	&apos;'
+	
+	所有的特殊符号都可以直接放在<![CDATA[******]]>
+		
+4、xml文件的规则	
+	DTD文档来描述xml文件的规则，xml文件能出现什么样的标签，标签包含哪些属性
+	
+	xml schema文档
+	
+	如果一个xml文件有DTD或者schema来约束，则说明此xml文件是well-formed文件
+	
+5、DTD，Document Type Definition
+	用来约束xml文件的标签及属性等
+	
+	一个符合DTD验证的XML文档被称为合法的XML文档（加入DTD,并且按照DTD的约束来写的xml文档就是合法的xml文档）
+	
+	使用DTD的优势
+		使用DTD可以提供一种统一的格式。
+		使用DTD可以保证数据交流和共享的顺利进行。
+		DTD使我们能够不依赖具体的数据就能知道文档的逻辑结构。
+		使用DTD可以验证数据的有效性
+		
+	声明元素
+	<!ELEMENT element_name (sub_element_name)>      如果需要指定能出现多少个子元素，则需要使用+（至少一个），？（一个或0个）或者*（任意多个）
+	
+	如果多个标签中有重复的子标签出现，则在dtd的子标签声明中，只需要声明一次，不需要重复声明，且与顺序无关
+	
+	声明属性
+	<!ATTLIST element_name attribute_name CDATA #REQUIRED|#FIXED|#IMPLIED> #REQUIRED表示属性是必须的，#FIXED表示属性的值是固定的，#IMPLIED表示属性是可选的
+	
+	如果属性指定为#FIXED，则必须为属性指定一个默认值<!ATTLIST engine type CDATA #FIXED "oil">，如果一个属性指定为fixed，则此属性的值默认就为指定值，不能在xml
+	中把此属性的值设置为其他的
+	
+6、XML文档实体定义：   
+	1）通用实体
+		内部实体引用：
+			<?xml version="1.0" encoding="utf-8" ?>
+			<!DOCTYPE students [
+				<!ELEMENT students (student*)>
+				<!ELEMENT student (name, class)>
+				<!ELEMENT name (#PCDATA)>
+				<!ELEMENT class (#PCDATA)>
+				<!ENTITY className "15秋">
+			]>
+			<students>
+				<student>
+					<name>aa</name> 
+					<class>&className;</class>
+				</student>
+				<student>
+					<name>bb</name>
+					<class>&className;</class> <!-- 引用内部实体 -->
+				</student>
+			</students>
+			
+7、XML Schema
+	用来约束xml文件的元素和属性
+	.xsd结尾，本质上也是一个xml文件，只不过这个xml的用途特殊，专门用来约束其他的xml文件
+	以下部分为固定写法：
+	<?xml version="1.0" encoding="UTF-8"?>
+	<schema xmlns="http://www.w3.org/2001/XMLSchema">
+	    
+	</schema>
+	
+	详细用法请参考schema下的phone.xsd, car.xsd	
+	
+8、解析xml的不同形式
+	dom（Document Object Model）解析：必须把整个xml文件全部读入到内存中，再进行解析。这种方式不太适用于大容量的xml文件   (dom4j, DOm)
+	sax(Simple API for XML)解析：基于事件驱动的解析过程，在读取xml文件的时候就解析。比较适用于大容量的xml文件 (SAXParser)
+	
+	
+	

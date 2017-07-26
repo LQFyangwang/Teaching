@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	
+	<constant name="struts.action.extension" value="action,,do" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<constant name="struts.multipart.maxSize" value="20971520" />
+	
+	<package name="my-struts" extends="struts-default">
+	
+		<global-results>
+			<result name="null">/error/ex.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="null" exception="java.lang.NullPointerException"></exception-mapping>
+		</global-exception-mappings>
+	
+	</package>
+
+	<package name="main-struts" extends="my-struts" namespace="/h">
+	
+	</package>
+	
+</struts>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC 
+  		"-//Apache Struts//XWork Validator 1.0.2//EN"
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+  		
+<validators>
+	<field name="name">
+		<field-validator type="requiredstring"><!-- 必须输入字符串 -->
+			<message>必须输入名称</message>
+		</field-validator>
+		<field-validator type="stringlength"><!-- 限定字符串的长度 -->
+			<param name="minLength">2</param>
+			<param name="maxLength">10</param>
+			<message>长度必须在${minLength}和${maxLength}之间</message>
+		</field-validator>
+	</field>
+	<field name="age">
+		<field-validator type="required"><!-- 如果要使用required，则属性必须为引用类型 -->
+			<message>必须输入年龄（数字）</message>
+		</field-validator>
+		<field-validator type="int"><!-- 必须是数字 -->
+			<param name="min">0</param>
+			<param name="max">150</param>
+			<message>年龄必须在${min}和${max}之间</message>
+		</field-validator>
+	</field>
+	<field name="email">
+	<field-validator type="requiredstring"><!-- 必须输入 -->
+			<message>必须输入邮箱</message>
+		</field-validator>
+		<field-validator type="regex">
+			<param name="regexExpression">^(\w)+(\.[\w-]+)*@(\w)+((\.\w+)+)$</param>
+			<message>请输入正确的邮箱</message>
+		</field-validator>
+	</field>
+</validators>

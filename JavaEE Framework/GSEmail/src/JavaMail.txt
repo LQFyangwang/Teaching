@@ -1,0 +1,13 @@
+1、Properties	
+	用于 存储邮件服务器的地址，端口，用户名，密码
+
+2、Session
+	邮件的发送与接收
+	
+3、Multipart
+	附件对象
+	
+4、MimeMessage
+	完整的邮件对象
+	
+5、BodyPart

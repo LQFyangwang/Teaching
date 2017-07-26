@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	
+	<package name="order-struts" extends="my-struts" namespace="/order">
+		<action name="*" class="com.gs.action.OrderAction" method="{1}">
+			<result name="pager" type="json"></result>
+		</action>
+	</package>
+	
+	<package name="orderinfo-struts" extends="my-struts" namespace="/orderInfo">
+		<action name="*" class="com.gs.action.OrderInfoAction" method="{1}">
+			<result name="pager" type="json"></result>
+		</action>
+	</package>
+	
+</struts>

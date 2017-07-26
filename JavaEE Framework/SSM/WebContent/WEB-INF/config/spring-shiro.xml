@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager" />   
+	
+	<bean id="permissionResolver" class="org.apache.shiro.authz.permission.WildcardPermissionResolver"/>
+	<!-- 
+	<bean id="rolePermissionRelover" class="com.gs.shiro.MyRolePermissionResolver" autowire="byType"></bean>
+	 -->
+	<bean id="authorizer" class="org.apache.shiro.authz.ModularRealmAuthorizer">
+		<property name="permissionResolver" ref="permissionResolver" />
+		<property name="rolePermissionResolver" ref="rolePermissionRelover" />
+	</bean>
+
+
+    <!-- 配置权限管理器 -->  
+    <bean id="jdbcRealm" class="org.apache.shiro.realm.jdbc.JdbcRealm">
+    	<property name="dataSource" ref="dataSource"></property>
+    	<!-- 根据用户邮箱查找用户密码 -->
+    	<property name="authenticationQuery" value="SELECT pwd FROM t_user WHERE email = ?"></property>
+    	<!-- 根据用户的邮箱查找用户的角色名称 -->
+    	<property name="userRolesQuery" value="SELECT name FROM t_roles WHERE id in (select role_id from t_user_role where user_id = (select id from t_user where email = ?))" />
+    	<!-- 根据用户的邮箱查找用户的权限 -->
+    	<property name="permissionsQuery" value="select name from t_permission where id in (select permission_id from t_role_permission where role_id in (select role_id from t_role_user where user_id = (select id from t_user where email = ?)))" />
+    </bean>
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">  
+   		<property name="authorizer" ref="authorizer" />  
+        <!-- 我们自定义的realm -->  
+        <property name="realm" ref="jdbcRealm"/>    
+        <!-- 缓存管理器 -->  
+        <property name="cacheManager" ref="cacheManager"/>    
+        
+    </bean>  
+      
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">   
+        <!-- 权限管理器 -->   
+        <property name="securityManager" ref="securityManager"/>   
+        <!-- 登录地址 -->   
+        <property name="loginUrl" value="/login.jsp"/>      
+        <!-- 错误页面 -->  
+        <property name="unauthorizedUrl" value="/unauth.jsp"/>    
+        <!-- 权限配置 -->  
+        <property name="filterChainDefinitions">    
+            <value>  
+                /login = anon
+                /css/**=anon  
+                /images/**=anon
+                /js/**=anon
+            </value>    
+        </property>    
+    </bean>  
+      
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+</beans>  

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans.xsd 
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<!-- 表示读取指定的配置文件，此配置文件在src目录下 -->
+	<bean id="configBean" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> 
+        <property name="location" value="books.properties"/> 
+    </bean>
+
+    <bean id="user" class="com.gs.bean.User">
+   		<!-- <constructor-arg index="0" value="1" />
+   		<constructor-arg index="1" value="abc"></constructor-arg>
+   		<constructor-arg index="2" value="abcc"></constructor-arg> -->
+   		
+   		<!-- <constructor-arg name="id" value="1"></constructor-arg>
+   		<constructor-arg name="name" value="abc"></constructor-arg>
+   		<constructor-arg name="pwd" value="pwd"></constructor-arg> -->
+   		
+    	<property name="id" value="123"></property>
+    	<property name="books">
+    		<list>
+    			<value>${book1}</value>
+    			<value>${book2}</value>
+    		</list>
+    	</property>
+    	<property name="bookMap">
+    		<map>
+    			<entry key="book1">
+    				<value>Java编程思想</value>
+    			</entry>
+    			<entry key="book2">
+    				<value>深入Java虚拟机</value>
+    			</entry>
+    		</map>
+    	</property>
+    </bean>
+    
+    <bean id="userDAO" class="com.gs.dao.UserDAOMySQLImpl">
+    
+    </bean>
+    
+    <!-- 
+    <bean id="userService" class="com.gs.service.UserServiceImpl">
+    	<property name="userDAO">
+    		<ref bean="userDAO"></ref>
+    	</property>
+    	
+    </bean>
+     -->
+     <bean id="userService" class="com.gs.service.UserServiceImpl" autowire="byType"/>
+    
+    <!-- 
+    <bean id="listener" class="org.springframework.context.event.GenericApplicationListener">
+    
+    </bean>
+     -->
+     
+     <bean id="beforeAdvice" class="com.gs.advice.TestBeforeAdvice"></bean>
+     <bean id="afterAdvice" class="com.gs.advice.TestAfterAdvice"></bean>
+     <bean id="throwsAdvice" class="com.gs.advice.TestThrowingAdvice"></bean>
+     <bean id="aroundAdvice" class="com.gs.advice.TestAroundAdvice"></bean>
+     
+     <bean id="testService" class="com.gs.service.TestServiceImpl">
+     
+     </bean>
+     
+     <!-- 
+     1）表示任意公开方法 
+     	execution(public * *(..))
+     2）任何一个"set"前缀开头的方法
+     	execution(* set*(..))
+     3)某个接口中的所有方法
+     	execution(* com.gs.service.TestService.*(..))
+     4)某个包中的类和该 包中的子包里的任意类
+     	execution(* com.gs.service..*.*(..))
+     5)某个包中的类和子包中的指定的类
+     	execution(* com.gs.service..TestService.*(..)
+     	
+      -->
+     <aop:config>
+     	<aop:pointcut expression="execution(* com.gs.service.TestService.*(..))" id="mypointcut"/>
+     	<aop:advisor advice-ref="beforeAdvice" pointcut-ref="mypointcut" />
+     	<aop:advisor advice-ref="afterAdvice" pointcut-ref="mypointcut" />
+     	<aop:advisor advice-ref="throwsAdvice" pointcut-ref="mypointcut" />
+     	<aop:advisor advice-ref="aroundAdvice" pointcut-ref="mypointcut" />
+     </aop:config>
+    
+</beans>

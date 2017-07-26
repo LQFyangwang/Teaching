@@ -1,0 +1,65 @@
+1、什么是jQuery?
+	jQuery是对JS的封装，提供了常用的函数，还封装了get和post请求（完善的AJAX的功能），方便的元素选择器，提供了非常好的兼容性
+	可以用简便的方式实现原先写大量JS的功能
+	
+2、jQuery实际上就是一个js文件，先下载，再引用到HTML，JSP页面
+	如果生产环境，则下载min.js
+	如果是开发环境，则两个都可以
+
+3、JS, CSS压缩，生产环境通常需要用压缩后的JS和CSS，开发环境通常使用未压缩的版本
+	function test() {
+		var test1 = 10;
+		var test2 = 20;
+		var test 3 = test1 + test2;
+	}
+	
+	function test(){var a=10;b=20;var c=a+b}
+	
+4、jQuery的选择器
+	1）id选择器
+		$("#id") // id指想要获取的元素的id属性的值
+	2）类选择器 (返回所有具有此类的元素)
+		$(".class_ name")
+	3）标签选择器（返回所有指定标签的元素）
+		$("a"), $("p"), $("div")
+		
+5、AJAX
+	什么是AJAX		Asynchronized JavaScript And XML
+	不是一门新技术，是把JavaScript和XML整合在一起
+	
+	可以直接通过AJAX技术向服务端发送get，post请求，服务端返回的请求数据可以直接被JavaScript展示到页面中，
+	是对页面中的部分内容进行更新（局部刷新，不是整个页面进行刷新，而是对整个页面的小部分区域进行刷新）
+	
+	每一个浏览器都内置了一个HttpRequest请求对象，通常都是对xml进行操作
+	
+	如果想要使用AJAX，则必须借助XMLHttpRequest对象
+	XMLHttpRequest:IE7及以上版本，FireFox, Chrome, Safari, Opera
+	new ActiveXObject("Microsoft.XMLHTTP"): IE5,6
+	
+6、JSON字符串与JSON对象 JavaScript Object Navigation
+	User： 
+		name:test
+		age:20
+		gender:男
+		
+	{"name":"test","age":20,"gender":"男"}  ==> JSON字符串，一个{}就是一个对象
+	{"name":"test1","age":30,"gender":"女"}
+	
+	[{"name":"test","age":20,"gender":"男"},{"name":"test1","age":30,"gender":"女"}] ==> 数组形式
+	
+	User[] users = {user1, user2};
+	
+	{"users":[{"name":"test","age":20,"gender":"男"},{"name":"test1","age":30,"gender":"女"}]}
+	
+	{"users":[{"name":"test","age":20,"gender":"男"},{"name":"test1","age":30,"gender":"女"}],"teachers":[]}
+	
+7、如何快速把Java对象转化成JSON字符串，JSON字符串转化成Java对象
+	FastJson， 阿里巴巴公司
+	gson，Google
+	Jackson，Apache
+	
+	FastJson
+	com.alibaba.fastjson.JSON
+	
+	
+	

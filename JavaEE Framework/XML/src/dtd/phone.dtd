@@ -1,0 +1,3 @@
+<!ELEMENT phone (name,brand)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT brand (#PCDATA)>
