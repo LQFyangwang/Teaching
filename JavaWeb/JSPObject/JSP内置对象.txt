@@ -1,0 +1,223 @@
+1、什么是JSP内置对象？
+	jsp中可以直接使用的一些对象：包含有out输出对象，request请求对象，response响应对象，config配置对象，exception异常处理对象，
+	application应用程序对象，session会话对象,page页面对象,pageContext页面上下文对象
+	
+2、out输出对象 javax.servlet.jsp.JspWriter
+	用于在jsp页面中输出内容
+	out.print()
+	
+3、request请求对象 javax.servlet.http.HttpServletRequest
+	1)request.getRequestDispatcher("").forward(request, response);
+	2)request.setAttribute(String key, Object value);
+		在request对象中设置一个属性值，key-value结构。当跳转到另外一个页面时，在此页面中可以 使用request.getAttribute(String key)
+		来获取设置的value
+	3)request.getAttribute(String key)通过request对象中已经设置的属性的key值来获取其对应的value
+	4）request.removeAttribute(String key)移除属性
+	
+	只适用于当前我请求
+	a.jsp -->  b.jsp(b可以用a中在request里设置的属性)        c.jsp (c用不到a中在request里设置的属性)
+	
+4、response响应对象 javax.servlet.http.HttpServletResponse
+	response.sendRedirect(""); // 重定向
+	
+	response.setIntHeader("refresh", 10); // 每隔10秒刷新当前页面
+	
+	response.setHeader("refresh", "10;http://www.baidu.com"); // 10s后跳转到指定url
+	
+5、page页面对象，被声明为Object类型，赋值却是this，this表示当前jsp对应的整个Servlet对象
+	当前jsp页面，只适用于当前页面
+
+6、pageContext页面上下文对象，javax.servlet.jsp.PageContext
+	只作用于当前页面上下文
+	
+	PAGE_SCOPE   页面作用域
+	REQUEST_SCOPE 请求作用域
+	SESSION_SCOPE 会话作用域
+	APPLICATION_SCOPE
+
+7、application应用程序对象 javax.servlet.ServletContext（servlet上下文）
+	作用于整个项目的任意访问者的所有页面
+	
+	应用场景：统计访问人数，整个web应用的一些基础配置信息
+	 
+	<%= application.getMajorVersion()%>
+	<%= application.getMinorVersion()%>
+	<%= application.getServerInfo%>
+
+8、session会话对象，javax.servlet.http.HttpSession
+	什么是会话？
+		一个访问者在一台计算机上访问web项目，此时就会创建http连接，此连接就叫做会话。
+		一个会话可以一个访问者的基本信息，同一个会话可以被同一个访问者的所有页面共享。
+		不同的会话之间互不影响
+		会话信息保存在服务端
+		
+	任何一个访问者都会有一个session会话，并且每一个Session会话都会有一个唯一的标识session id
+	
+	应用场景：用来保存登录信息，购物车的实现，同一个访问者的信息要被多个页面使用的情况
+	
+	session失效的几种方法：
+	1)、web.xml中配置
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+	2)、session.invalidate(); 使Session失效，此时如果再调用getAttribute方法则报错
+	3)、session.removeAttriute();
+	4)、session.setMaxInactiveInterval(10); // 多少秒后把session设置为失效 
+
+9、config配置对象   javax.servlet.ServletConfig
+	可以给jsp增加一个参数配置
+	
+	config.getInitParameter(String paramName);
+	
+	需要在web.xml页面中进行jsp的配置
+	<servlet>
+		<servlet-name></servlet-name>
+		<jsp-file>/config/config.jsp</jsp-file>
+		<init-param>
+			<param-name></param-name>
+			<param-value></param-value>
+		</init-param>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name></servlet-name>
+		<url-pattern></url-pattern>
+	</servlet-mapping>
+	
+
+10、exception异常处理对象 java.lang.Exception
+	只能在设置了isErrorPage="true"的错误处理页中使用
+	exception.getMessage();
+
+11、内置对象的作用域
+	指jsp内置对象在哪个范围内
+	1)out page pageContext config exception response   javax.servlet.jsp.PageContext.PAGE_SCOPE
+	2)request  javax.servlet.jsp.PageContext.REQUEST_SCOPE
+	3）session javax.servlet.jsp.PageContext.SESSION_SCOPE   只要会话还存在，则有效
+	4)application javax.servlet.jsp.PageContext.APPLICATION_SCOPE  只要Web项目在运行，则有效
+
+11、重复提交问题
+	login.jsp提交内容到do_login.jsp，do_login.jsp判断到内容为空，则转发到login.jsp，此时url仍然是do_login.jsp，
+	此时进行刷新，相当于继续执行do_login.jsp页面，产生重复提交
+	
+	解决方案：
+	login.jsp提交内容到do_login.jsp, do_login.jsp 判断到内容为空后，不转发，而是使用重定向把url重新定向到login.sp
+	
+12、session和cookie
+	session是会话，保存在服务端的。
+	任何一个session都有有效时间，在同一个浏览器中如果没有关闭浏览器或Session未失效，则此session是可用的	
+	
+	session的默认失效时间为30分钟，如果在30分钟内，浏览器没有工作过（没有请求过网页），过了30分钟后，tomcat就会把该session销毁掉
+	在tomcat的web.xml配置文件中指定了Session的失效时间
+	<session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+    
+    如果在满足某个条件时，想要让session失效，则有两种方案：
+    session.removeAttriture(); // 其中指定的属性移除掉
+    session.invalidate(); //会把整个session销毁掉
+    
+    调用session.invalidate()后再 调用session.getAttribute();
+    
+    
+    cookie:甜甜圈
+    存在于客户端浏览器的一个对象，用来保存某个网站的信息到客户端。web网站可以在下次直接从客户端读取已经保存的信息
+    
+    举例：浏览京东的一个商品马桶，
+    	关闭浏览器后，接着浏览其他一些新闻网站，会出现马桶广告
+    为什么：京东在你浏览马桶商品时，把浏览的记录保存在你电脑的浏览器端，下次访问其他网站时，此信息可以被读取到，通过广告联盟把相关商品广告推送到客户端浏览器
+    
+    记住密码的功能也是由cookie完成的
+    
+    cookie也可以设置有效时间：
+    	cookie.setMaxAge(10); // 设置最大可用时间，单位为秒
+    如果想从客户端浏览器删除cookie,则用以下方法：
+    	cookie.setMaxAge(0);
+    	response.addCookie(cookie);
+    	
+    默认为-1,直到浏览器关闭，cookie还保存，一旦关闭浏览器，cookie会被删掉
+    
+    session与cookie区别：
+    前者是会话信息，存在于服务端，安全性高，为了提高性能，不要在Session当中保存过多的数据
+   后者存在于客户端，只要是同一个浏览器，任何一个网站都可以互相访问cookie，安全性低，保存少量数据，可以被用户从浏览器端清除掉
+   
+13、常用方法 
+	request对象：
+	Cookie[] getCookies();获取客户端cookie
+	String getHeader(String) // 获取指定key值的请求头信息
+	getHeaderNames();//获取请求头的所有key值
+	getMethod()获取请求方法   GET POST
+	getContextPath();获取应用上下文的路径
+	getQueryString();获取查询字符串
+	getRequestURI();// /JSPObject/request/request.jsp 从应用上下文路径开始的url部分
+	getRequestURL();  http://localhost:8080/JSPObject/request/request.jsp   完整的url
+	getServletPath(); /request/request.jsp    从应用上下文路径后开始
+	HttpSession getSession(); 获取HttpSession对象 
+	setAttribute();
+	getAttribute()
+	removeAttibute()
+	getParameter()
+	getParameterValues()
+	setCharacterEncoding();
+	getCharacterEncoding();
+	getServerName();服务器名称
+	getServerPort();服务器端口号
+	getRemoteAddr(); 客户端地址
+	getRemoteHost(); 客户端主机信息
+	getServletContext();   获取应用程序对象
+	getRealPath(); // 获取一个文件在服务器上的直接路径
+	getRequestDispatcher()
+	
+	response对象
+	setContentType(); 文档类型
+	setContentLength(); 文档长度
+	setCharacterEncoding(); 
+	getCharacterEncoding();
+	sendRedirect(); 重定向
+	OutputStream getOutputStream();
+	PrintWriter getWriter();
+	
+	getBufferSize();
+	flushBuffer()
+	
+	setHeader();  设置响应头信息
+	setIntHeader()
+	setStatus();设置响应状态码
+	getStatus();获取状态码
+	getHeader(String name);获取响应头信息
+	
+	out对象：
+	print()
+	println()
+	newLine()
+	flush();
+	clearBuffer(); 清空缓存并输出到客户端
+	clear();清空缓存不输出至客户端
+	getBufferSize();获取缓存总大小 
+	getRemaining(); 获取缓存可用大小
+	close()关闭
+	isAutoFlush();
+	
+	session对象:
+	getCreationTime();获取session的创建时间
+	getId();获取session id
+	getAttribute()
+	setAttribute()
+	removeAttribute()
+	
+	setMaxInactiveInterval()
+	getMaxInactiveInterval()
+	
+	invalidate()
+	
+	application对象  javax.servlet.ServletContext
+	getContextPath()
+	getMajorVersion()
+	getMinorVersion()
+	getInitParameter(String);
+	getAttribute()
+	setAttribute()
+	removeAttribute()
+	
+	
+	

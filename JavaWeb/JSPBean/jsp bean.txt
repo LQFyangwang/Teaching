@@ -1,0 +1,38 @@
+1、如何在jsp中使用java bean
+	1) page指令中import进想要用的java bean
+		然后在<% %>程序片断中使用new关键字来实例化bean对象，再调用bean对象的getter/setter方法
+	2）使用<jsp:useBean></jsp:useBean>结合<jsp:setProperty /> <jsp:getProperty />
+	
+		不需要import想要用的bean
+		A）<jsp:useBean id="实例化的对象的名称" class="java bean对应的class全限定的类名" scope="哪个范围内可用"/>
+			page->request->session->application, scope默认为当前页面 page
+			指定范围的java bean实际上是使用setAttribute的方式把java bean保存在对应的属性中，
+			所以可以使用pageContext, request, session, application的removeAttribute的方法移除掉定义好的bean组件
+			
+			如果指定scope为session,application,则在其他页面中可以直接用到此bean组件
+			<jsp:useBean id="u" class="" scope="session|application" />
+			
+		B)<jsp:setProperty name="实例化的对象的名称" property="给哪个属性设置值" value="属性的值" />
+		C)<jsp:getProperty name="实例化的对象的名称" property="获取哪个属性的值" />
+		
+2、jsp bean的自省机制
+	一个form表单提交的数据自动设置到对应的java bean组件
+	
+	form表单里的name值与java bean里的属性名称保持一致，并且java bean一定要提供getter/setter
+	
+	在获取数据的页面不再使用request.getParameter的方式，而是使用<jsp:useBean>标签 
+	<jsp:useBean id="user" class="com.gs.bean.User"/>
+	
+	<jsp:setProperty name="user" property="*"/>    使用*号自动匹配并赋值
+	
+	
+	<jsp:getProperty name="user" property="id" /> 
+	
+	
+	如果想单个单个指定，可以使用以下方案：
+	<jsp:setProperty property="name" name="user" param="name"/>  param表示form表单里name指定的值 
+	<jsp:setProperty property="pwd" name="user" param="pwd" />
+	
+	
+	
+	

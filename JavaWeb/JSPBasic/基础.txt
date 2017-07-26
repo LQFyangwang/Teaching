@@ -1,0 +1,59 @@
+1、C/S,B/S架构
+	C/S Client/Server架构， 桌面客户端/远程服务端（QQ, WPS, Eclipse, 桌面版微博，LOL）
+	B/S Browser/Server架构，浏览器/服务器（WEB, 网页游戏）
+	
+	趋势：B/S
+	
+2、HTTP协议 （HTTPS, 加密后的http）
+	http://www.baidu.com/aaaa/a.jsp
+	协议://域名:端口号/路径/文件
+	
+	http协议的默认端口号为80
+	
+	https://
+	
+	从浏览器端发送一个http请求（request），http请求经过网络的传输到达远程的WEB服务器，WEB服务接收到http request后，
+	进行相应的处理（从数据库服务器获取数据）,WEB服务器生成一个http响应（response）通过网络传输到客户浏览器
+	
+	JSP:如何接收请求，怎么处理，如何返回响应，页面怎样显示响应的结果
+	
+	
+	请求：
+		请求行：
+		包括请求方法，资源名，浏览器所使用协议的版本，如：
+		GET /index.html HTTP/1.1
+		
+		请求头：
+		包含服务器用于可能用于处理请求的额外信息，如请求资源的类型，请求的浏览器的信息，请求的主机的信息
+		
+		请求体：
+		对于 GET方法来说，没有请求体
+		对于 POST方法来说，有请求体部分，存放的是post的参数
+		
+3、GET与POST请求
+	get方法就是通过浏览器地址栏指定的url直接访问服务器，只要是get方法，url就会发生变化
+	get方法把请求参数放在url部分
+	http://www.abc.com/index.jsp?param1=value1&param2=value2&.....
+	
+	?param1=value1&param2=value2&....   ===>查询字符串
+	
+	get方法发送的请求参数大小有限制，大部分浏览器都限制在4096k，传输数据不安全
+	
+	post方法是把请求参数放在请求体部分
+	
+	post方法发送的请求参数没有大小限制，传输数据较安全
+	
+	
+	请求参数：从浏览器端发送到服务端的一些参数，这些参数可以被服务端获取到 
+	
+4、动态网站技术
+	静态网站：html+css+js等组成的一个不能动态地去获取数据的网站
+	
+	动态网站：html+css+js + 动态脚本语言 动态地生成网页中所需要显示的数据
+	
+	ASP: active sever pages
+	PHP: 
+	JSP: Java Sever Page   (用于动态生成网页，.jsp，此jsp页面中可以使用Java代码)
+	
+
+

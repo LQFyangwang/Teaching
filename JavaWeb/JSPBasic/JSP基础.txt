@@ -1,0 +1,148 @@
+1、Eclipse如何创建动态网站项目（基于JSP）
+	1)File->New->Dynamic Web Project
+	2)输入项目名称
+	3）选择目标运行环境
+	4)Next
+	5)Next
+	6)Context Root(应用上下文的根路径,一般默认为项目的名称), Content Directory(默认为WebContent, html, jsp, css, js等资源文件的目录)
+		选上Generate web.xml deployment descriptor
+	7)Finish
+
+1.1、WEB项目的目录结构
+	WebContent目录
+		META-INF,可以用来存储context的配置
+		WEB-INF： lib目录和web.xml文件
+			lib目录用来存放当前web应用所用到的一些jar包，这些jar文件会被web应用自动引用（省略了Build Path的配置过程）
+			web.xml是对当前web应用的一些基本配置信息
+		web.xml的基本构成：
+		display-name：项目名称
+		welcome-file-list:欢迎文件的列表
+
+2、目标运行环境
+	在创建JSP动态网站项目前，需要选择一个目标运行环境。
+
+	Java：JVM
+	JSP: JVM + WEB容器（能够解析JSP的一个应用程序）
+
+	eclipse中怎样配置运行环境：
+	Windows->Preferences->左侧菜单中的Server->Runtime Environments->右侧Add
+	->New Server Runtime Environments向导->Apache->Apache Tomcat v8.0
+	->Tomcat installation directory(选择tomcat的路径)->finish
+
+3、常用的JSP WEB容器
+	1)Tomcat （基于Java开发的，Apache,一个全球开源项目的组织）
+	2)JBoss （商用WEB容器，性能比Tomcat要好，JBoss实际上也用到了Tomcat。JBoss）
+	3)WebLogic （Oracle公司开发的）
+	4)Resin
+	5)WebSphere (IBM公司)
+
+4、Tomcat的目录结构
+	1）bin：存放tomcat命令
+		Tomcat的启动与关闭
+		在cmd命令提示符下进入到此目录，运行startup.bat文件启动tomcat
+		运行shutdown.bat文件关闭tomcat
+	2)conf: tomcat应用服务器的配置文件存放的目录
+		server.xml   配置tomcat服务器的端口，
+		web.xml tomcat web应用的基本配置
+		context.xml   一个web应用对应于一个context(应用的上下文)
+	3）lib: 存放tomcat的jar库文件
+		jsp-api.jar
+		servlet-api.jar
+		el-api.jar
+	4)logs: 用于存放tomcat运行和web项目的日志文件
+	5)temp: 临时文件目录
+	6）webapps：用来存储所有部署到tomcat服务器的web应用（html,css,js, jsp, .class）
+	7)work: 用于存入web应用的jsp生成的.class文件
+
+5、如何在eclipse中运行WEB项目
+	1)在已经存在的WEB项目上点击鼠标右键->Run As-> Run on Server-> Finish
+	2)eclipse会启动配置好的tomcat服务器
+	3）在Console中可以查看tomcat的启动状态，已经启动完毕
+	4）使用浏览器访问在tomcat中的项目
+		地址栏输入localhost:8080/{Context Root}，按回车直接访问项目的welcome-file-list中配置好的欢迎页面
+		
+	备注：tomcat默认端口号为8080
+	
+6、什么是JSP
+	Java Sever Page
+	JSP由 html + Java程序片断 + JSP标记
+	
+	优点：
+	1）跨平台
+	2）性能好
+	3）健壮性高
+	4)可重用性高
+	5)维护性好
+	7)使用标签化技术
+	8）页面的显示与逻辑分离
+	
+7、JSP运行原理
+	1）写好JSP
+	2）把JSP部署到Tomcat
+	3）tomcat中提供了JSP解析器会把JSP转化成对应的.java文件
+	4)tomcat把jsp对应的java编译成.class文件
+	5）解释执行.class文件
+	
+	
+	客户端发送request请求->JSP页面接收->
+	Tomcat内置的JSP解析器把JSP页面转化成对应的Java文件->
+	Tomcat把Java文件编译成.class字节码文件-Tomcat解释执行class文件 ->
+	生成Response响应返回到客户端
+	
+	tomcat把一个jsp文件生成的java文件放在 work 目录下，使用jsp文件的名称+ "_jsp.java"，jsp文件的名称+ "_jsp.class"
+	
+8、通过eclipse的run as的方式跑起来的项目部署在：
+	-Dwtp.deploy=D:\Workspace_web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps
+	
+9、手动部署JSP项目
+	1）创建一个目录用于存放jsp等资源文件，假设目录名为 test
+	2)在test目录中创建WEB-INF目录
+	3)进入WEB-INF目录，创建lib目录和web.xml文件，文件内容如下：
+		<?xml version="1.0" encoding="UTF-8"?>
+		<web-app version="3.1" id="WebApp_ID" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+			<welcome-file-list>
+				<welcome-file>index.jsp</welcome-file>
+			</welcome-file-list>
+		</web-app>
+	4）退出到 test目录，在此目录下创建index.jsp页面
+		jsp页面一定要有page指令：
+		<%@ page language="java" pageEncoding="utf-8" contentType="text/html;charset=utf-8" %>
+		<!doctype html>
+		<html>
+			<head>
+			</head>
+			<body>
+				my jsp
+			</body>
+		</html>
+	5)把test目录copy到tomcat的webapps部署文件夹中
+	6）进入tomcat的conf目录，编辑server.xml文件
+	7)在server.xml文件的host标签中添加<cotext>标签，内容如下
+		<context path="/taest" docBase="d:\apache-tomcat\webapps\test" debug="true" reloadable="true">
+		</context>
+		path表示应用上下文路径
+		docBase表示整个test应用的根路径
+		debug表示此应用是否支持调试
+		reloadable表示此应用是否支持自动重新加载
+	8)启动tomcat，如果出现错误，查看tomcat的logs目录下的日志记录
+	9)浏览器通过localhost:8080/test访问
+	
+10、jsp中嵌入java程序片断
+	java程序片断必须放在<%%>内部
+	<body>
+
+		<%
+			out.print("hello!");
+
+			out.println("<br />");
+			for (int i = 1; i <= 9; i++) {
+				for (int j = 1; j <= i; j++) {
+					out.print(j + "*" + i + "=" + (i * j) + "&nbsp;&nbsp;&nbsp;&nbsp;");
+				}
+				out.print("<br />");
+			}
+		%>   
+
+	</body>
+		
+		

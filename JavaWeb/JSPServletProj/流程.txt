@@ -1,0 +1,45 @@
+1、进入index.jsp
+2、index.jsp中有一个链接到登录页的url，href="<%=path %>/user/login_page" 
+	<%=path %>：应用上下文路径，/JSPServletProj/user/login_page
+	如果不加<%=path %>，则href="user/login_page"    相对于应用上下文路径的 /JSPServletProj
+3、href="<%=path %>/user/login_page"
+	/user/login_page究竟对应于哪个Servlet？
+	
+	在web.xml文件中找到servlet的配置 /user
+	
+	/user/*  ====>   *表示/user/(任意字符)
+	
+	所以只要是/user/*****，都匹配/user/*所对应的Servlet
+4、/user/*里面的*号部分如何处理？
+	*部分可以当做是servlet中某个具体的操作，比如用户登录login，用户注册register，显示用户登录页面login_page，显示用户的主页home
+	
+	*->login，则登录操作
+	*->register,则注册操作
+	*->login_page，则显示登录页面
+	*->home, 则显示用户主页
+	*->reg_page， 则显示注册页面
+5、找到对应的servlet，查看service方法内部*号部分匹配什么样的操作
+	1）如何获取*号部分？
+		String uri = request.getRequestURI(); // /JSPServletProj/user/login
+		String method = uri.substring(uri.lastIndexOf("/") + 1); // 获取到*部分
+		if (method.equals("login")) {
+			
+		} else if (method.equals("register")) {
+		
+		}
+		
+6、一旦匹配到*号部分，则需要完成相应的操作
+	再写一个对应的private操作的方法
+	
+7、为什么要这么做？
+	1)隐藏后缀
+	2）restful api
+		http://www.abc.com/index.jsp?name=test
+		http://www.abc.com/index/test
+		但是最终达到的目标是一样的
+		
+		SEO:搜索引擎优化，？对搜索引擎不友好， 不使用问号而改成restful api接口的形式，对搜索引擎友好
+		
+		
+		
+	

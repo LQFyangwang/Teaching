@@ -1,0 +1,36 @@
+1、为什么要使用分页
+	1）数据量过大，占用页面范围多
+	2）一次性查询的数量过多，性能低
+	
+2、什么是分页 
+	一次性从数据库查询的数据量是固定的，一页指定显示出5条，则一次查询只查询5条记录。点击下一页的时候，查询接下来的5条记录
+	1 aa
+	2 bb
+	3 cc
+	4 dd
+	5 ee
+	6 ff
+	7 gg
+	8 hh
+	9 ii
+	10 jj
+	11 kk
+	12 ll
+	
+	必须的参数：
+		1）指定显示第几页   pageNo
+		2）每一页显示多少个 pageSize
+		pageSize = 5
+		当pageNo = 1, 1->5  (pageNo - 1) * pageSize + 1   --> pageNo * pageSize
+		当pageNo = 2, 6->10 (pageNo - 1) * pageSize + 1   --> pageNo * pageSize
+		
+	select top 5 * from t_product where id not in(select top 0 id from t_product); // 第一页
+	select top 5 * from t_product where id not in(select top 5 id from t_product); // 第二页
+	select top 5 * from t_product where id not in(select top 10 id from t_product); // 第三页
+	
+	前面的top 5, 5正好就是pageSize
+	子查询的中top x, x 正好就是 (pageNo - 1) * pageSize
+	
+	
+	
+	

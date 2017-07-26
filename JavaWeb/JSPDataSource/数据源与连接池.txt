@@ -1,0 +1,83 @@
+1、什么叫数据源？
+	数据的来源
+	
+	对于一个数据库应用程序来说，数据源：数据库系统，Connection ==> 数据源
+	
+	Java程序获取数据源：
+	1）直接使用原告的jdbc获取connection的方式
+		Class.forName("");
+		Connection conn = DriverManager.getConnection("", "", "");
+	2)使用配置文件告诉应用程序数据源
+		context.xml放在WEB-INF目录下的META-INF目录下
+			<?xml version="1.0" encoding="utf-8" ?>
+			<Context>
+				// Resource用来配置资源，此资源就是一个数据源
+				// name属性用于指定资源的名称
+				// type属性用于指定资源的类型是什么， javax.sql.DataSource表示此资源是一个支持数据库连接的数据源
+				// driverClassName,url, username, password就是告诉DataSource的getConnection方法通过此四个属性去获取连接
+				// maxTotal表示连接池的最大连接数
+				// maxIdle表示连接池中最大空闲连接数
+				// maxWaitMillis表示等待连接的最大时间，单位为ms
+				// auth属性指定由哪个来做验证，container指定由web容器来完成验证
+				<Resource name="datasource/mysql" 
+					auth="container"
+					type="javax.sql.DataSource"
+					driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+					url="jdbc:sqlserver://localhost:1433;DatabaseName=d_product"
+					username="sa"
+					password="123456"
+					maxTotal="20"
+					maxIdle="5"
+					maxWaitMillis="30000"
+				/>
+			</Context>
+			
+2、配置了一个数据源资源，需要告诉 web容器有这么一个资源 
+	web.xml文件中，增加以下配置
+	<resource-ref>
+	  	<res-ref-name>datasource/mysql</res-ref-name> // 第一步中配置的资源名称
+	  	<res-type>javax.sql.DataSource</res-type> // 此资源名称对应的类型
+	  	<res-auth>Container</res-auth> // auth验证
+	</resource-ref>
+			
+3、如何通过配置的资源名称来获取指定的资源
+	jndi:Java Naming and Directory Interface(Java命名和目录服务)
+	
+	jndi的作用是Java应用程序通过一个资源的名称获取指定的资源类型
+	
+	javax.naming
+		Context接口：jdni上下文接口，包含有所有配置的资源信息，这个类会把第二步中配置的Resource包含进来
+		InitialContext类：是Context接口的实现类
+		
+		如何获取资源？
+		
+		Context context = new IniticalContext(); // 这个类已经包含有所有的资源信息
+		Object obj = context.lookup("java:comp/env/datasource/mysql"); // 通过资源名称来查找对应的资源
+		// java:comp/env/是固定的部分，后面再 加上资源名称
+		if (obj instanceof DataSource) {
+			DataSource dataSource = (DataSource) obj; // 把获取到的资源强制转换成其真实类型
+			Connection conn = dataSource.getConnection(); 
+			// dataSource类是一个支持数据库连接的数据源，提供了一个获取数据连接的方法getConnection();
+			// getConnection()是从数据连接池中获取连接的
+		}
+		
+4、连接的建立和关闭带来的问题？
+	频繁创建连接，关闭连接，消耗过多的系统资源
+	
+	解决方案：使用数据连接池
+	
+5、什么是数据连接池
+	一个持有一定数量的连接的内存空间。
+	数据连接池可指定最大支持多少个连接
+	如果有访问，假设连接池里没有连接，则需要创建连接，用完后不关闭连接，而是直接放回连接池
+	当下次访问时，则直接从连接池中获取一个可用的连接（不需要创建新连接）
+	当访问数超出了最大连接数，则下一个访问进行等待，当某个连接不再使用，则放回到数据连接池，此时连接池有一个空闲连接，则等待的那个访问者可以获取到此空闲连接
+
+6、数据连接池的连接关闭
+	Connection conn = dataSource.getConnection();	
+	conn.close(); // 在数据连接池里，此close方法是把连接放回到连接池，而不是真正地把连接关闭掉
+	
+	
+	
+	
+		

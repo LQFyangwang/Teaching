@@ -1,0 +1,140 @@
+1、什么是servlet
+	servlet是在JSP之前问世的，用于Java WEB项目的服务端进行页面的输出及数据处理的一门技术。
+	servlet可以接收来自客户端浏览器的请求，并对请求进行相应的处理生成一个响应返回到客户端浏览器
+	
+	servlet如果要输出相应的网页，则借助一个PrintWriter输出对象把网页的内容输出（特别繁琐）
+	
+	javaee提供的api接口
+	
+	
+2、jsp与servlet
+	jsp在servlet后出现，为的就是不要在serlvet中输出大量的网页端的内容。把网页端的内容全部写在JSP页面上，servlet只负责接收请求，处理数据，把处理好的
+	结果直接返回到jsp页面，再由jsp页面把处理后的结果显示出来 
+	
+	加了JSP后，数据处理与数据的显示分离开来了，jsp只负责数据的显示，servlet只负责逻辑的处理
+	
+	如果只使用sevlet，数据处理与数据的显示都在serlvet里面
+	
+	如果只使用jsp，数据处理与数据的显示都在jsp页面
+	
+	jsp最终会被转化成对应的servlet类，所有在jsp页面中的内容都会在Servlet类的_jspService方法中使用out对象输出
+	
+3、servlet的优点
+	1）可移植性（Portability）
+	servlet皆用java语言开发，延续了java 跨平台的优点
+	2）强大的功能
+	Servlet能够完全发挥java API的权威，包括网络、多线程、远程对象调用RMI、JDBC等。
+	3）性能
+	servlet对象实体通常会停留在servlet内存，相同的请求可利用不同的线程来处理。但不是一直停留内存。
+	4）安全性
+	servlet具有类型检查、垃圾收集、异常处理等特性。
+	
+4、servlet的一些基本结构
+	1）servlet类关系
+		javaee serlvet（servlet-api.jar）接口或类：
+		javax.servlet.Servlet接口
+			destroy();
+			init(ServletConfig)
+			service(ServletRequest, ServletResponse)
+			getServletConfig()
+			getServletInfo()
+			
+		javax.serlvet.GenericServlet抽象类实现了javax.servlet.Servlet接口，ServletConfig接口
+			destroy();
+			init(ServletConfig)
+			service(ServletRequest, ServletResponse)
+			getServletConfig()
+			getServletInfo()
+			新增的方法：
+			getInitParameter(String)
+			getInitParameterNames();
+			getServletContext();
+			getServletName()
+			init()
+			
+			
+		javax.servlet.http.HttpServlet类继承自javax.serlvet.GenericServlet抽象类
+			HttpSerlvet指使用http协议实现的servlet技术，开发者要写一个Servlet则需要继承自此javax.servlet.http.HttpServlet
+			新增的方法：
+			doDelete(HttpServletRequest, HttpSerlvetResponse) // delete请求
+			*doGet(HttpServletRequest, HttpSerlvetResponse) // 用来处理get请求的
+			*doPost(HttpServletRequest, HttpSerlvetResponse) // 用来处理post请求的
+			doPut(HttpServletRequest, HttpSerlvetResponse) // put请求
+			doOption(HttpServletRequest, HdttpSerlvetResponse)
+			doHead(HttpServletRequest, HttpSerlvetResponse)
+			doTrace(HttpServletRequest, HttpSerlvetResponse)
+			
+			*service(HttpServletRequest,HttpServletResponse) // 可以自动判断请求的方法是什么，如果判断到请求方法为get，则调用doGet()，如果判断到请求方法为post，则调用doPost()方法
+			
+			如果同时实现了service和doGet,doPost，service方法优先
+		
+	2）请求与响应
+		servlet技术中，请求对应javax.servlet.ServletRequest接口		
+		
+		对于Http协议来说，请求对应于javax.servlet.http.HttpServletRequest类
+		
+		servlet技术中，响应对应于javax.servlet.ServletResponse接口
+		
+		对于Http协议来说，响应对应于javax.servlet.http.HttpServletResponse类
+		
+5、servlet的生命周期方法
+	客户端发送一个请求到某个Servlet，如果是第一次使用此servlet，则调用init方法初始化该servlet，并且servlet是线程。如果不是第一次使用此servlet，
+	则直接创建一个新的servlet线程
+	init(ServletConfig)
+		servlet初始化方法，当用户从浏览器端第一次发送对servlet的请求时，调用该方法对servlet进行初始化，由WEB容器完成servlet的初始化
+	service(ServletRequest, ServletResponse)
+		当接收到客户端浏览器请求后，调用该方法对请求进行处理，web容器来调用的
+	destroy();
+		servlet的销毁，当web窗口认为该 servlet不再被使用时，或者web容器被关闭时，调用该方法把Servlet销毁掉
+		
+6、开始写自己的servlet类，用于处理http请求
+	1)自定义一个类，继承自javax.servlet.http.HttpServlet类
+	2）至少实现service(HttpServletRequest, HttpServletResponse)方法， 在此方法中处理请求并返回响应。
+	 如果说在servlet初始化时，需要做一些 事情 ，则需要实现init(SerlvetConfig)， 如果在Servlet销毁时，需要做一些 事情，则需要实现destroy()
+	3)在WEB-INF目录的web.xml文件中配置<servlet></servlet>标签，用于告诉web容器，存在某个Servlet
+		<servlet>
+			<servlet-name>servlet的名称</servlet-name>
+			<servlet-class>servlet的全限定名</servlet-class>
+		</servlet>
+	4）web.xml文件中配置<servlet-mapping></servlet-mapping>，用于告诉 Web容器，客户端浏览器可以用哪个url来访问到第3步中已经配置好的serlvet
+		<servlet-mapping>
+			<servlet-name>servlet的名称</servlet-name>
+			<url-pattern>/hello</url-pattern> // 客户端使用这个配置好的url访问servlet
+		</servlet-mapping>
+		
+7、服务端获取客户端的请求参数
+	1）get方法：  请求参数放在url查询字符串中
+		HttpSerlvetRequest的getParameter(paramName)来获取指定请求参数的值
+		
+8、form表单的提交
+	<form action="" method="">
+	
+	</form>
+	
+	method用于指定提交方法，可选值为get或post（几乎都应该使用post）
+	action用于告诉浏览器，此表单的数据提交到哪个servlet(servlet对应的url-pattern)或哪个jsp进行处理
+	
+9、如何解决HttpServletRequest对象获取的数据是乱码，HttpServletResponse对象输出的数据是乱码
+	1)、jsp页面的page指令中指定utf-8编码
+	2)、html的meta标签部分也指定utf-8编码
+	3)、在HttpServletRequest获取请求参数前，调用setCharacterEncoding方法设置编码为utf-8
+	4）、在使用HttpServletResponse前，调用setCharacterEncoding方法 设置编码为utf-8
+	5)、如果HttpServletResponse获取的PrintWriter对象输出的是一个html网页格式的内容，则
+		需要调用setContentType text/html;charset=utf-8
+		
+		（如果返回JSON格式的数据,则需要设置为text/json， 如果是文件下载，则设置为另外的形式 ）
+		
+	6)、如果需要操作数据库，则数据库的编码也设置为utf-8
+	
+10、HttpServletRequest和HttpServletResponse对象的一些常用方法
+	req.setCharacterEncoding
+	res.setCharacterEncoding
+	
+	req.getParameter    req.getParameterValues(返回String数组) --> checkbox和多选的select
+	res.setContentType
+	PrintWriter out = res.getWriter();
+	res.getOutputStream() // 文件下载
+	
+	
+
+	

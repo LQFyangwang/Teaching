@@ -1,0 +1,177 @@
+1、EL	Expression Language表达式语言
+	用于简化JSP中的java程序片断
+	
+	${ss}  可以对pageContext， request, session, application中存放的属性进行输出
+	ss就是属性的key
+	
+	
+	如果是一个对象放在属性里，则可以使用这个方式直接把对象的属性输出${object.propertyName }
+	 
+	${propertyName}的执行顺序如下：
+	先从pageContext中判断是否有该属性，如果有，则获取该属性，如果没有，则到request中判断是否有该属性，如果有，则获取，如果没有，
+	则到session里决断是否有该 属性，一直到application对象。如果都没有，找不到指定的属性，则输出空字符串（不是NULL）
+	
+	按作用域从小到大来获取
+	
+	也可以指定从哪个作用域中获取：${pageScope.propertyName} 只从pageContext中去判断是否有该属性
+					${requestScope.propertyName}
+					${sessionScope.propertyName}
+					${applicationScope.propertyName}
+					
+	${100 + 100 } 作运算
+	${param.search_name }  request.getParameter 获取查询字符串指定的值   param.查询字符串的名称(可完成类型的自动转换)
+	${paramValues.name}  request.getParameterValues 获取查询字符串所对应的字符串数组（checkbox）
+	
+	
+	And与	eq相等	gt大于	true真
+	Or或	ne不等	le小于等于	false假
+	No非	lt小于	ge大于等于	null空
+	instanceof实例	empty空	div除	mod取模
+	
+2、JSTL Java Standard TagLib Java标准标签库
+	可用于替换掉JSP中的Java程序片断，输出，设置属性，移除属性，循环操作，条件判断，url操作
+	所有操作都是用标签来完成，标签底层是用Java代码实现的
+	
+	导入两个库文件：jstl.jar, standard.jar
+	
+	JSP页面引用jstl核心标签库:<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	prefix表示前缀
+	uri表示字符串标识出哪个资源
+	
+	1)<c:out value="aa"></c:out> 标准输出
+	
+	2)<c:set var="b" value="bb" scope="request"></c:set> 在指定的作用域内设置attribute
+		scope：page->request->session->application
+		可以用${requestScope.b }把此值输出
+	
+	3)<c:remove var="b" scope="request"/> 从指定的作用域移除attribute
+	
+	4)<c:catch var="java.lang.NumberFormatException">
+		<%
+			Integer.valueOf("ccc");
+		%>
+	</c:catch>  捕捉指定的异常，var表示捕捉哪个异常（异常类的全限定名）
+	
+	****5)<c:if test="${10 == 100 }">
+		10 == 10
+	</c:if>
+	<c:if test="${requestScope.user == 'user' }">
+		aaa
+	</c:if>
+	做逻辑判断，如果test的结果为真，则会执行标签内部的内容，否则什么都不做
+	
+	****6)<c:choose>
+		<c:when test="${requestScope.user == 'user' }">user</c:when>
+		<c:when test="${requestScope.user == 'admin' }">admin</c:when>
+		<c:otherwise>other</c:otherwise>
+	</c:choose>
+		====> if () {    <c:when>
+		} else if () {
+		} else if () {
+		} else {  <c:otherwise>
+		
+		}
+	
+	*****7)<table>
+		<c:forEach items="${requestScope.products }" var="p" begin="0" step="1" varStatus="s">
+			<tr>
+				<td>${s.index + 1 }</td>
+				<td>${p.name }</td>
+			</tr>
+		</c:forEach>
+	</table>
+	
+	items表示对哪个列表进行迭代操作
+	var表示用哪个对象来接收每次迭代的数据
+	begin表示迭代开始的索引号，默认从0开始
+	step表示迭代增量，默认为1
+	varStatus表示迭代的索引对象，index属性表示索引号
+	
+	如果想要输出每次迭代的对象的数据：${p.propertyName}
+	
+	8)<c:import url="login.jsp"></c:import>动态包含文件，与<jsp:include>一样
+	
+	9)<c:url value="/taglib.jsp"></c:url>
+		<%=path %>/taglib.jsp    相当于可以把<% String path = request.getContextPath() %>去掉
+	
+	10)<c:redirect url="login.jsp"></c:redirect>
+		重定向到指定的url
+
+表达式操作：out, set, remove,catch;
+流程控制：if,choose,when, otherwise;
+迭代操作：forEach,forTokens;
+URL操作：import,url,redirect,param;
+
+3、自定义标签
+
+	javax.servlet.jsp.tagext.JspTag接口，所有的标签都必须实现该接口，这个接口是一个标记接口，它有一个直接子接口: Tag接口， 它是经典的、必须实现的接口
+	
+	javax.servlet.jsp.tagext.Tag接口直接继承自JspTag接口，该接口中有两个重要的方法：
+		int doStartTag() throws JspException 处理开始标记, 
+		int doEndTag() throws JspException 处理结束标记
+		
+		setPageContext(PageConetxt pageContext); 该方法由容器调用，开发者可以通过该方法获取到PageContext对象
+		
+		常量：
+		public final static int SKIP_BODY = 0;  忽略内容    <a>忽略这个部分</a>
+	      public final static int EVAL_BODY_INCLUDE = 1;   <a>处理这个部分</a>
+	      public final static int SKIP_PAGE = 5;    <a></a>处理完</a>标记后，如果后面还有JSP代码，则忽略掉这些jsp代码，不处理
+	      public final static int EVAL_PAGE = 6;    <a></a>处理完</a>标记后，如果后面还有JSP代码，则处理这些jsp代码
+	
+	如何实现：
+	1）写一个类，继承自javax.servlet.jsp.tagext.TagSupport类（TagSupport实现了Tag接口）
+	2）至少实现以下三个方法 ：
+		setPageContext(PageContext pageContext);
+		doStartTag()开始标签的处理
+		doEndTag()结束标签的处理
+	3）想清楚第二步中doStartTag是否需要处理内容体部分，doEndTag是否需要处理结束标签后的jsp代码
+	4）在doStartTag， doEndTag中完成标签需要处理的逻辑
+	
+	5)需要告诉web窗口有一个自定义的标签库，在WEB-INF目录下增加一个标签库描述文件mytag.tld(后缀必须是tld)
+	6）tld内容如下：
+		<?xml version="1.0" encoding="UTF-8" ?>
+			
+			<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+			    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+			    version="2.1">
+			 
+			  <tlib-version>1.1</tlib-version>  标签库的版本号
+			  <short-name>my</short-name> 标签库的短名称
+			  <uri>http://com.gs.tag/mytag</uri>  标签库的统一资源标识符，用在jsp代码中去引用此标签库
+			  
+			   <tag>   标签的描述
+			    <name>write</name>   标签的名称 
+			    <tag-class>com.gs.tag.MyTag</tag-class>   标签所对应的Java灰
+			    <body-content>JSP</body-content>    固定的body的内容体为jsp
+			  </tag>
+			  
+			</taglib>
+		7）在jsp中使用<%@taglib prefix="" uri="第6步中配置的uri"%>指令来引用自定义的标签库
+		8)使用第7步中配置的prefix和第6步中配置的tag的name来引用标签
+		
+	带有属性的标签：
+		1）需要在标签所对应的类中加上属性名称一致的成员变量，并且提供成员变量的setter方法
+		2)直接在类中使用此属性的值
+		3）在标签库的描述文件中，指定有哪些attribute
+			<tag>
+			    <name>write2</name>
+			    <tag-class>com.gs.tag.MyTag2</tag-class>
+			    <body-content>JSP</body-content>
+			    <attribute>
+			        <name>value</name>
+			        <required>true</required>
+			        <rtexprvalue>true</rtexprvalue>
+			    </attribute>
+			    <attribute>
+			        <name>other</name>  属性名称
+			        <required>false</required>   是否为必须的属性
+			        <rtexprvalue>true</rtexprvalue> 
+			    </attribute>
+			  </tag>
+	
+				
+	
+	
+					
+					

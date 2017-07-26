@@ -1,0 +1,166 @@
+1、什么是过滤器
+	对servlet/jsp进行过滤的一种对象，在执行serlvet前，先执行过滤器，过滤器成功执行后传递到下一个过滤器，直到传递到servlet
+	
+	一个filter去过滤serlvet，filter里面的request对象和response对象，最终会传递到Servlet
+	
+	filter1的前置方法--->filter2的前置方法---->filter3的前置方法---->.......
+	----->servlet的生命周期方法的service(doGet, doPost)---->.......
+	----->filter3的后置方法----->filter2的后置方法------->filter1的后置方法
+	
+	
+	filter的执行顺序按照web.xml文件中的Filter的配置的顺序
+	
+2、filter的生命周期
+	init:初始化，在容器启动的时候，由容器调用 
+	destroy:销毁，在容器关闭的时候，由容器调用
+	doFilter:过滤方法 
+
+3、如何定义Filter
+	1）写自己的类，实现javax.servlet.Filter接口
+		init, destroy, doFilter(ServletRequest, ServletResponse, FilterChain)
+	2)实现三个生命周期方法，过滤的逻辑放在doFilter方法中
+		FilterChain对象的doFilter方法传递到下一个过滤器，如果下一个没有了过滤器，则传递到servlet
+		chain.doFilter方法前的代码为前置方法
+		chain.doFilter方法后的代码为后置方法
+	3）在web.xml文件中配置filter
+		<filter>
+			<filter-name></filter-name>
+			<filter-class></filter-class>
+		</filter>
+	4)配置filter可以过滤哪些url
+		<filter-mapping>
+			<filter-name></filter-name>
+			<url-pattern>/*</url-pattern>
+			<servlet-name></servlet-name> // 过滤指定的servlet
+		</filter-mapping>
+		
+4、javax.servlet.ServletContextListener应用程序上下文监听器
+	监听整个web应用的启动和销毁
+	@Override
+	public void contextDestroyed(ServletContextEvent arg0) {
+		// 销毁
+		
+	}
+
+	@Override
+	public void contextInitialized(ServletContextEvent arg0) {
+		// 初始化
+		// 可以用来初始化一些整个应用程序所用到的基础配置
+	}
+	
+	ServletContextEvent事件，getServletContext方法可以获取到ServletContext应用上下文对象
+	
+5、配置Listener
+	web.xml文件中，添加listener
+	<listener>
+		<listener-class></listener-class>
+	</listener>
+	
+6、javax.servlet.ServletContextAttributeListener应用程序属性监听器
+	@Override
+	public void attributeAdded(ServletContextAttributeEvent arg0) {
+		// application中属性的添加
+		
+	}
+
+	@Override
+	public void attributeRemoved(ServletContextAttributeEvent arg0) {
+		// application中属性的移除
+		
+	}
+
+	@Override
+	public void attributeReplaced(ServletContextAttributeEvent arg0) {
+		// application中属性的替换
+		
+	}
+	
+	
+	ServletContextAttributeEvent:
+	 getName方法获取属性的名称
+	 getValue方法获取属性的值
+	 
+7、javax.servlet.http.HttpSessionListener session监听器
+	@Override
+	public void sessionCreated(HttpSessionEvent arg0) {
+		// 监听session的创建
+		
+	}
+
+	@Override
+	public void sessionDestroyed(HttpSessionEvent arg0) {
+		// 监听session的销毁
+		
+	}
+	
+	HttpSessionEvent   getSession方法可以获取创建的session对象
+	
+8、javax.servlet.http.HttpSessionAttributeListener session的属性监听器
+	@Override
+	public void attributeAdded(HttpSessionBindingEvent arg0) {
+		System.out.println("session中添加了一个属性");
+		arg0.getSession();
+		System.out.println(arg0.getName() + arg0.getValue());
+	}
+
+	@Override
+	public void attributeRemoved(HttpSessionBindingEvent arg0) {
+		System.out.println("session中移除了一个属性");
+		
+	}
+
+	@Override
+	public void attributeReplaced(HttpSessionBindingEvent arg0) {
+		System.out.println("session中替换了一个属性");
+	}
+	
+	HttpSessionBindingEvent  getName获取session中属性的名称
+		getValue获取session属性的值
+		getSession获取HttpSession对象
+		
+9、javax.servlet.http.HttpSessionBindingListener    session绑定监听器
+	如果某个对象实现了此接口，当此对象添加到session的属性中时，就会触发接口的valueBound方法
+	当此对象从Session的属性中移除时，就会触发接口的valueUnbound方法
+	
+	@Override
+	public void valueBound(HttpSessionBindingEvent arg0) {
+		System.out.println("user对象被绑定到Session");
+	}
+	@Override
+	public void valueUnbound(HttpSessionBindingEvent arg0) {
+		System.out.println("user对象从session中移除");
+	}
+	
+	HttpSessionBindingEvent事件对象与8中的一样
+	
+10、javax.servlet.ServletRequestListener   请求监听器
+	@Override
+	public void requestDestroyed(ServletRequestEvent arg0) {
+		System.out.println("请求销毁....");
+	}
+
+	@Override
+	public void requestInitialized(ServletRequestEvent arg0) {
+		System.out.println("请求初始化....");
+	}
+	
+	ServletRequestEvent   getServletRequest方法获取ServletRequest对象
+
+11、javax.servlet.ServletRequestAttributeListener   request属性监听器
+	@Override
+	public void attributeAdded(ServletRequestAttributeEvent arg0) {
+	}
+
+	@Override
+	public void attributeRemoved(ServletRequestAttributeEvent arg0) {
+	}
+
+	@Override
+	public void attributeReplaced(ServletRequestAttributeEvent arg0) {
+	}
+	
+	ServletRequestAttributeEvent  getName获取属性名
+	 getValue获取属性值
+	 getServletRequest获取request对象
+	
+	

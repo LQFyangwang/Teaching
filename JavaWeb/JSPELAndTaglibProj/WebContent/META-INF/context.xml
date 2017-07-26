@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Context>
+	<Resource name="datasource/sqlserver"
+		auth="container"
+		type="javax.sql.DataSource"
+		driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+		url="jdbc:sqlserver://localhost:1433;DatabaseName=d_product"
+		username="sa"
+		password="123456"
+		maxTotal="20"
+		maxIdle="5"
+		maxWaitMillis="30000"
+	/>
+</Context>

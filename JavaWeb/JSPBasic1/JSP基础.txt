@@ -1,0 +1,86 @@
+1、基本语法 
+	1）<% java程序片断 %>     放在<% %>里面的内容最终会被转化到jsp所对应的Servlet的_jspService方法内部
+		放在<% %>里面的变量会转化成jsp对应的servlet的_jspService方法里的局部变量
+		
+	2)<%! %> 不能在这里直接使用其他java代码，这个部分只能是变量的定义，方法的定义。成员变量和成员方法
+	
+	3)<%=variable %> 输出成员变量或<%%>里面的局部变量       out.print
+		<%=method()%> 可以调用有返回值的方法  out.print(method());
+	
+	4)注释  // /**/对java代码的注释 
+		<%--  --%>  // 客户端不可见的注释
+		
+		<!-- --> // html，客户端可见的注释，通常是用来html注释
+		
+2、JSP指令
+	1）page指令
+	是任何jsp页面都必须有的一个指令
+	
+	<%@ page %>
+	
+	page的属性：
+		language="java"
+		contentType="text/html;charset=utf-8" // 生成的内容所对应的类型与字符编码,会在生成的servlet java中使用response.setContentType来指定访文档类型
+		pageEncoding="utf-8" // java代码的输出使用的字符编码
+		import="java.util.Date" // 导入指定的类， java.lang.*
+		session="true/false"  // 是否开启会话
+		autoFlush="true/false" // 是否自动清除缓冲
+		errorPage="error.jsp"   // 当此jsp页面遇到异常后，重定向到指定的页面
+		
+	2)include指令:把共同部分的代码单独放到一个jsp页面，然后在其他页面中包含进去， 静态包含，相当于把代码直接copy过来
+		先把jsp导入到目标页面中，再整体转化成servlet(include的页面不会在修改后进行编译)
+		<%@ include file="共同部分的jsp" />
+		只放需要被引用到的标签
+		
+	3）taglib指令：表示标签引用指令
+		<%@ taglib prefix="" uri="" />
+		
+3、jsp动作指令，都以jsp:开头
+	1） <jsp:include />   动态包含，每次都会先对被引用的文件进行编译
+		<jsp:include page="">
+			<jsp:param name="paramName" value="paramValue" /> 给被包含的文件传递参数，被包含的文件通过request.getParameter的方式获取传递进来的参数
+		</jsp:include>   
+	2）<jsp:forward />  转发指令 ，由服务器完成转发到其他url的功能
+		<jsp:forward page="">
+			<jsp:param name="paranName" value="paramValue" />
+		</jsp:forward>
+	
+4、重定向与转发
+	1）重定向：
+	一个url跳转到另外一个url，需要跳转到的目标url是通过浏览器发送请求到服务端，由服务端生成此url对应的响应返回到客户端。对应于302重定向状态码
+	地址栏会发生变化
+	
+	2)转发：
+	一个url跳转到另外一个url，这个跳转的过程，浏览器端并不知道，而是在服务端完成跳转并把响应返回到客户端。所以地址栏不会变化。
+	
+	比较：转发的性能比重定向的性能高；重定向浏览器会发送请求，而转发不需要浏览器发送请求;重定向地址栏发生变化，转发地址栏不变；
+		重定向在servlet中是由response.sendRedirect("send_redirect.jsp");
+		转发在servlet中是由request.getRequestDispatcher("/forward.jsp").forward(request, response);
+
+5、请求状态码
+	1）、404 ，请求的资源未找到
+	2）、200，请求的资源正常显示
+	3）、500，内部服务器出错       502
+	4）、302，重定向
+	
+6、遇到错误时如何友好的显示
+	1）如果是内部服务器错误（500），则可以定制一个错误显示页面error.jsp，在会产生错误的页面的page指令中的errorPage属性设置为error.jsp
+	2)在web.xml文件中指定<error-page>标签
+		根据状态码来处理
+		<error-page>
+			<error-code>500<error-code>
+			<location>/error/error_500.jsp</location>
+		</error-page>
+		根据异常类型来处理
+		<error-page>
+			<exception-type>java.lang.NullPointerException</exception-type>
+			<location>/error/error_null.jsp</location>
+		</error-page>
+		
+	3）1）的优先级高于2的优先级
+		
+		
+	
+	
+	
+	

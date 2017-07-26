@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>JSPServletBasic</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+  	<servlet-name>FirstServlet</servlet-name>
+  	<servlet-class>com.gs.servlet.FirstServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>FirstServlet</servlet-name>
+  	<url-pattern>/FirstServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>HelloServlet</servlet-name>
+  	<servlet-class>com.gs.servlet.HelloServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>HelloServlet</servlet-name>
+  	<url-pattern>/hello</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>GetServlet</servlet-name>
+  	<servlet-class>com.gs.servlet.GetServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>GetServlet</servlet-name>
+  	<url-pattern>/get</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>PostServlet</servlet-name>
+  	<servlet-class>com.gs.servlet.PostServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>PostServlet</servlet-name>
+  	<url-pattern>/post</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>ServiceServlet</servlet-name>
+  	<servlet-class>com.gs.servlet.ServiceServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>ServiceServlet</servlet-name>
+  	<url-pattern>/service</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>RegisterServlet</servlet-name>
+  	<servlet-class>com.gs.servlet.RegisterServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>RegisterServlet</servlet-name>
+  	<url-pattern>/reg</url-pattern>
+  </servlet-mapping>
+  
+</web-app>
