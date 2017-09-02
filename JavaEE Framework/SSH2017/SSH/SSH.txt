@@ -1,0 +1,92 @@
+SSH的整合：
+1、SSH的版本
+    Struts2: 2.3.32
+    Spring: 4.3.10
+    Hibernate: 5.2.10
+
+    相应版本的修改到Maven的POM.xml文件中
+
+2、通用配置
+    a、在web-inf目录下创建config目录，用于存储SSH的配置文件
+    b、在config目录下，创建jdbc.properties配置文件，用于说明数据源和hibernate相关的配置信息
+
+3、Spring的配置
+    a、在第2步创建的config目录下创建spring-context.xml配置文件，用于bean组件的管理
+    b、在config目录下创建spring-hibernate.xml配置文件，用于spring与hibernate的整合
+        1）dataSource的配置，需要引用config目录下的jdbc.properties配置文件
+        2）sessionFactory的配置，在sessionFactory中注入dataSource，并且配置Hibernate的映射文件
+        3）transactionManager事务管理器的配置，使用srping-orm包中提供的HibernateTransactionManager类
+            需要注入sessionFactory，说明事务管理器使用哪个连接工厂上
+        4）事务的通知配置：<tx:advice>，主要说明哪些service方法需要开启事务管理
+        5）事务的面向切面配置<aop:config>，主要说明切入点，把事务通知与切入点绑定到一起（事务的配置配置到Service层）
+
+4、在web.xml文件中配置spring的上下文监听器，在配置的过程中需要告诉spring的配置文件的路径
+    <context-param>
+        <param-name></param-name>
+        <param-value>指明spring的配置文件的路径，可以使用*通配符</param-value>
+    <context-param>
+    <listener>
+        spring-web包中的ContextLoaderListener
+    </listener>
+
+5、在web.xml文件中配置Struts的核心过滤器，需要指定配置文件的路径
+    struts-default.xml,struts-plugin.xml,../config/struts.xml
+
+6、在config目录中增加struts.xml主配置文件，建立基础包，并引入其他的struts配置文件
+
+7、struts与spring的整合
+    a、在struts.xml主配置文件中，<constant name="struts.objectFactory" value="spring" />
+    表示把Struts的action交给Spring管理
+    b、此功能依赖于struts2-spring-plugin插件
+
+ 8、struts的action配置
+    struts的action需要在spring中配置相应 的bean组件，此bean组件 的id用于Struts配置中的Action
+    的class（Action的class不需要指明 原先的完整的类，而是指定bean id）
+
+ 9、在spring的配置文件中，声明dao, service的bean组件，并且通过byName或byType的方式自动注入
+
+ 10、解决Hibernate的延迟加载问题
+    在web.xml文件中增加spring提供的OpenSessionInViewFilter的过滤器
+
+ 11、解决编码问题
+    在web.xml文件中增加spring提供的CharacterEncodingFilter过滤器
+
+ 12、日志记录
+    log4j日志记录工具
+    1)根记录器
+    2）appender：追加器，把日志信息保存到的目标位置：控制台，文本文件，DB
+    3）日志级别：TRACE, DEBUG, INFO, WARN, ERROR
+        TRACE，DEBUG一般不会出现在生产环境中
+        生产环境中通常使用INFO, ERROR
+    4）layout:布局/格式
+        通常使用PatternLayout
+
+    5)什么时候做日志记录？
+        a、重要操作，添加，删除，更新状态
+        b、出现了异常时
+        c、权限分配操作需要做记录，登录退出操作
+
+13、报表工具
+    1)JFreeChart
+        Java版的报表工具，生成的图片是由Java在后台生成，然后把图片再返回到前台
+
+        缺点：后台生成图片，麻烦，消耗网络资源 ，报表种类少
+
+    2）HTML5报表工具
+        把报表所需要的数据通过后台返回JSON数据，JSON数据到前台后由JavaScript渲染出来
+
+        优点：后台只生成JSON格式，消耗的网络资源少，报表种类少，非常炫并有动画效果
+
+        a、Highcharts(国外)
+            兼容 IE6+、完美支持移动端、图表类型丰富、方便快捷的 HTML5 交互性图表库
+            Highcharts(图表工具)
+            Highstocks股票相关图表
+            Highmaps地图
+        b、ECharts（百度）
+
+        Highcharts:
+        1、基础折线图
+        2、基础柱状图
+        3、基础饼图
+        4、蜘蛛图
+

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+	<constant name="struts.custom.i18n.resources" value="message" />
+	<constant name="struts.multipart.saveDir" value="/upload" />
+	<constant name="struts.multipart.maxSize" value="104857600" />
+
+	<!-- 把Struts的Action交给Spring管理 -->
+	<constant name="struts.objectFactory" value="spring" />
+
+	<package name="base-package" extends="json-default">
+			<!-- 此处可添加全局异常处理 -->
+	</package>
+
+	<!-- 在src根目录下才能使用*-->
+	<include file="../config/struts-user.xml" />
+	<include file="../config/struts-statics.xml" />
+
+</struts>

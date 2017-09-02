@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- 指明一个properties配置文件 -->
+    <context:property-placeholder location="WEB-INF/config/jdbc.properties" />
+
+    <bean id="dataSource" class="org.logicalcobwebs.proxool.ProxoolDataSource">
+        <property name="driver" value="${jdbc.connection.driverClassName}" />
+        <property name="driverUrl" value="${jdbc.connection.driverUrl}" />
+        <property name="user" value="${jdbc.connection.user}" />
+        <property name="password" value="${jdbc.connection.password}" />
+
+        <!-- 用于测试连接是否正常的sql语句 -->
+        <property name="houseKeepingTestSql" value="${proxool.houseKeepingTestSql}"/>
+        <!-- 最少保持的空闲连接数 （默认2个） -->
+        <property name="prototypeCount" value="${proxool.prototypeCount}"/>
+        <!-- proxool自动侦察各个连接状态的时间间隔(毫秒),侦察到空闲的连接就马上回收,超时的销毁默认30秒） -->
+        <property name="houseKeepingSleepTime" value="${proxool.hourseKeepingSleepTime}"/>
+        <!-- 最大活动时间(超过此时间线程将被kill,默认为5分钟) -->
+        <property name="maximumActiveTime" value="${proxool.maximumActiveTime}"/>
+        <!-- 连接最长时间(默认为4个小时) -->
+        <property name="maximumConnectionLifetime" value="${proxool.maximumConnectionLifetime}"/>
+        <!-- 最小连接数 （默认2个） -->
+        <property name="minimumConnectionCount" value="${proxool.minimumConnectionCount}"/>
+        <!-- 最大连接数 （默认5个） -->
+        <property name="maximumConnectionCount" value="${proxool.maximumConnectionCount}"/>
+        <property name="simultaneousBuildThrottle" value="${proxool.simultaneousBuildThrottle}"/>
+
+    </bean>
+
+    <!-- 使用spring的orm提供的SessionFactoryBean组件去获取Hibernate的连接工厂 -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+            </props>
+        </property>
+        <!-- mappingResources默认到src根目录下去查找映射文件，所以不需要指定classpath:
+            这种方式不支持*通配符，只能是一个一个列出来
+         -->
+        <!--
+        <property name="mappingResources">
+            <list>
+                <value>/com/gs/bean/User.hbm.xml</value>
+            </list>
+        </property>
+        -->
+        <!-- mappingLocations的方式可以使用通配符，并且必须指明到文件，package部分也能支持通配符
+            mappingDirectoryLocations的方式只需要指明到目录
+         -->
+        <property name="mappingLocations">
+            <list>
+                <value>classpath:/com/gs/bean/*.hbm.xml</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- 配置需要用到的事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <!-- 对哪个连接工厂进行事务管理 -->
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+
+    <!-- tx命名空间是spring提供的用于事务管理的命名空间 -->
+    <!-- 声明通知 -->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <!-- 用于声明哪些方法需要被事务管理 -->
+            <tx:method name="save*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+            <tx:method name="update*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+            <tx:method name="remove*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+            <tx:method name="valid*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+            <tx:method name="list*" read-only="true"/>
+            <tx:method name="count*" read-only="true"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <aop:pointcut id="serviceMethods" expression="execution(* com.gs.service.*.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethods"/>
+    </aop:config>
+
+</beans>
